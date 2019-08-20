@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>9. Palindrome Number(Easy) | MyBlog - GxkOrd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode,LeetCode - Easy">
+    <meta name="description" content="题目描述原题 Description:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.  Example 1:   Input: 121Output: true  Example 2:   Input: -121Ou">
+<meta name="keywords" content="LeetCode,LeetCode - Easy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="9. Palindrome Number(Easy)">
+<meta property="og:url" content="https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/index.html">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
+<meta property="og:description" content="题目描述原题 Description:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.  Example 1:   Input: 121Output: true  Example 2:   Input: -121Ou">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-19T10:10:10.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="9. Palindrome Number(Easy)">
+<meta name="twitter:description" content="题目描述原题 Description:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.  Example 1:   Input: 121Output: true  Example 2:   Input: -121Ou">
+    
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">9. Palindrome Number(Easy)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">9. Palindrome Number(Easy)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-12T13:12:02.000Z" itemprop="datePublished" class="page-time">
+  2018-12-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题翻译"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原题翻译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题-1"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">原题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法一"><span class="post-toc-number">2.</span> <span class="post-toc-text">解法一</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法/LeetCode/9. Palindrome Number(Easy)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">9. Palindrome Number(Easy)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-12 21:12:02" datetime="2018-12-12T13:12:02.000Z"  itemprop="datePublished">2018-12-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
+<p><strong>Description</strong>:<br>Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.</p>
+<blockquote>
+<p><strong>Example 1</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: 121<br><strong>Output</strong>: true</p>
+</blockquote>
+<p><strong>Example 2</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: -121<br><strong>Output</strong>: false<br><strong>Explanation</strong>: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.</p>
+</blockquote>
+<p><strong>Example 3</strong>:</p>
+<blockquote>
+<p><strong>Input</strong>: 10<br><strong>Output</strong>: false<br><strong>Explanation</strong>: Reads 01 from right to left. Therefore it is not a palindrome.</p>
+</blockquote>
+<p><strong>Follow up</strong>:<br>Could you solve it without converting the integer to a string?</p>
+</blockquote>
+</blockquote>
+<h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><h2 id="原题-1"><a href="#原题-1" class="headerlink" title="原题"></a>原题</h2><blockquote>
+<p><strong>描述</strong>:<br>确定整数是否是回文。当它向前读取向后时，整数是回文。</p>
+<blockquote>
+<p><strong>例1</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: 121<br><strong>输出</strong>: true</p>
+</blockquote>
+<p><strong>例2</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: -121<br><strong>输出</strong>: false<br><strong>解释</strong>: 从左到右读取它，为-121。从右到左读取它，为121-。因此它不是回文。</p>
+</blockquote>
+<p><strong>例3</strong>:</p>
+<blockquote>
+<p><strong>输入</strong>: 10<br><strong>输出</strong>: false<br><strong>解释</strong>: 从左到右读取它，为10。从右到左读取它，为01。因此它不是回文。</p>
+</blockquote>
+<p><strong>提升</strong>:<br>你可以不将整数转换为字符串解决它吗？</p>
+</blockquote>
+</blockquote>
+<h1 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>把x倒置，再与x比较即可。</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>, b = x;</span><br><span class="line">        <span class="keyword">while</span>(b != <span class="number">0</span>) &#123;</span><br><span class="line">            a = a * <span class="number">10</span> + b % <span class="number">10</span>;</span><br><span class="line">            b /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a == x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-Easy/">LeetCode - Easy</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/&title=《9. Palindrome Number(Easy)》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/&title=《9. Palindrome Number(Easy)》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《9. Palindrome Number(Easy)》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/13/算法/LeetCode/10. Regular Expression Matching(Hard)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">10. Regular Expression Matching(Hard)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/11/JavaScript/Three.js/7. 着色器/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">7. 着色器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'e205625b1f56207cd5d2',
+          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+          repo: 'git@github.com:GxkOrd/blog_comments.git',
+          owner: 'GxkOrd',
+          admin: ['GxkOrd'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/&title=《9. Palindrome Number(Easy)》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/&title=《9. Palindrome Number(Easy)》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《9. Palindrome Number(Easy)》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/12/算法/LeetCode/9. Palindrome Number(Easy)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQW7jQAwEQP//09lrAqzsblLjOEDpFBi2NKXDkGnO4xFfX9+uq0++f/78t8k3r574OHHh4eHhLZb+/NY572pZyd/ty71aMx4eHt5p3tVNk+9c3joAJyWkXQ8eHh7eZ/Lyzfr5PfOSgIeHh/d3ebO4oY0V8tYcDw8P77d4eYTahgKz1jyPQm7LWvDw8PBiXj5F+py/j8z38PDw8NZT9dlGnzfcsza6WC0eHh7eAd4mGtgMumbPHa4TDw8P7zBvFgHk7Xg74moLw3+eiIeHh/cW3qa1bUdi+W+HZQMPDw/vVt6MMSsnyXafBBxFocLDw8M7xmtb4TyYaGdS+d2iYRgeHh7eAd5+KfkmnrygZHhWH73Cw8PDu5XXBrItIGmpk2LTPnE4PcPDw8OLeXmwm5eNfTnJGcOKh4eHh7fgzQpDfrjqrlKUhMg/PsHDw8M7wGsDgiI8jb9fbPSjgw54eHh49/Lao07PB/9JK5y35rP2vf7PAA8PD6/kbRbdhg77+8xeDR4eHt77eZsQoX2Js0NXL14EHh4e3q28/NjTHpPP9JPyEBUPPDw8vMO8PHJNBlGbYtMGuy+SaTw8PLwDvDy6nS1iFli0DfflAAwPDw/vAO/cqYR7Q42kIOHh4eGd5uULyrf+fFltW5+XHDw8PLzf5d0bW8yWOAwj8PDw8N7CyxvrPNKd3XN25xctNR4eHt5h3j4OaFvkzYWHh4f3Ht5Xec2OFBTtb3wcISo8eHh4eAd47babxAHJ49vEIC9LwzKDh4eHV/LyILVtlzfNcRvmvohx8fDw8A7w2pF/e5/8gMImhsDDw8P7TF7LyAPcPAQpWnY8PDy8D+Dty0Ny6CqJcaPQFg8PD+8YLz8wOgte2xFXO2x7URjw8PDwbuW12/1muFVv64tf4eHh4R3g/QO1vu4Dbf1AmgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>第3章 系统总线 | MyBlog - GxkOrd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="计算机组成原理">
+    <meta name="description" content="总线的基本概念为什么要用总线计算机系统的五大部件之间有两种互联方式：分散连接、总线连接。  分散连接：各部件之间使用单独的连线。（分散连接会使系统难以扩展，所以引入总线结构。) 总线连接：将各部件连接到一组公共信息传输线上。  什么是总线总线是连接各个部件的信息传输线，是各个部件共享的传输介质。 总线上信息的传输串行：信息在总线上按位传输。常用与计算机与计算机之间。 并行：信息在总线上多位传输。需">
+<meta name="keywords" content="计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第3章 系统总线">
+<meta property="og:url" content="https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/index.html">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
+<meta property="og:description" content="总线的基本概念为什么要用总线计算机系统的五大部件之间有两种互联方式：分散连接、总线连接。  分散连接：各部件之间使用单独的连线。（分散连接会使系统难以扩展，所以引入总线结构。) 总线连接：将各部件连接到一组公共信息传输线上。  什么是总线总线是连接各个部件的信息传输线，是各个部件共享的传输介质。 总线上信息的传输串行：信息在总线上按位传输。常用与计算机与计算机之间。 并行：信息在总线上多位传输。需">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8D%95%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E9%9D%A2%E5%90%91CPU%E7%9A%84%E5%8F%8C%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%BB%A5%E5%AD%98%E5%82%A8%E5%99%A8%E4%B8%BA%E4%B8%AD%E5%BF%83%E7%9A%84%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//总线物理实现.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//总线标准.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//单总线结构框图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//双总线结构框图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//三总线结构框图1.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//三总线结构框图2.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//四总线结构框图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%BC%A0%E7%BB%9F%E5%BE%AE%E5%9E%8B%E6%9C%BA%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//VL-BUS%E5%B1%80%E9%83%A8%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//PCI%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%A4%9A%E5%B1%82PCI%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E5%88%A4%E4%BC%98%E6%8E%A7%E5%88%B6-%E9%93%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E5%88%A4%E4%BC%98%E6%8E%A7%E5%88%B6-%E8%AE%A1%E6%95%B0%E5%99%A8%E5%AE%9A%E6%97%B6%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E5%88%A4%E4%BC%98%E6%8E%A7%E5%88%B6-%E7%8B%AC%E7%AB%8B%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%90%8C%E6%AD%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%90%8C%E6%AD%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%8D%8A%E5%90%8C%E6%AD%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5.jpg">
+<meta property="og:updated_time" content="2019-03-15T16:49:56.680Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第3章 系统总线">
+<meta name="twitter:description" content="总线的基本概念为什么要用总线计算机系统的五大部件之间有两种互联方式：分散连接、总线连接。  分散连接：各部件之间使用单独的连线。（分散连接会使系统难以扩展，所以引入总线结构。) 总线连接：将各部件连接到一组公共信息传输线上。  什么是总线总线是连接各个部件的信息传输线，是各个部件共享的传输介质。 总线上信息的传输串行：信息在总线上按位传输。常用与计算机与计算机之间。 并行：信息在总线上多位传输。需">
+<meta name="twitter:image" content="https://gxkord.github.io/.io//%E5%8D%95%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第3章 系统总线</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第3章 系统总线</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-15T07:10:12.000Z" itemprop="datePublished" class="page-time">
+  2019-03-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总线的基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">总线的基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么要用总线"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">为什么要用总线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是总线"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">什么是总线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线上信息的传输"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">总线上信息的传输</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线结构的计算机举例"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">总线结构的计算机举例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总线的分类"><span class="post-toc-number">2.</span> <span class="post-toc-text">总线的分类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总线特性及性能指标"><span class="post-toc-number">3.</span> <span class="post-toc-text">总线特性及性能指标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线物理实现"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">总线物理实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线特性"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">总线特性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线的性能指标"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">总线的性能指标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线标准"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">总线标准</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总线结构"><span class="post-toc-number">4.</span> <span class="post-toc-text">总线结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单总线结构"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">单总线结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多总线结构"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">多总线结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线结构举例"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">总线结构举例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总线控制"><span class="post-toc-number">5.</span> <span class="post-toc-text">总线控制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线判优"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">总线判优</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总线通信控制"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">总线通信控制</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-计算机基础/计算机组成原理/第3章 系统总线"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第3章 系统总线</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-15 15:10:12" datetime="2019-03-15T07:10:12.000Z"  itemprop="datePublished">2019-03-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="总线的基本概念"><a href="#总线的基本概念" class="headerlink" title="总线的基本概念"></a>总线的基本概念</h1><h2 id="为什么要用总线"><a href="#为什么要用总线" class="headerlink" title="为什么要用总线"></a>为什么要用总线</h2><p>计算机系统的五大部件之间有两种互联方式：分散连接、总线连接。</p>
+<blockquote>
+<p>分散连接：各部件之间使用单独的连线。（分散连接会使系统难以扩展，所以引入总线结构。)</p>
+<p>总线连接：将各部件连接到一组公共信息传输线上。</p>
+</blockquote>
+<h2 id="什么是总线"><a href="#什么是总线" class="headerlink" title="什么是总线"></a>什么是总线</h2><p>总线是连接各个部件的信息传输线，是<strong>各个部件共享的传输介质</strong>。</p>
+<h2 id="总线上信息的传输"><a href="#总线上信息的传输" class="headerlink" title="总线上信息的传输"></a>总线上信息的传输</h2><p>串行：信息在总线上按位传输。常用与计算机与计算机之间。</p>
+<p>并行：信息在总线上多位传输。需要多条数据线平行传输，所以，若传输距离过长，数据线之间容易发生干扰。常用于单个计算机内部。</p>
+<h2 id="总线结构的计算机举例"><a href="#总线结构的计算机举例" class="headerlink" title="总线结构的计算机举例"></a>总线结构的计算机举例</h2><ol>
+<li><p>单总线结构框图</p>
+<p><img src="/.io//%E5%8D%95%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg" alt="单总线结构框图"></p>
+<p>缺点：设备的利用率低。在同一时刻，只有一对设备能使用总线。</p>
+</li>
+<li><p>面向CPU的双总线结构框图</p>
+<p><img src="/.io//%E9%9D%A2%E5%90%91CPU%E7%9A%84%E5%8F%8C%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg" alt="面向CPU的双总线结构框图"></p>
+<p>缺点：主存和外部设备之间无直接通路。若两者之间需要通信，会打断CPU的运行。</p>
+</li>
+<li><p>以存储器为中心的总线结构框图</p>
+<p><img src="/.io//%E4%BB%A5%E5%AD%98%E5%82%A8%E5%99%A8%E4%B8%BA%E4%B8%AD%E5%BF%83%E7%9A%84%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84%E6%A1%86%E5%9B%BE.jpg" alt="以存储器为中心的总线结构框图"></p>
+</li>
+</ol>
+<h1 id="总线的分类"><a href="#总线的分类" class="headerlink" title="总线的分类"></a>总线的分类</h1><ol>
+<li><p>按连接部件不同：</p>
+<p>(1) 片内总线：<strong>芯片内部</strong>的总线。</p>
+<p>(2) 系统总线：<strong>计算机各部件之间</strong>的信息传输线。</p>
+<pre><code>① 数据总线：双向，与机器字长、存储字长有关。
+
+② 地址总线：单向，与存储地址、I/O地址有关。
+
+③ 控制总线：有出（存储器读、写，总线许可，中断确认）有入（中断请求、总线请求）。</code></pre><p>(3) 通信总线：用于<strong>计算机系统之间</strong>或<strong>计算机系统与其他系统</strong>（如控制仪表、移动通信等）之间的通信。</p>
+</li>
+<li><p>按传输方式：并行传输总线、串行传输总线。</p>
+</li>
+</ol>
+<h1 id="总线特性及性能指标"><a href="#总线特性及性能指标" class="headerlink" title="总线特性及性能指标"></a>总线特性及性能指标</h1><h2 id="总线物理实现"><a href="#总线物理实现" class="headerlink" title="总线物理实现"></a>总线物理实现</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//总线物理实现.jpg" alt="总线物理实现" title>
+                </div>
+                <div class="image-caption">总线物理实现</div>
+            </figure>
+
+<h2 id="总线特性"><a href="#总线特性" class="headerlink" title="总线特性"></a>总线特性</h2><ol>
+<li><p>机械特性：<strong>尺寸</strong>、形状、<strong>管脚数</strong>及<strong>排列顺序</strong>。</p>
+</li>
+<li><p>电气特性：<strong>传输方向</strong>和有效的<strong>电平</strong>范围。</p>
+</li>
+<li><p>功能特性：每根传输线的<strong>功能</strong>（地址、数据或控制）。</p>
+</li>
+<li><p>时间特性：信号的<strong>时序</strong>关系。</p>
+</li>
+</ol>
+<h2 id="总线的性能指标"><a href="#总线的性能指标" class="headerlink" title="总线的性能指标"></a>总线的性能指标</h2><ol>
+<li><p>总线宽度：<strong>数据线</strong>的根数。</p>
+</li>
+<li><p>标准传输率：每秒传输的最大字节数（<strong>MBps</strong>）。</p>
+</li>
+<li><p>时钟同步/异步：<strong>同步</strong>、<strong>不同步</strong>（不等同于异步）。</p>
+</li>
+<li><p>总线复用：<strong>地址线</strong>与<strong>数据线</strong>复用。</p>
+</li>
+<li><p>信号线数：地址线、数据线和控制线的<strong>总和</strong>。</p>
+</li>
+<li><p>总线控制方式：突发、自动、仲裁、逻辑、计数。</p>
+</li>
+<li><p>其他指标：<strong>负载能力</strong>。</p>
+</li>
+</ol>
+<h2 id="总线标准"><a href="#总线标准" class="headerlink" title="总线标准"></a>总线标准</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//总线标准.jpg" alt="总线标准" title>
+                </div>
+                <div class="image-caption">总线标准</div>
+            </figure>
+
+<h1 id="总线结构"><a href="#总线结构" class="headerlink" title="总线结构"></a>总线结构</h1><h2 id="单总线结构"><a href="#单总线结构" class="headerlink" title="单总线结构"></a>单总线结构</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//单总线结构框图.jpg" alt="单总线结构" title>
+                </div>
+                <div class="image-caption">单总线结构</div>
+            </figure>
+
+<h2 id="多总线结构"><a href="#多总线结构" class="headerlink" title="多总线结构"></a>多总线结构</h2><ol>
+<li>双总线结构</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//双总线结构框图.jpg" alt="双总线结构" title>
+                </div>
+                <div class="image-caption">双总线结构</div>
+            </figure>
+
+<ol start="2">
+<li>三总线结构</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//三总线结构框图1.jpg" alt="三总线结构1" title>
+                </div>
+                <div class="image-caption">三总线结构1</div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//三总线结构框图2.jpg" alt="三总线结构2" title>
+                </div>
+                <div class="image-caption">三总线结构2</div>
+            </figure>
+
+<ol start="3">
+<li>四总线结构</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//四总线结构框图.jpg" alt="四总线结构" title>
+                </div>
+                <div class="image-caption">四总线结构</div>
+            </figure>
+
+<h2 id="总线结构举例"><a href="#总线结构举例" class="headerlink" title="总线结构举例"></a>总线结构举例</h2><ol>
+<li><p>传统微型机总线结构</p>
+<p><img src="/.io//%E4%BC%A0%E7%BB%9F%E5%BE%AE%E5%9E%8B%E6%9C%BA%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg" alt="传统微型机总线结构"></p>
+</li>
+<li><p>VL-BUS局部总线结构</p>
+<p><img src="/.io//VL-BUS%E5%B1%80%E9%83%A8%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg" alt="VL-BUS局部总线结构"></p>
+</li>
+<li><p>PCI总线结构</p>
+<p><img src="/.io//PCI%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg" alt="PCI总线结构"></p>
+</li>
+<li><p>多层PCI总线结构</p>
+<p><img src="/.io//%E5%A4%9A%E5%B1%82PCI%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84.jpg" alt="多层PCI总线结构"></p>
+</li>
+</ol>
+<h1 id="总线控制"><a href="#总线控制" class="headerlink" title="总线控制"></a>总线控制</h1><h2 id="总线判优"><a href="#总线判优" class="headerlink" title="总线判优"></a>总线判优</h2><ol>
+<li><p>基本概念</p>
+<ul>
+<li><p>主设备（模块）：对总线有<strong>控制权</strong>。</p>
+</li>
+<li><p>从设备（模块）：<strong>响应</strong>从主设备发来的总线命令。</p>
+</li>
+<li><p>总线判优控制：决定由哪个主设备占用总线。分为集中式、分布式两种。</p>
+</li>
+</ul>
+</li>
+<li><p>总线判优控制（集中式）</p>
+<p>(1) 链式查询方式</p>
+<p><strong>I/0接口n获得总线使用权的过程</strong>：<em>I/0接口n</em>发出<em>BR（总线请求）</em>，然后<em>总线控制部件</em>发出<em>BG（总线统一）</em>，<em>I/0接口n</em>再发送<em>BS（总线忙）</em>。</p>
+<p><img src="/.io//%E6%80%BB%E7%BA%BF%E5%88%A4%E4%BC%98%E6%8E%A7%E5%88%B6-%E9%93%BE%E5%BC%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.jpg" alt="链式查询方式"></p>
+<p>(2) 计数器定时查询方式</p>
+<p><strong>I/0接口n获得总线使用权的过程</strong>：I/0接口n发出<em>BR</em>给<em>总线控制部件</em>，若可以给出总线使用权，则启用<strong>计数器</strong>，并初始化为0。总线控制部件通过<em>设备地址（线）</em>访问设备0，检查其是否发出了<em>BR</em>；若否，计数器+1，再访问设备1……若检查至设备n，且设备n发出了<em>BR</em>，则设备n发送<em>BS</em>。</p>
+<p><strong>优点</strong>：设备（接口）的优先级设置非常灵活。</p>
+<p><img src="/.io//%E6%80%BB%E7%BA%BF%E5%88%A4%E4%BC%98%E6%8E%A7%E5%88%B6-%E8%AE%A1%E6%95%B0%E5%99%A8%E5%AE%9A%E6%97%B6%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F.jpg" alt="计数器定时查询方式"></p>
+<p>(3) 独立请求方式</p>
+<p><strong>I/O接口n获得总线使用权的过程</strong>：直接向<em>总线控制部件</em>发送<em>BR</em>，比对排队器里的序列，向对应I/O接口发送<em>BG</em>信号即可。</p>
+<p><strong>优点</strong>：每个I/O接口都有独立的BR和BG。优先级的设置更加灵活，只需要管理总线控制部件的排队器即可。</p>
+<p><img src="/.io//%E6%80%BB%E7%BA%BF%E5%88%A4%E4%BC%98%E6%8E%A7%E5%88%B6-%E7%8B%AC%E7%AB%8B%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F.jpg" alt="独立请求方式"></p>
+</li>
+</ol>
+<h2 id="总线通信控制"><a href="#总线通信控制" class="headerlink" title="总线通信控制"></a>总线通信控制</h2><ol>
+<li><p>目的</p>
+<p>解决通信双方<strong>协调配合</strong>问题。</p>
+</li>
+<li><p>总线传输周期</p>
+<p>(1) 申请分配阶段：<strong>主模块申请</strong>，总线仲裁决定。</p>
+<p>(2) 寻址阶段：主模块向从模块<strong>给出地址</strong>和<strong>命令</strong>。</p>
+<p>(3) 传数阶段：主模块和从模块<strong>交换数据</strong>。</p>
+<p>(4) 结束阶段：主模块<strong>撤销有关信息</strong>。</p>
+</li>
+<li><p>总线通信的四种方式</p>
+<p>(1) 同步通信：由<strong>统一时标</strong>控制数据传送。</p>
+<p>① 同步式数据输入</p>
+<pre><code>T1 - 主模块发地址
+
+T2 - 主模块发读命令。
+
+T3 - 从模块提供数据。
+
+T4 - 主模块撤销读命令，从模块撤销数据。</code></pre><p><img src="/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%90%8C%E6%AD%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5.jpg" alt="同步式数据输入"></p>
+<p>② 同步数据输出</p>
+<pre><code>T1 - 主模块发地址。
+
+T1.5 - 主模块提供数据。
+
+T2 - 从模块发出写命令，从模块接收到命令后，必须在规定时间内将数据总线上的数据写到    地址总线所知名的单元中。
+
+T4 - 主模块撤销写命令和数据等信号。</code></pre><p><img src="/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%90%8C%E6%AD%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA.jpg" alt="同步式数据输出"></p>
+<p>(2) 异步通信：采用<strong>应答方式</strong>，没有公共时钟标准。</p>
+<p>① 不互锁方式：请求和回答互不相关。<strong>无法保证通信的可靠性。</strong></p>
+<p>② 半互锁方式：主模块接到从模块发送的回答信号，才撤销请求信号。<strong>可能会造成请求信号一直保持高电平状态</strong>。</p>
+<p>③ 全互锁方式：主模块的请求信号撤销以后，从模块才撤销其回答信号。</p>
+<p><img src="/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1.jpg" alt="异步通信"></p>
+<p>(3) 半同步通信：<strong>同步、异步结合</strong>。</p>
+<blockquote>
+<p>同步：<strong>发送方</strong>用系统<strong>时钟前沿</strong>发信号；<strong>接收方</strong>用系统<strong>时钟后沿</strong>判断、识别。</p>
+<p>异步：允许不同速度的模块和谐工作。增加一条<strong>“等待”响应信号</strong>。($\overline{WAIT}$)</p>
+</blockquote>
+<p>以输入数据为例：</p>
+<p>T1 - 主模块发出地址信号。</p>
+<p>T2 - 主模块发出命令。</p>
+<p>Tw - 当$\overline{WAIT}$为低电平时，进入等待，Tw的宽度与T的宽度一致。</p>
+<p>. . .</p>
+<p>T3 - 从模块提供数据。</p>
+<p>T4 - 主模块撤销读命令，从模块撤销数据。</p>
+<p><img src="/.io//%E6%80%BB%E7%BA%BF%E9%80%9A%E4%BF%A1-%E5%8D%8A%E5%90%8C%E6%AD%A5%E5%BC%8F%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5.jpg" alt="半同步式数据输入"></p>
+<blockquote>
+<p>上述三种通信（同步、异步、半同步）的共同点：</p>
+<ul>
+<li><p>一个总线传输周期（以输入数据为例）</p>
+<ul>
+<li><p>主模块发地址、命令（<strong>占用总线</strong>）</p>
+</li>
+<li><p>从模块准备数据（<strong>不占用总线</strong>，<em>总线空闲</em>）</p>
+</li>
+<li><p>从模块向主模块发数据（<strong>占用总线</strong>）</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>(4) 分离式通信：充分<strong>挖掘</strong>系统<strong>总线每个瞬间</strong>的潜力。</p>
+<blockquote>
+<p>原因：上述三种通信从模块准备数据时，总线处于空闲状态！</p>
+</blockquote>
+<p><strong>一个总线传输周期：</strong></p>
+<ul>
+<li><p>子周期1：<strong>主模块</strong>申请<strong>占用总线</strong>，使用完后即<strong>放弃总线</strong>的使用权。</p>
+</li>
+<li><p>子周期2：<strong>从模块</strong>申请<strong>占用总线</strong>，将各种信号送至总线上。</p>
+</li>
+</ul>
+<p><strong>特点：</strong></p>
+<pre><code>① 各模块有权申请占用总线。
+
+② 采用同步方式通信，不等对方回答。
+
+③  各个模块准备数据时，不占用总线。
+
+④ 总线被占用时，无空闲。</code></pre></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/&title=《第3章 系统总线》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/&title=《第3章 系统总线》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第3章 系统总线》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">第4章 存储器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/02/算法/LeetCode/16. 3Sum Closest(Medium)/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">16. 3Sum Closest(Medium)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'e205625b1f56207cd5d2',
+          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+          repo: 'git@github.com:GxkOrd/blog_comments.git',
+          owner: 'GxkOrd',
+          admin: ['GxkOrd'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/&title=《第3章 系统总线》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/&title=《第3章 系统总线》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第3章 系统总线》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADQUlEQVR42u3a0WrjQAwF0Pz/T2dhnwrBzpXkXWz1+KkUx54zgaq6mtcrvt5/r8/f/LyO7vy8f/6E5P4LLmxsbOyHsN+n19GiP1+ZPOF8I843KH/L+T3Y2NjYW9nnResqRr5xSQk8ekJSgLGxsbF/J7v3H360iCKg18ZgY2NjY+elqxf0VAOp/1rAsLGxsW/P7hWGvJ0oxD3jBuniLA0bGxv79uxqabnzz/9wvo2NjY19S/a7ePXGsb0RQm+oED0HGxsbexH7PNDPA/rqeKBaLCflqtCBYWNjYz+QnRyynMRJSegTfTPxoDcqpdjY2NiL2El7MB8JVO+pBlv5pmNjY2PvYydNSDU2umoEO2mNvnwKGxsbexE7KRW9MlNdYn5wZ9KufNkCbGxs7Aeykz/9yUJ7JSQPs/IhRLR92NjY2IvY5VuLgU6yxHzL8uFxtH3Y2NjYK9i9l+XFI4/s8yLXC7CwsbGxd7PzP/35gZtrYdVBxZe4ChsbG3sRO4/XJ3f2ilzexryuurCxsbEfy57HNHNMNcC6oChiY2Njr2D3XjxpP5J5xWXh0VVVFxsbG/v27LyM5Zh88JC0FkmAVWhmsLGxsdexJwdlepF9b+hbbXIOn4mNjY29iJ08KGk8etFP3swk25ePFrCxsbH3savFLB/ZThqbydYXnomNjY39cHY+cO0F9/OjQtWRQ7RmbGxs7EXsfIA6PwTZKzy9shd9DdjY2Ngr2L0yk8c3+Yb23tUsq9jY2NiL2NUgvjpqzeOhXlmqDhiwsbGx97F7Q9OkXekdpqnGWzn18KQSNjY29sPZk7FrtfzkEf9khNz8LDY2NvZj2flItdcA9D47AUcrwcbGxl7Krh6IqQ6Dq6HSvNUp52fY2NjYD2RXx7qTJiHZgnxrqm9s4rGxsbFvz34Xr2tDn97IoXpgKJotYGNjYz+WXS1gVVLvs/k29d6FjY2NvY+dF61JDJQ3G+dPmxSwQkOCjY2N/UB2ryBVW4XJeGAeKmFjY2Nj98a3ySKSgzv5ACD5MrCxsbGx80AnL129QvilUB2tDRsbG3sdOw+VqkF8sohqq9PbRGxsbOyt7MnSq9F/r5hNtns0/cbGxsa+O/sP36eGkllG698AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

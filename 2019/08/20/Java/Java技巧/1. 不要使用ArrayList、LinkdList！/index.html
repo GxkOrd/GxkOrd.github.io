@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>1. 不要使用ArrayList、LinkedList！ | MyBlog - GxkOrd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="List,ArrayList,LinkedList">
+    <meta name="description" content="简介LinkedeList和ArrayList都实现了List接口，但是它们的工作原理却不一样。它们之间最主要的区别在于ArrayList是可改变大小的数组，而LinkedList是双向链接串列(doubly LinkedList)。 区别 Array是基于索引(index)的数据结构，它使用索引在数组中搜索和读取数据是很快的。Array获取数据的时间复杂度是O(1)，但是要删除数据却是开销很大的">
+<meta name="keywords" content="List,ArrayList,LinkedList">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1. 不要使用ArrayList、LinkedList！">
+<meta property="og:url" content="https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/index.html">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
+<meta property="og:description" content="简介LinkedeList和ArrayList都实现了List接口，但是它们的工作原理却不一样。它们之间最主要的区别在于ArrayList是可改变大小的数组，而LinkedList是双向链接串列(doubly LinkedList)。 区别 Array是基于索引(index)的数据结构，它使用索引在数组中搜索和读取数据是很快的。Array获取数据的时间复杂度是O(1)，但是要删除数据却是开销很大的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-20T09:26:48.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1. 不要使用ArrayList、LinkedList！">
+<meta name="twitter:description" content="简介LinkedeList和ArrayList都实现了List接口，但是它们的工作原理却不一样。它们之间最主要的区别在于ArrayList是可改变大小的数组，而LinkedList是双向链接串列(doubly LinkedList)。 区别 Array是基于索引(index)的数据结构，它使用索引在数组中搜索和读取数据是很快的。Array获取数据的时间复杂度是O(1)，但是要删除数据却是开销很大的">
+    
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">1. 不要使用ArrayList、LinkedList！</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">1. 不要使用ArrayList、LinkedList！</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-20T06:48:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#区别"><span class="post-toc-number">2.</span> <span class="post-toc-text">区别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#为什么“不要使用ArrayList！”"><span class="post-toc-number">3.</span> <span class="post-toc-text">为什么“不要使用ArrayList！”</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#为什么“不要使用LinkedList！”"><span class="post-toc-number">4.</span> <span class="post-toc-text">为什么“不要使用LinkedList！”</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#怎么解决"><span class="post-toc-number">5.</span> <span class="post-toc-text">怎么解决</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/Java技巧/1. 不要使用ArrayList、LinkdList！"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">1. 不要使用ArrayList、LinkedList！</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-20 14:48:00" datetime="2019-08-20T06:48:00.000Z"  itemprop="datePublished">2019-08-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>LinkedeList和ArrayList都实现了List接口，但是它们的工作原理却不一样。它们之间最主要的区别在于ArrayList是可改变大小的数组，而LinkedList是双向链接串列(doubly LinkedList)。</p>
+<h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><ul>
+<li><p>Array是基于索引(index)的数据结构，它使用索引在数组中搜索和读取数据是很快的。Array获取数据的时间复杂度是O(1)，但是要删除数据却是开销很大的，因为这需要重排数组中的所有数据。</p>
+</li>
+<li><p>相对于ArrayList，LinkedList插入是更快的。因为LinkedList不像ArrayList一样，不需要改变数组的大小，也不需要在数组装满的时候要将所有的数据重新装入一个新的数组，这是ArrayList最坏的一种情况，时间复杂度是O(n)，而LinkedList中插入或删除的时间复杂度仅为O(1)。ArrayList在插入数据时还需要更新索引（除了插入数组的尾部）。</p>
+</li>
+<li><p>类似于插入数据，删除数据时，LinkedList也优于ArrayList。</p>
+</li>
+<li><p>LinkedList需要更多的内存，因为ArrayList的每个索引的位置是实际的数据，而LinkedList中的每个节点中存储的是实际的数据和前后节点的位置。</p>
+</li>
+</ul>
+<h1 id="为什么“不要使用ArrayList！”"><a href="#为什么“不要使用ArrayList！”" class="headerlink" title="为什么“不要使用ArrayList！”"></a>为什么“不要使用ArrayList！”</h1><ul>
+<li><p>因为ArrayList是线程不安全的。</p>
+<p>以下为ArrayList的add()方法的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加一个元素时，做了如下两步操作</span></span><br><span class="line"><span class="comment">     * 1.判断列表的capacity容量是否足够，是否需要扩容</span></span><br><span class="line"><span class="comment">     * 2.真正将元素放在列表的元素数组里面</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>); </span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>ensureCapacityInternal()这个方法的详细代码我们可以暂时不看，它的作用就是判断如果将当前的新元素加到列表后面，列表的elementData数组的大小是否满足，如果size + 1的这个需求长度大于了elementData这个数组的长度，那么就要对这个数组进行扩容。</p>
+<p>由此看到add元素时，实际做了两个大的步骤：</p>
+<ol>
+<li><p>判断elementData数组容量是否满足需求。</p>
+</li>
+<li><p>在elementData对应位置上设置值。</p>
+</li>
+</ol>
+<p>这样也就出现了第一个导致线程不安全的隐患，在多个线程进行add操作时可能会导致elementData数组越界。具体逻辑如下：</p>
+<ol>
+<li><p>列表大小为9，即size=9。</p>
+</li>
+<li><p>线程A开始进入add方法，这时它获取到size的值为9，调用ensureCapacityInternal方法进行容量判断。</p>
+</li>
+<li><p>线程B此时也进入add方法，它获取到size的值也为9，也开始调用ensureCapacityInternal方法。</p>
+</li>
+<li><p>线程A发现需求大小为10，而elementData的大小就为10，可以容纳。于是它不再扩容，返回。</p>
+</li>
+<li><p>线程B也发现需求大小为10，也可以容纳，返回。</p>
+</li>
+<li><p>线程A开始进行设置值操作， elementData[size++] = e 操作。此时size变为10。</p>
+</li>
+<li><p>线程B也开始进行设置值操作，它尝试设置elementData[10] = e，而elementData没有进行过扩容，它的下标最大为9。于是此时会报出一个数组越界的异常ArrayIndexOutOfBoundsException。</p>
+</li>
+</ol>
+</li>
+<li><p>另外，elementData[size++] = e 设置值的操作同样会导致线程不安全。</p>
+<p>这步操作其实并不是一个原子操作，它由如下两步操作构成：</p>
+<p><code>elementData[size] = e;</code></p>
+<p><code>size = size + 1;</code></p>
+<p>在单线程执行这两条代码时没有任何问题，但是当多线程环境下执行时，可能就会发生一个线程的值覆盖另一个线程添加的值，具体逻辑如下：</p>
+<ol>
+<li><p>列表大小为0，即size=0。</p>
+</li>
+<li><p>线程A开始添加一个元素，值为A。此时它执行第一条操作，将A放在了elementData下标为0的位置上。</p>
+</li>
+<li><p>接着线程B刚好也要开始添加一个值为B的元素，且走到了第一步操作。此时线程B获取到size的值依然为0，于是它将B也放在了elementData下标为0的位置上。</p>
+</li>
+<li><p>线程A开始将size的值增加为1。</p>
+</li>
+<li><p>线程B开始将size的值增加为2。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="为什么“不要使用LinkedList！”"><a href="#为什么“不要使用LinkedList！”" class="headerlink" title="为什么“不要使用LinkedList！”"></a>为什么“不要使用LinkedList！”</h1><ul>
+<li>因为LinkedList也是线程不安全的。</li>
+</ul>
+<h1 id="怎么解决"><a href="#怎么解决" class="headerlink" title="怎么解决"></a>怎么解决</h1><ul>
+<li><p>使用Collections.synchronizedList(List<t> list)。</t></p>
+<p>无论是读取还是写入，它都会进行加锁。</p>
+<p><strong>当我们并发级别特别高，线程之间在任何操作上都会进行等待，因此在某些场景中它不是最好的选择。</strong></p>
+</li>
+<li><p>使用CopyOnWriteArrayList。</p>
+<p>该类在使用过程中，读读之间不互斥，而且<strong>读写也不互斥</strong>。</p>
+<p>源码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//获取重入锁</span></span><br><span class="line">    <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</span><br><span class="line">    <span class="comment">//加锁</span></span><br><span class="line">    lock.lock();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//得到旧数组并获取旧数组的长度</span></span><br><span class="line">        Object[] elements = getArray();</span><br><span class="line">        <span class="keyword">int</span> len = elements.length;</span><br><span class="line">        <span class="comment">//复制旧数组的元素到新的数组中并且大小在原基础上加1</span></span><br><span class="line">        Object[] newElements = Arrays.copyOf(elements, len + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">//把值插入到新数组中</span></span><br><span class="line">        newElements[len] = e;</span><br><span class="line">        <span class="comment">//使用新数组替换老数组</span></span><br><span class="line">        setArray(newElements);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">//释放锁</span></span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<p>  从源码中，我们可以看出add操作中使用了重入锁，但是此锁只针对写-写操作。为什么读写之间不用互斥，关键就在于添加值的操作并不是直接在原有数组中完成，而是使用原有数组复制一个新的数组，然后将值插入到新的数组中，最后使用新数组替换旧数组，这样插入就完成了。</p>
+<p>  使用这种方式，在add的过程中旧数组没有得到修改，因此写入操作不影响读取操，另外，数组定义private transient volatile Object[] array，其中采用volatile修饰，保证内存可见性，读取线程可以马上知道这个修改。下面我们来看看读取的操作：</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(getArray(), index);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> E <span class="title">get</span><span class="params">(Object[] a, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (E) a[index];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">final</span> Object[] getArray() &#123;</span><br><span class="line">    <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArrayList/">ArrayList</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LinkedList/">LinkedList</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/List/">List</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/&title=《1. 不要使用ArrayList、LinkedList！》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/&title=《1. 不要使用ArrayList、LinkedList！》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1. 不要使用ArrayList、LinkedList！》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/20/算法/LeetCode/17. Letter Combinations of a Phone Number(Medium)/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">17. Letter Combinations of a Phone Number(Medium)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'e205625b1f56207cd5d2',
+          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+          repo: 'git@github.com:GxkOrd/blog_comments.git',
+          owner: 'GxkOrd',
+          admin: ['GxkOrd'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/&title=《1. 不要使用ArrayList、LinkedList！》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/&title=《1. 不要使用ArrayList、LinkedList！》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1. 不要使用ArrayList、LinkedList！》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMElEQVR42u3awW7jSAwE0Pz/T3uBPe0iiFJFagZW++kUOHKrn3JgWOyvr/h6/Xv99PN/r+/3JGtef+v1w5U/a3hhY2NjP4T9uryu2e22vv+2/Txf/6f9YGNjY5/KzovWdelKHr8pQtdlL7FgY2NjfzK7WLQsNslqeWuEjY2Njd0unZe6WZHbPB0bGxv7c9jJw/JClbOTMUP7Um7O0rCxsbHfnr0f9L7Pz391vo2NjY39BuzX6GpHvLOVk/WHT8HGxsY+iJ00Ennon//rv297kmHDLyJsbGzsg9gzZFtgkuM+G+rN0RI2Njb2o9izge6ffvdtS9OWN2xsbOyT2EmDsQmSrj9vm6L81Q/7MGxsbOzj2G37sdlE3pbs94aNjY19NnsW9CR37r+73y02Njb2Sex2uDuLe5KSNrtz+EKxsbGxj2PPAv1ZANS2E7MhxC9rYmNjYx/EbkP//DBlGyHt46HhnwcbGxv74ezZv/J5A3NXLJXHT1FJw8bGxv4wdns4ZnZYp42N6qM5beXExsbGfgh7NhjIi9wmVMoxbTSGjY2NfRJ73wzc9aZz3v4ebGxs7JPYeTS/OaDTvsQWkxfLX04tYWNjYz+Q3R552RSnWYORxFt1RIWNjY19EHsW02yahLYcJs/Nj/J8te8JGxsb++3Z945gZw3GXaPiuhXBxsbGPpSdtxxJqchJbY3dPAUbGxv7JPa9sc71J/nRn00IterAsLGxsR/IThqM2bGeWfTT5mHDO7GxsbGPY7eHYNogafYq87FBfg82Njb2eexZ27D/PI/y84ZkWHqxsbGxD2LPRrCbYfCsFckHA0V+ho2NjX0ce1UGRnHVZgyQr7OajWBjY2M/it0OYtvCk0f5q8M3s6KFjY2N/Sj2q7ySBmDTeLTPzffwv29hY2NjH8TeZyxtlN++pvaeWYuCjY2N/XT2rGhtIqT9b5MCFp1XwsbGxj6I3RaSpETNSuNsJFDvBBsbG/uD2W2h2sRVbc5fNCfY2NjYH8mejXjzjW7Wb9sbbGxs7PPYSWnJ46RkhbZA1rHR9Z8WGxsb+yB2G/3sD+K0G73rKM9qvo2NjY39jux/ADeDbfG6mAJXAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>14. Longest Common Prefix(Easy) | MyBlog - GxkOrd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode,LeetCode - Easy">
+    <meta name="description" content="题目描述原题 Description:Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”.  Example 1:   Input: [“flower”,”flow”">
+<meta name="keywords" content="LeetCode,LeetCode - Easy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="14. Longest Common Prefix(Easy)">
+<meta property="og:url" content="https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/index.html">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
+<meta property="og:description" content="题目描述原题 Description:Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”.  Example 1:   Input: [“flower”,”flow”">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-19T10:16:16.390Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="14. Longest Common Prefix(Easy)">
+<meta name="twitter:description" content="题目描述原题 Description:Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”.  Example 1:   Input: [“flower”,”flow”">
+    
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">14. Longest Common Prefix(Easy)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">14. Longest Common Prefix(Easy)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-23T12:08:22.000Z" itemprop="datePublished" class="page-time">
+  2019-01-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题翻译"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原题翻译</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法一-Mine"><span class="post-toc-number">2.</span> <span class="post-toc-text">解法一(Mine)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法二"><span class="post-toc-number">3.</span> <span class="post-toc-text">解法二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法三"><span class="post-toc-number">4.</span> <span class="post-toc-text">解法三</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码-2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法四"><span class="post-toc-number">5.</span> <span class="post-toc-text">解法四</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想-3"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码-3"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法五"><span class="post-toc-number">6.</span> <span class="post-toc-text">解法五</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想-4"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码-4"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法六"><span class="post-toc-number">7.</span> <span class="post-toc-text">解法六</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想-5"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码-5"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法/LeetCode/14. Longest Common Prefix(Easy)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">14. Longest Common Prefix(Easy)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-23 20:08:22" datetime="2019-01-23T12:08:22.000Z"  itemprop="datePublished">2019-01-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
+<p><strong>Description</strong>:<br>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>If there is no common prefix, return an empty string “”.</p>
+<blockquote>
+<p><strong>Example 1</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: [“flower”,”flow”,”flight”]<br><strong>Output</strong>: “fl”</p>
+</blockquote>
+<p><strong>Example 2</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: [“dog”,”racecar”,”car”]<br><strong>Output</strong>: “”<br><strong>Explanation</strong>: There is no common prefix among the input strings.</p>
+</blockquote>
+<p><strong>Note</strong>:<br>All given inputs are in lowercase letters a-z.</p>
+</blockquote>
+</blockquote>
+<h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><blockquote>
+<p><strong>描述</strong>:<br>编写一个函数来查找字符串数组中最长的公共前缀字符串。</p>
+<p>如果没有公共前缀，则返回空字符串””。</p>
+<blockquote>
+<p><strong>例1</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: [“flower”,”flow”,”flight”]<br><strong>输出</strong>: “fl”</p>
+</blockquote>
+<p><strong>例2</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: [“dog”,”racecar”,”car”]<br><strong>输出</strong>: “”<br><strong>解释</strong>: 输入字符串中没有公共前缀。</p>
+</blockquote>
+<p><strong>注意</strong>:<br>所有给定的输入都是小写字母a-z。</p>
+</blockquote>
+</blockquote>
+<h1 id="解法一-Mine"><a href="#解法一-Mine" class="headerlink" title="解法一(Mine)"></a>解法一(Mine)</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>按每位依次比对字符串数组中的每个字符。<br>注意：若遍历到某个字符串的第i个字符，其为当前字符串的最后一位，后面的字符就无需比对了。</p>
+<blockquote>
+<p>打败了91.80%的答案。 </p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt; class Solution &#123;</span><br><span class="line">&gt;     public String longestCommonPrefix(String[] strs) &#123;</span><br><span class="line">&gt;         if (strs.length == 0)</span><br><span class="line">&gt;             return &quot;&quot;;</span><br><span class="line">&gt;         else if (strs.length == 1)</span><br><span class="line">&gt;             return strs[0];</span><br><span class="line">&gt;         StringBuilder res = new StringBuilder();</span><br><span class="line">&gt;         int index = 0;</span><br><span class="line">&gt;         char temp = &apos; &apos;;</span><br><span class="line">&gt;         boolean flag = true;</span><br><span class="line">&gt;         f1: while (flag) &#123;</span><br><span class="line">&gt;             f2: for (int i = 0; i &lt; strs.length; i++) &#123;</span><br><span class="line">&gt;                 if (&quot;&quot;.equals(strs[i]))</span><br><span class="line">&gt;                     break f1;</span><br><span class="line">&gt;                 if (i == 0)</span><br><span class="line">&gt;                     temp = strs[i].charAt(index);</span><br><span class="line">&gt;                 else if (temp != strs[i].charAt(index))</span><br><span class="line">&gt;                     break f1;</span><br><span class="line">&gt;                 else if (i == strs.length - 1)</span><br><span class="line">&gt;                     if (temp == strs[i].charAt(index))</span><br><span class="line">&gt;                         res.append(temp);</span><br><span class="line">&gt;                 if (index &gt;= strs[i].length() - 1)</span><br><span class="line">&gt;                     flag = false;</span><br><span class="line">&gt;             &#125;</span><br><span class="line">&gt;             index++;</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;         return res.toString();</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h1 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h1><h2 id="主要思想-1"><a href="#主要思想-1" class="headerlink" title="主要思想"></a>主要思想</h2><p>比较前两个字符串，得到公共前缀，与第三个字符串比较，直至公共前缀为空。</p>
+</blockquote>
+<h2 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> public String longestCommonPrefix(String[] strs) &#123;</span><br><span class="line">    if (strs.length == 0) </span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    String prefix = strs[0];</span><br><span class="line">    for (int i = 1; i &lt; strs.length; i++)</span><br><span class="line">        while (strs[i].indexOf(prefix) != 0) &#123;</span><br><span class="line">            prefix = prefix.substring(0, prefix.length() - 1);</span><br><span class="line">            if (prefix.isEmpty()) return &quot;&quot;;</span><br><span class="line">        &#125;        </span><br><span class="line">    return prefix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h1><h2 id="主要思想-2"><a href="#主要思想-2" class="headerlink" title="主要思想"></a>主要思想</h2><blockquote>
+<p>与我的解法思想相同。</p>
+</blockquote>
+<p>想象一下，一个非常短的字符串位于数组的末尾。上述方法仍将非常困难。优化此情况的一种方法是进行垂直扫描。在转到下一列之前，我们在同一列（字符串的相同字符索引）上从上到下比较字符。</p>
+<h2 id="源码-2"><a href="#源码-2" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs[<span class="number">0</span>].length() ; i++)&#123;</span><br><span class="line">        <span class="keyword">char</span> c = strs[<span class="number">0</span>].charAt(i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; strs.length; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == strs[j].length() || strs[j].charAt(i) != c)</span><br><span class="line">                <span class="keyword">return</span> strs[<span class="number">0</span>].substring(<span class="number">0</span>, i);             </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解法四"><a href="#解法四" class="headerlink" title="解法四"></a>解法四</h1><h2 id="主要思想-3"><a href="#主要思想-3" class="headerlink" title="主要思想"></a>主要思想</h2><p>分治。先求左半边，再求右半边，然后合并。</p>
+<h2 id="源码-3"><a href="#源码-3" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;    </span><br><span class="line">        <span class="keyword">return</span> longestCommonPrefix(strs, <span class="number">0</span> , strs.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">        <span class="keyword">return</span> strs[l];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r)/<span class="number">2</span>;</span><br><span class="line">        String lcpLeft =   longestCommonPrefix(strs, l , mid);</span><br><span class="line">        String lcpRight =  longestCommonPrefix(strs, mid + <span class="number">1</span>,r);</span><br><span class="line">        <span class="keyword">return</span> commonPrefix(lcpLeft, lcpRight);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">String <span class="title">commonPrefix</span><span class="params">(String left,String right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> min = Math.min(left.length(), right.length());       </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; min; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( left.charAt(i) != right.charAt(i) )</span><br><span class="line">            <span class="keyword">return</span> left.substring(<span class="number">0</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left.substring(<span class="number">0</span>, min);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解法五"><a href="#解法五" class="headerlink" title="解法五"></a>解法五</h1><h2 id="主要思想-4"><a href="#主要思想-4" class="headerlink" title="主要思想"></a>主要思想</h2><p>二分法。把第一个字符串分成两半，判断前一半是不是公共前缀。若是，后一半分成两半；若不是，前一半分成两半。</p>
+<h2 id="源码-4"><a href="#源码-4" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span> minLen = Integer.MAX_VALUE;</span><br><span class="line">    <span class="keyword">for</span> (String str : strs)</span><br><span class="line">        minLen = Math.min(minLen, str.length());</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> high = minLen;</span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">        <span class="keyword">int</span> middle = (low + high) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (isCommonPrefix(strs, middle))</span><br><span class="line">            low = middle + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            high = middle - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> strs[<span class="number">0</span>].substring(<span class="number">0</span>, (low + high) / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isCommonPrefix</span><span class="params">(String[] strs, <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    String str1 = strs[<span class="number">0</span>].substring(<span class="number">0</span>,len);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; strs.length; i++)</span><br><span class="line">        <span class="keyword">if</span> (!strs[i].startsWith(str1))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解法六"><a href="#解法六" class="headerlink" title="解法六"></a>解法六</h1><h2 id="主要思想-5"><a href="#主要思想-5" class="headerlink" title="主要思想"></a>主要思想</h2><p>利用树结构，把每一个字符串的每个字符从根节点向下插入，最后一次输出没有兄弟节点的节点即可。</p>
+<h2 id="源码-5"><a href="#源码-5" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String q, String[] strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>)</span><br><span class="line">         <span class="keyword">return</span> <span class="string">""</span>;  </span><br><span class="line">    <span class="keyword">if</span> (strs.length == <span class="number">1</span>)</span><br><span class="line">         <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    Trie trie = <span class="keyword">new</span> Trie();      </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; strs.length ; i++) &#123;</span><br><span class="line">        trie.insert(strs[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> trie.searchLongestPrefix(q);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</span><br><span class="line">    <span class="comment">// R links to node children</span></span><br><span class="line">    <span class="keyword">private</span> TrieNode[] links;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> R = <span class="number">26</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isEnd;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// number of children non null links</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">char</span> ch, TrieNode node)</span> </span>&#123;</span><br><span class="line">        links[ch -<span class="string">'a'</span>] = node;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLinks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Trie</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TrieNode root;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Trie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        root = <span class="keyword">new</span> TrieNode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">searchLongestPrefix</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">        TrieNode node = root;</span><br><span class="line">        StringBuilder prefix = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> curLetter = word.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (node.containsKey(curLetter) &amp;&amp; (node.getLinks() == <span class="number">1</span>) &amp;&amp; (!node.isEnd())) &#123;</span><br><span class="line">                prefix.append(curLetter);</span><br><span class="line">                node = node.get(curLetter);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> prefix.toString();</span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> prefix.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-Easy/">LeetCode - Easy</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/&title=《14. Longest Common Prefix(Easy)》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/&title=《14. Longest Common Prefix(Easy)》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《14. Longest Common Prefix(Easy)》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/15/算法/LeetCode/15. 3Sum(Medium)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">15. 3Sum(Medium)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/16/算法/LeetCode/13. Roman to Integer(Easy)/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">13. Roman to Integer(Easy)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'e205625b1f56207cd5d2',
+          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+          repo: 'git@github.com:GxkOrd/blog_comments.git',
+          owner: 'GxkOrd',
+          admin: ['GxkOrd'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/&title=《14. Longest Common Prefix(Easy)》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/&title=《14. Longest Common Prefix(Easy)》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《14. Longest Common Prefix(Easy)》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/01/23/算法/LeetCode/14. Longest Common Prefix(Easy)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQW7kMAwEwPz/09kHBPZ2k9JgDuVT4HhilwOImiZ/fuLj98/xdM37Z9/P/z4c73//wIGHh4e3fvT3G28e5ema9xf3fv1/Xj0eHh7eNV77KO2N8yKR3LcoTnh4eHhfwEsYySY4LwazwoOHh4f3zbzkcWcb6K8oDHh4eHiLMOJUhNEWiTwKwcPDw/sML+8ifc/PV/p7eHh4eOuuelskkt/Onmf4tHh4eHgXePntj0UDcRjxHuMW0TAeHh7eUV7eyG8X6zauTaLeunTh4eHhfYSXx6kbzH4TH5UNPDw8vAu8fLFuBwJujxTkg194eHh493j5QyQRxqy05E+1aobh4eHhrXlJQ6s9M4tx27GtYQMMDw8Pb8ErGvBBBJBECXlom48mPJ7Hw8PD+zgvX8T3LbEE8F7GHiseHh4e3lFeHsW2ocOm8OxHvh6/MeDh4eEd4rW70HyBbl9QvqHPN/F4eHh4Z3ltzLo58q15fk2xmcbDw8M7ymtvmReMWZNsE4g8Zi14eHh4h3h5S2mDnP2Fdm7q8UXg4eHhHeW17auzxWNfkKL/Gx4eHt413qx5nyzQ+YBCXlSGQ1d4eHh4a96sEXVjQW9jiHywAA8PD+8Gr2135eUkLxXXZ8rw8PDwLvBaQBtVtC8rh0VdPjw8PLwLvHyBPstozyTtuuEEGR4eHt4h3n7hbjfB+ygEDw8P7zO8vKm/GaU6tty3hQEPDw/vEO+3PPLWfhGzlqMJ+cAWHh4e3g1efszi1M1A1anNOh4eHt4N3qYYtOFCHg3vQwo8PDy827x2a7tvns1Ch/qzeHh4eF/A2wS++/vWAQceHh7eF/BmUWk7dJVHHlfqHh4eHl7AS8KI2XBqe77doBczZXh4eHiHeLMv/LPN9GxxT2Ll1YGHh4eX8v4B4eK7YPoZJAMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

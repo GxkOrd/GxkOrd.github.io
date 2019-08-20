@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>第6章 计算机的运算方法 | MyBlog - GxkOrd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="计算机组成原理,二进制运算">
+    <meta name="description" content="无符号数和有符号数无符号数寄存器的位数反映无符号数的表示范围。 有符号数机器数与真值   真值 机器数    带符号的数 符号数字化的数   +0.1011 0.1011   -0.1011 1.1011   +1100 0,1100   -1100 1,1100   原码表示法 定义  整数 $[x]_原=\begin{cases}0,\ x\quad\quad2^n&amp;gt;x\geq0\2^n">
+<meta name="keywords" content="计算机组成原理,二进制运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第6章 计算机的运算方法">
+<meta property="og:url" content="https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/index.html">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
+<meta property="og:description" content="无符号数和有符号数无符号数寄存器的位数反映无符号数的表示范围。 有符号数机器数与真值   真值 机器数    带符号的数 符号数字化的数   +0.1011 0.1011   -0.1011 1.1011   +1100 0,1100   -1100 1,1100   原码表示法 定义  整数 $[x]_原=\begin{cases}0,\ x\quad\quad2^n&amp;gt;x\geq0\2^n">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A7%BB%E7%A0%81%E5%9C%A8%E6%95%B0%E8%BD%B4%E4%B8%8A%E7%9A%84%E8%A1%A8%E7%A4%BA.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//小数定点机.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//整数定点机.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//浮点数的表示形式.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//浮点数在数轴上的表示范围.jpg">
+<meta property="og:updated_time" content="2019-06-27T10:59:05.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第6章 计算机的运算方法">
+<meta name="twitter:description" content="无符号数和有符号数无符号数寄存器的位数反映无符号数的表示范围。 有符号数机器数与真值   真值 机器数    带符号的数 符号数字化的数   +0.1011 0.1011   -0.1011 1.1011   +1100 0,1100   -1100 1,1100   原码表示法 定义  整数 $[x]_原=\begin{cases}0,\ x\quad\quad2^n&amp;gt;x\geq0\2^n">
+<meta name="twitter:image" content="https://gxkord.github.io/.io//%E7%A7%BB%E7%A0%81%E5%9C%A8%E6%95%B0%E8%BD%B4%E4%B8%8A%E7%9A%84%E8%A1%A8%E7%A4%BA.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第6章 计算机的运算方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第6章 计算机的运算方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-03T06:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#无符号数和有符号数"><span class="post-toc-number">1.</span> <span class="post-toc-text">无符号数和有符号数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无符号数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">无符号数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有符号数"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">有符号数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#机器数与真值"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">机器数与真值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原码表示法"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">原码表示法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补码表示法"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">补码表示法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反码表示法"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">反码表示法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三种机器数的小结"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">三种机器数的小结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#移码表示法"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">移码表示法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数的定点表示和浮点表示"><span class="post-toc-number">2.</span> <span class="post-toc-text">数的定点表示和浮点表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定点表示"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">定点表示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#浮点表示"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">浮点表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浮点数的表示形式"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">浮点数的表示形式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浮点数的表示范围"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">浮点数的表示范围</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浮点数的规格化形式"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">浮点数的规格化形式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浮点数的规格化"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">浮点数的规格化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#举例"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">举例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IEEE-754-标准"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">IEEE 754 标准</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#定点运算"><span class="post-toc-number">3.</span> <span class="post-toc-text">定点运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#移位运算"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">移位运算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#移位运算的数学意义"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">移位运算的数学意义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算术移位规则"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">算术移位规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算术移位的硬件实现"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">算术移位的硬件实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算术移位与逻辑移位的区别"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">算术移位与逻辑移位的区别</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#浮点四则运算"><span class="post-toc-number">4.</span> <span class="post-toc-text">浮点四则运算</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#算术逻辑单元"><span class="post-toc-number">5.</span> <span class="post-toc-text">算术逻辑单元</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-计算机基础/计算机组成原理/第6章 计算机的运算方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第6章 计算机的运算方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-03 14:00:00" datetime="2019-05-03T06:00:00.000Z"  itemprop="datePublished">2019-05-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="无符号数和有符号数"><a href="#无符号数和有符号数" class="headerlink" title="无符号数和有符号数"></a>无符号数和有符号数</h1><h2 id="无符号数"><a href="#无符号数" class="headerlink" title="无符号数"></a>无符号数</h2><p>寄存器的位数反映无符号数的表示范围。</p>
+<h2 id="有符号数"><a href="#有符号数" class="headerlink" title="有符号数"></a>有符号数</h2><h3 id="机器数与真值"><a href="#机器数与真值" class="headerlink" title="机器数与真值"></a>机器数与真值</h3><table>
+<thead>
+<tr>
+<th>真值</th>
+<th>机器数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>带符号的数</td>
+<td>符号数字化的数</td>
+</tr>
+<tr>
+<td><strong>+</strong>0.1011</td>
+<td><strong>0</strong>.1011</td>
+</tr>
+<tr>
+<td><strong>-</strong>0.1011</td>
+<td><strong>1</strong>.1011</td>
+</tr>
+<tr>
+<td><strong>+</strong>1100</td>
+<td><strong>0</strong>,1100</td>
+</tr>
+<tr>
+<td><strong>-</strong>1100</td>
+<td><strong>1</strong>,1100</td>
+</tr>
+</tbody></table>
+<h3 id="原码表示法"><a href="#原码表示法" class="headerlink" title="原码表示法"></a>原码表示法</h3><ol>
+<li><p>定义</p>
+<ul>
+<li><p><strong>整数</strong></p>
+<p>$[x]_原=\begin{cases}0,\ x\quad\quad2^n&gt;x\geq0\2^n-x\quad\quad0\geq x&gt;-2^n\end{cases}$</p>
+<p>x为真值，n为整数的位数。</p>
+<p><strong>使用逗号（,）将符号位与数值部分隔开。</strong></p>
+<p>如：</p>
+<ul>
+<li><p>$x=+1110\quad[x]_原=0,1110$</p>
+</li>
+<li><p>$x=-1110\quad[x]_原=2^4+1110=1,1110$</p>
+</li>
+</ul>
+</li>
+<li><p><strong>小数</strong></p>
+<p>$[x]_原=\begin{cases}x\quad\quad1&gt;x\geq0\1-x\quad\quad0\geq x&gt;-1\end{cases}$</p>
+<p>x为真值。</p>
+<p><strong>使用小数点（.）将符号位与数值部分隔开。</strong></p>
+<p>如：</p>
+<ul>
+<li><p>$x=+0.1101\quad[x]_原=0.1101$</p>
+</li>
+<li><p>$x=-0.1101\quad[x]_原=1-(-0.1101)=1.1101$</p>
+</li>
+<li><p>$x=+0.1000000\quad[x]_原=0.1000000$</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>特别地：</p>
+<ul>
+<li><p>当$x=0$时，</p>
+<p>$[+0.0000]_原=0.0000$</p>
+<p>$[-0.0000]_原=1-(0.0000)=1.0000$</p>
+<p>可见，$[+0]_原\neq[-0]_原$，即原码中的“零”有两种表示形式</p>
+</li>
+<li><p>当$x=-1$时，</p>
+<p>x不存在原码。（因为按照定义来看，-1和0地补码都为1）</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>特点</p>
+<p>简单、直观。</p>
+<p>但是用原码作加法时，会出现如下问题：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>要求</th>
+<th>数1</th>
+<th>数2</th>
+<th>实际操作</th>
+<th>结果符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加法</td>
+<td>正</td>
+<td>正</td>
+<td><strong>加</strong></td>
+<td>正</td>
+</tr>
+<tr>
+<td>加法</td>
+<td>正</td>
+<td>负</td>
+<td><strong>减</strong></td>
+<td>可正可负</td>
+</tr>
+<tr>
+<td>加法</td>
+<td>负</td>
+<td>正</td>
+<td><strong>减</strong></td>
+<td>可正可负</td>
+</tr>
+<tr>
+<td>加法</td>
+<td>负</td>
+<td>负</td>
+<td><strong>加</strong></td>
+<td>负</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>能否<strong>只作加法</strong>？</p>
+<p><strong>找到一个与负数等价的正数来代替这个负数</strong>，就可使<strong>减→加</strong>。（补码）</p>
+</blockquote>
+<h3 id="补码表示法"><a href="#补码表示法" class="headerlink" title="补码表示法"></a>补码表示法</h3><ol>
+<li><p>补的概念</p>
+<ul>
+<li><p>一个负数加上<strong>“模”</strong>即得该负数的补数。</p>
+</li>
+<li><p>一个正数和一个负数互为补数时，它们的绝对值之和即为<strong>模</strong>数。</p>
+</li>
+</ul>
+<blockquote>
+<p>如<strong>计数器</strong>（模16），求$1011→0000$？</p>
+<ul>
+<li><p>$1011-1011=0000$</p>
+</li>
+<li><p>$1011+0101=(1)0000$（1超过表示范围，舍去）</p>
+</li>
+</ul>
+<p>可见，-1011可用+0101代替。</p>
+<p>记作：<strong>$-1011\equiv+0101\quad(mod\ 2^4)$</strong></p>
+<p>同理：<strong>$-011\equiv+101\quad(mod\ 2^3)$</strong></p>
+<p><strong>$-0.1001\equiv+1.01111\quad(mod\ 2)$</strong></p>
+</blockquote>
+</li>
+<li><p>正数的补码即为其本身</p>
+<p>两个互为补数的数，分别加上模，结果仍互为补数：</p>
+<blockquote>
+<p>例如：$-1011\equiv+0101\quad(mod\ 2^4)$</p>
+<ul>
+<li><p>$-1011+10000=+0101$</p>
+</li>
+<li><p>$+0101+10000=+(1)0101$</p>
+</li>
+</ul>
+<p>所以，<strong>$+0101\equiv+0101\quad(mod\ 2^4)$</strong></p>
+</blockquote>
+<p>可见，<strong>+0101既可作+0101的补码，又可做-1011的补码</strong>。</p>
+<p>为了区分，需要为补码添加其原码的符号位：</p>
+<ul>
+<li><p><strong>0</strong>,0101→<strong>+</strong>0101</p>
+</li>
+<li><p><strong>1</strong>,0101→<strong>-</strong>1011</p>
+</li>
+<li><p><strong>如何得到？</strong></p>
+<p>只需增加一位模，即</p>
+<p>$2^{4+1}-1011=100000-1011=1,0101$</p>
+<p>$2^{4+1}+0101=100000+0101=(1)0,0101$</p>
+</li>
+</ul>
+</li>
+<li><p>补码的定义</p>
+<ul>
+<li><p>整数</p>
+<p>$[x]_补=\begin{cases}0,\ x\quad\quad2^n&gt;x\geq0\2^{n+1}+x\quad\quad0&gt;x\geq-2^n\ (mod\ 2^{n+1})\end{cases}$</p>
+<p>x为真值，n为整数的位数。</p>
+<p>如：</p>
+<ul>
+<li><p>$x=+1010\quad[x]_补=0,1010$</p>
+</li>
+<li><p>$x=-1011000\quad[x]_补=2^{7+1}+(-1011000)$</p>
+</li>
+</ul>
+</li>
+<li><p>小数</p>
+<p>$[x]_补=\begin{cases}x\quad\quad1&gt;x\geq 0\2+x\quad\quad0&gt;x\geq-1\ (mod\ 2)\end{cases}$</p>
+<p>如：</p>
+<ul>
+<li><p>$x=+0.1110\quad[x]_补=0.1110$</p>
+</li>
+<li><p>$x=-0.1100000\quad[x]_补=2+(-0.1100000)=10.0000000-0.1100000=1.0100000$</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>求补码的快捷方式</p>
+<p>设$x=-1010$，</p>
+<p>则$[x]_补=2^{4+1}-1010=100000-1010=1,0110$</p>
+<p>$=11111+1-1010=10101+1=1,0110$</p>
+<p>又$[x]_原=1,1010$</p>
+<p>当真值为<strong>负</strong>时，<strong>补码</strong>可用<strong>原码除符号位外每位取反，末位加1求得</strong>。</p>
+</li>
+<li><p>举例</p>
+<ul>
+<li><p>已知$[x]_补=0.0001$，求x</p>
+<p>解：由定义得 $x=+0.0001$</p>
+</li>
+<li><p>已知$[x]_补=1.0001$，求x</p>
+<p>解：方法(1)：由定义得 $x=[x]_补-2=1.0001-10.0000=-0.1111$</p>
+<p>方法(2)：$[x]_原=1.1111,则x=-0.1111$</p>
+</li>
+<li><p>已知$[x]_补=1,1110，求x$</p>
+<p>解：方法(1)：由定义得 $x=[x]_补-2^{4+1}=1,1110-100000=-0010$</p>
+<p>方法(2)：$[x]_原=1,0010，则x=-0010$</p>
+</li>
+</ul>
+<p>当真值为<strong>负</strong>时，<strong>原码</strong>可用<strong>补码除符号位外每位取反，末位加1求得</strong>。</p>
+<blockquote>
+<p>特别地：</p>
+<ul>
+<li><p>当$x=0$时，</p>
+<p>$[+0.0000]_补=[-0.0000]_补=0.0000$</p>
+</li>
+<li><p>当$x=-1$时，</p>
+<p>$[-1]_补=2+x=10.000-1.0000=1.0000$</p>
+<p>（但无原码）</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h3 id="反码表示法"><a href="#反码表示法" class="headerlink" title="反码表示法"></a>反码表示法</h3><ol>
+<li><p>定义</p>
+<ul>
+<li><p>整数</p>
+<p>$[x]_反=\begin{cases} 0,x\quad 2^n&gt;x\geq0\\ (2^{n+1}-1)+x\quad 0\geq x&gt;-2^n(mod2^{n+1}-1)\end{cases}$</p>
+<p>x为真值，n为整数的位数</p>
+<p>如：</p>
+<ul>
+<li><p>$x=+1101\quad [x]_反=0,1101$</p>
+</li>
+<li><p>$x=-1101\quad [x]_反=(2^{4+1}-1)-1101=11111-1101=1,0010$</p>
+</li>
+</ul>
+</li>
+<li><p>小数</p>
+<p>$[x]_反=\begin{cases} x\quad 1&gt;x\geq 0 \\ (2-2^{-n})+x\quad 0\geq x&gt;-1(mod\ 2-2^{-n})\end{cases}$</p>
+<p>如：</p>
+<ul>
+<li><p>$x=+0.1101\quad[x]_反=0.1101$</p>
+</li>
+<li><p>$x=-0.1010\quad[x]_反=(2-2^{-4})-0.1010=1.1111-0.1010=1.0101$</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>举例</p>
+<ul>
+<li><p>已知$[x]_反=0,1110，求x$</p>
+<p>解：$x=+1110$</p>
+</li>
+<li><p>已知$[x]_反=1,1110$，求x</p>
+<p>解：$x=-0001$</p>
+</li>
+</ul>
+<blockquote>
+<p>特别地：</p>
+<p>当$x=0$时，</p>
+<p>设$x=+0.0000$，则$[+0.0000]_反=0.0000$</p>
+<p>设$x=-0.0000$，则$[-0.0000]_反=1.1111$</p>
+<p>同理，对于整数：$[+0]_反=0,0000$，$[-0]_反=1,1111$</p>
+<p>因此，$[+0]_反\neq[-0]_反$</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="三种机器数的小结"><a href="#三种机器数的小结" class="headerlink" title="三种机器数的小结"></a>三种机器数的小结</h3><ul>
+<li><p><strong>最高位</strong>为<strong>符号位</strong>，书写上用“,”（整数）或“.”（小数）将数值部分和符号位隔开。</p>
+</li>
+<li><p>对于<strong>正数</strong>，<strong>原码=补码=反码</strong>。</p>
+</li>
+<li><p>对于<strong>负数</strong>，<strong>符号位为1</strong>，其<strong>数值部分</strong></p>
+<p><strong>原码除符号位外每位取反末位加1 → 补码</strong></p>
+<p><strong>原码除符号位外每位取反 → 反码</strong></p>
+</li>
+</ul>
+<p><strong>例题1</strong>：设机器字长为8位（其中1位为符号位），对于正数，当其分别代表无符号数、原码、补码和反码时，对应的真值范围各为多少？</p>
+<p><strong>解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>二进制代码</th>
+<th>无符号数的对应真值</th>
+<th>原码</th>
+<th>补码</th>
+<th>反码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00000000</td>
+<td>0</td>
+<td>+0</td>
+<td><strong>$\pm0$</strong></td>
+<td>+0</td>
+</tr>
+<tr>
+<td>00000001</td>
+<td>1</td>
+<td>+1</td>
+<td>+1</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>00000010</td>
+<td>2</td>
+<td>+2</td>
+<td>+2</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+</tr>
+<tr>
+<td>01111111</td>
+<td>127</td>
+<td>+127</td>
+<td>+127</td>
+<td>+127</td>
+</tr>
+<tr>
+<td>10000000</td>
+<td>128</td>
+<td>-0</td>
+<td><strong>-128</strong></td>
+<td>-127</td>
+</tr>
+<tr>
+<td>10000001</td>
+<td>129</td>
+<td>-1</td>
+<td>-127</td>
+<td>-126</td>
+</tr>
+<tr>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+</tr>
+<tr>
+<td>11111101</td>
+<td>253</td>
+<td>-125</td>
+<td>-3</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>11111110</td>
+<td>254</td>
+<td>-126</td>
+<td>-2</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>11111111</td>
+<td>255</td>
+<td>-127</td>
+<td>-1</td>
+<td>-0</td>
+</tr>
+</tbody></table>
+<p><strong>例题2</strong>：已知$[y]_补$，求$[-y]_补$。</p>
+<p><strong>解</strong>：设$[y]_补=y_0.y_1y_2\ldots y_n$</p>
+<ul>
+<li><p>若y为正数，$[y]_补=0.y_1y_2\ldots y_n$</p>
+<p>则$y=0.y_1y_2\ldots y_n$</p>
+<p>$-y=-0.y_1y_2\ldots y_n$</p>
+<p>得$[-y]_补=1.\overline{y_1}\overline{y_2}\ldots\overline{y_n}+2^{-n}$</p>
+<blockquote>
+<p><strong>$[y]_补$连同符号位在内，每位取反，末位加1，即得$[-y]_补$。</strong></p>
+</blockquote>
+</li>
+<li><p>若y为负数，$[y]_补=1.y_1y_2\ldots y_n$</p>
+<p>则$[y]_原=1.\overline{y_1}\overline{y_2}\ldots \overline{y_n}+2^{-n}$</p>
+<p>$y=-(0.\overline{y_1}\overline{y_2}\ldots \overline{y_n}+2^{-n})$</p>
+<p>$-y=0.\overline{y_1}\overline{y_2}\ldots \overline{y_n}+2^{-n}$</p>
+<p>$[-y]_补=0.\overline{y_1}\overline{y_2}\ldots\overline{y_n}+2^{-n}$</p>
+<blockquote>
+<p><strong>$[y]_补$连同符号位在内，每位取反，末位加1，即得$[-y]_补$。</strong></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="移码表示法"><a href="#移码表示法" class="headerlink" title="移码表示法"></a>移码表示法</h3><p><strong>补码表示很难直接判断其真值大小。</strong></p>
+<p>如：</p>
+<table>
+<thead>
+<tr>
+<th>十进制</th>
+<th>二进制</th>
+<th>补码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+21</td>
+<td>+10101</td>
+<td>0,10101</td>
+</tr>
+<tr>
+<td>-21</td>
+<td>-10101</td>
+<td>1,01011</td>
+</tr>
+<tr>
+<td>+31</td>
+<td>+11111</td>
+<td>0,11111</td>
+</tr>
+<tr>
+<td>-31</td>
+<td>-11111</td>
+<td>1,00001</td>
+</tr>
+</tbody></table>
+<p>上述补码表示中“,”在计算机内部是不存在的，因此，从代码形式看，符号位也是一位二进制数。按这6位二进制代码比较大小的话，会得出$101011&gt;010101$，$100001&gt;011111$，其实恰恰相反。</p>
+<p>如果每个真值加上一个$2^n$（n为整数的位数），则有：</p>
+<p>$+10101+100000=110101$</p>
+<p>$-10101+100000=001011$</p>
+<p>$+11111+100000=111111$</p>
+<p>$-11111+100000=000001$</p>
+<ol>
+<li><p>定义</p>
+<p>$[x]_移=2^n+x(2^n&gt;x\geq-2^n)$</p>
+<p>x为真值，n为整数的位数</p>
+<p><img src="/.io//%E7%A7%BB%E7%A0%81%E5%9C%A8%E6%95%B0%E8%BD%B4%E4%B8%8A%E7%9A%84%E8%A1%A8%E7%A4%BA.jpg" alt="移码在数轴上的表示"></p>
+<p>如：</p>
+<ul>
+<li><p>$x=10100$</p>
+<p>$[x]_移=2^5+10100=1,10100$</p>
+</li>
+<li><p>$x=-10100$</p>
+<p>$[x]_移=2^5-10100=0,01100$</p>
+</li>
+</ul>
+</li>
+<li><p>移码和补码的比较</p>
+<ul>
+<li><p>设 $x=+1100100$</p>
+<p>$[x]_移=2^7+1100100=1,1100100$</p>
+<p>$[x]_补=0,1100100$</p>
+</li>
+<li><p>设 $x=-1100100$</p>
+<p>$[x]_移=2^7-1100100=0,0011100$</p>
+<p>$[x]_补=1,0011100$</p>
+</li>
+</ul>
+<p><strong>补码和移码只差一个符号位。</strong></p>
+</li>
+<li><p>真值、补码和移码的对照表</p>
+<table>
+<thead>
+<tr>
+<th>真值x(n=5)</th>
+<th>$[x]_补$</th>
+<th>$[x]_移$</th>
+<th>$[x]_移对应的十进制整数$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>-100000</strong></td>
+<td>100000</td>
+<td><strong>000000</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td>-11111</td>
+<td>100001</td>
+<td>000001</td>
+<td>1</td>
+</tr>
+<tr>
+<td>-11110</td>
+<td>100010</td>
+<td>000010</td>
+<td>2</td>
+</tr>
+<tr>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+</tr>
+<tr>
+<td>-00001</td>
+<td>111111</td>
+<td>011111</td>
+<td>31</td>
+</tr>
+<tr>
+<td><strong>±00000</strong></td>
+<td><strong>000000</strong></td>
+<td><strong>100000</strong></td>
+<td>32</td>
+</tr>
+<tr>
+<td>+00001</td>
+<td>000001</td>
+<td>100001</td>
+<td>33</td>
+</tr>
+<tr>
+<td>+00010</td>
+<td>000010</td>
+<td>100010</td>
+<td>34</td>
+</tr>
+<tr>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+<td>$\ldots$</td>
+</tr>
+<tr>
+<td>+11110</td>
+<td>011110</td>
+<td>111110</td>
+<td>62</td>
+</tr>
+<tr>
+<td><strong>+11111</strong></td>
+<td>011111</td>
+<td><strong>111111</strong></td>
+<td>63</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>移码的特点</p>
+<ul>
+<li><p>当x=0时</p>
+<ul>
+<li><p>$[+0]_移=2^5+0=1,00000$</p>
+</li>
+<li><p>$[-0]_移=2^5-0=1,00000$</p>
+</li>
+</ul>
+<p>$[+0]_移=[-0]_移$</p>
+</li>
+<li><p>当n=5时</p>
+<p>最小真值为$-2^5=-100000$</p>
+<p>$[-100000]_移=2^5-100000=000000$</p>
+<p>可见，<strong>最小真值的移位为全0</strong>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="数的定点表示和浮点表示"><a href="#数的定点表示和浮点表示" class="headerlink" title="数的定点表示和浮点表示"></a>数的定点表示和浮点表示</h1><h2 id="定点表示"><a href="#定点表示" class="headerlink" title="定点表示"></a>定点表示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//小数定点机.jpg" alt="小数定点机" title>
+                </div>
+                <div class="image-caption">小数定点机</div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//整数定点机.jpg" alt="整数定点机" title>
+                </div>
+                <div class="image-caption">整数定点机</div>
+            </figure>
+
+<table>
+<thead>
+<tr>
+<th>定点机</th>
+<th>原码</th>
+<th>补码</th>
+<th>反码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小数定点机</td>
+<td>$-(1-2^{-n})$~$+(1-2^{-n})$</td>
+<td>$-1$~$+(1-2^{-n})$</td>
+<td>$-(1-2^{-n})$~$+(1-2^{-n})$</td>
+</tr>
+<tr>
+<td>整数定点机</td>
+<td>$-(2^n-1)$~$+(2^n-1)$</td>
+<td>$-2^n$~$+(2^n-1)$</td>
+<td>$-(2^n-1)$~$+(2^n-1)$</td>
+</tr>
+</tbody></table>
+<h2 id="浮点表示"><a href="#浮点表示" class="headerlink" title="浮点表示"></a>浮点表示</h2><ul>
+<li><p>为什么在计算机中要引入浮点数表示？</p>
+<ul>
+<li><p>编程困难，程序员要调节小数点的位置。</p>
+</li>
+<li><p>数的表示范围小，为了能表示两个大小相差很大的数据，需要很长的机器字长。</p>
+</li>
+<li><p>数据存储单元的利用率往往很低。</p>
+</li>
+</ul>
+</li>
+<li><p>浮点表示的格式是什么？</p>
+<p>浮点数的一般形式：$N=S×r^j$</p>
+<p><strong>S</strong>：尾数</p>
+<p><strong>j</strong>：阶码</p>
+<p><strong>r</strong>：尾数的基值（计算机中<strong>r</strong>取<strong>2、4、8、16</strong>等）</p>
+<ul>
+<li><p>当$r=2$，</p>
+<p>$N=11.0101=0.110101×2^{10}=1.10101×2^1=1101.01×2^{-10}$</p>
+</li>
+</ul>
+<p>计算机中，<strong>S为小数、可正可负</strong>，<strong>j为整数、可正可负</strong>。</p>
+</li>
+<li><p>尾数和阶码的基值必须是2吗？基值的影响？</p>
+</li>
+<li><p>表数范围与精度和哪些因素有关？</p>
+</li>
+<li><p>为什么要引入规格化表示？</p>
+</li>
+<li><p>目前浮点数表示格式的标准是什么？</p>
+</li>
+</ul>
+<h3 id="浮点数的表示形式"><a href="#浮点数的表示形式" class="headerlink" title="浮点数的表示形式"></a>浮点数的表示形式</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//浮点数的表示形式.jpg" alt="浮点数的表示形式" title>
+                </div>
+                <div class="image-caption">浮点数的表示形式</div>
+            </figure>
+
+<h3 id="浮点数的表示范围"><a href="#浮点数的表示范围" class="headerlink" title="浮点数的表示范围"></a>浮点数的表示范围</h3><ul>
+<li><p>上溢：阶码&gt;最大阶码</p>
+</li>
+<li><p>下溢：阶码&lt;最小阶码 按<strong>机器零</strong>处理</p>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//浮点数在数轴上的表示范围.jpg" alt="浮点数在数轴上的表示范围" title>
+                </div>
+                <div class="image-caption">浮点数在数轴上的表示范围</div>
+            </figure>
+
+<h3 id="浮点数的规格化形式"><a href="#浮点数的规格化形式" class="headerlink" title="浮点数的规格化形式"></a>浮点数的规格化形式</h3><p><strong>基数不同，浮点数的规格化形式不同。</strong></p>
+<ul>
+<li><p>r=2 尾数最高位为1</p>
+</li>
+<li><p>r=4 尾数最高2位不全为0</p>
+</li>
+<li><p>r=8 尾数最高3位不全为0</p>
+</li>
+</ul>
+<h3 id="浮点数的规格化"><a href="#浮点数的规格化" class="headerlink" title="浮点数的规格化"></a>浮点数的规格化</h3><ul>
+<li><p>r=2</p>
+<ul>
+<li><p>左规 尾数左移1位，阶码减1</p>
+</li>
+<li><p>右规 尾数右移1位，阶码加1</p>
+</li>
+</ul>
+</li>
+<li><p>r=4</p>
+<ul>
+<li><p>左规 尾数左移2位，阶码减1</p>
+</li>
+<li><p>右规 尾数右移2位，阶码加1</p>
+</li>
+</ul>
+</li>
+<li><p>r=8</p>
+<ul>
+<li><p>左规 尾数左移3位，阶码减1</p>
+</li>
+<li><p>右规 尾数右移3位，阶码加1</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>基数r越大，可表示的浮点数的范围越大。</strong></p>
+<p><strong>基数r越大，浮点数的精度越低。</strong></p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><h2 id="IEEE-754-标准"><a href="#IEEE-754-标准" class="headerlink" title="IEEE 754 标准"></a>IEEE 754 标准</h2><h1 id="定点运算"><a href="#定点运算" class="headerlink" title="定点运算"></a>定点运算</h1><h2 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h2><h3 id="移位运算的数学意义"><a href="#移位运算的数学意义" class="headerlink" title="移位运算的数学意义"></a>移位运算的数学意义</h3><h3 id="算术移位规则"><a href="#算术移位规则" class="headerlink" title="算术移位规则"></a>算术移位规则</h3><h3 id="算术移位的硬件实现"><a href="#算术移位的硬件实现" class="headerlink" title="算术移位的硬件实现"></a>算术移位的硬件实现</h3><h3 id="算术移位与逻辑移位的区别"><a href="#算术移位与逻辑移位的区别" class="headerlink" title="算术移位与逻辑移位的区别"></a>算术移位与逻辑移位的区别</h3><h1 id="浮点四则运算"><a href="#浮点四则运算" class="headerlink" title="浮点四则运算"></a>浮点四则运算</h1><h1 id="算术逻辑单元"><a href="#算术逻辑单元" class="headerlink" title="算术逻辑单元"></a>算术逻辑单元</h1>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二进制运算/">二进制运算</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/&title=《第6章 计算机的运算方法》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/&title=《第6章 计算机的运算方法》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第6章 计算机的运算方法》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/17/计算机基础/计算机组成原理/第7章 指令系统/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">第7章 指令系统</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/19/算法/算法设计与分析/第5讲 穷举法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">第5讲 穷举法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: 'e205625b1f56207cd5d2',
+          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+          repo: 'git@github.com:GxkOrd/blog_comments.git',
+          owner: 'GxkOrd',
+          admin: ['GxkOrd'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/&title=《第6章 计算机的运算方法》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/&title=《第6章 计算机的运算方法》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第6章 计算机的运算方法》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/05/03/计算机基础/计算机组成原理/第6章 计算机的运算方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD6klEQVR42u3aS3LbQAwFQN3/0srWFUv0A95QTqqaq1RMDmdaCxCfxyO+nl+ur/+T3//9/7+vdv2W67dPd1hdOHDgwIEjPmqyrXeby5+dHmB6+IT73Q+GAwcOHDhOcVxv4nqJZ3Bdx7XmSPmzCTQOHDhw4PhdjjwYj7cVZ1v5pwAOHDhw4PjXOJKQloTJ6VF7Yhw4cODA8XmOJEHKk7S8vHi9Qv5ss38cOHDgwHGWo0mW/pd/3zLfgQMHDhw4LkcKpqHrOqwmAbUZm+tP8eItOHDgwIGj5miKgNP0qf8WOLuft7vCgQMHDhwFR35rUrzLy399iE2eyuEGvTIcOHDgwPHz/YNAmIeu6+CXH2yaRuY/1XL+DgcOHDhwFM2k/BjJKNv0V5qmhXkx8e3ZceDAgQPHUY4mZOaUVRWzTv+iLhwOHDhw4LiZowl1eRiepot50XDwcYADBw4cOGqOs0XDhPVU2jZtOB1ILHHgwIEDR/DXJnzuxgh2ATVfofkIwIEDBw4cpzjyxv8uVduNNeTP7oqSL06NAwcOHDhqjrygtmsU5ds6NfQ2/Th4sRoOHDhw4Kg58oPtqoy7EYfkmr4xCrQ4cODAgaPgOJX2TBOt3ZDBlGmaLuLAgQMHjjs4HvWVHy9fbUqzWxMHDhw4cJzi6At5TZDLRyKm6NMPCBw4cODA0XNMl26KhoNUahXOp0MSb9+LAwcOHDgKjukoQ3Ln2eGDaRLYFDdx4MCBA0fPcXfxbrf+dM2zO8eBAwcOHD1HMhaw20Q+9DBNwPKAOt45Dhw4cOC4geNUobBpX+0aSzn6D18cOHDgwIGj4Gh6VvkoW15MPHV/TokDBw4cOE5x3De4lo+p3RFQk/bSi2dx4MCBA0fNkTRjpgW+JE1KBh12jbFpiogDBw4cOM5y7BpIfdHwjsG7Zm84cODAgeMUR5509YNxpwLwrhw5/RTAgQMHDhwNxy7Q7sYFprh5YE4OP+6/4cCBAweOoxyDKH1zOjcNpdMfGwcOHDhwnOJI2kh3BMh8WKEpGub3v6iV4sCBAweOgiOJO/2sxH0trnzPyy8OHDhw4MBRZC55QXA6YD3l2A1P58d+uw4OHDhw4Cg4nsNrOl6QjEpMS5DTomT+Xhw4cODA0XNMX7kbX9gVH6etqXw4r6HHgQMHDhzJzpPg2idmeU45bXedCvA4cODAgeMsR9Pmye/p+z4HGkvXO8eBAwcOHB/kSFKpfExhmvjt7h/nsjhw4MCB44Mc0wSsD6W7Btg0SOPAgQMHjjs4doNuTWExD8+7tlOVwuHAgQMHjoJj+nAzsnDNNA3bpxpUy/kOHDhw4MDx91//AONd96oQ5P0vAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
