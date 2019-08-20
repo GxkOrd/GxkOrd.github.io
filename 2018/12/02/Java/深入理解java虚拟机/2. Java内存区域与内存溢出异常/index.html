@@ -14,7 +14,7 @@
     
     
     
-    <title>2. Java内存区域与内存溢出异常 | GxkOrd - blog</title>
+    <title>2. Java内存区域与内存溢出异常 | MyBlog - GxkOrd</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -26,19 +26,19 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="2. Java内存区域与内存溢出异常">
 <meta property="og:url" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/index.html">
-<meta property="og:site_name" content="GxkOrd - blog">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="概述对于从事C、C++程序开发的开发人员来说，他们既拥有每个对象的“所有权”，又担负着每一个对象生命开始到终结的维护责任。 对于java程序员来说，在虚拟机自动内存管理机制的帮助下，不再需要对每个对象都去写配对的delete/free代码，不容易出现内存泄漏和内存溢出问题。但也正是因为这样，一旦出现了内存泄漏和内存溢出的问题，如果不了解虚拟机是如何使用内存的，那么排错将会成为一项异常艰难的工作。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2.%20Java内存区域与内存溢出异常/运行时数据区域.png">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2.%20Java内存区域与内存溢出异常/句柄方式访问对象.png">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2.%20Java内存区域与内存溢出异常/直接指针方式访问对象.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2/运行时数据区域.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2/句柄方式访问对象.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2/直接指针方式访问对象.png">
 <meta property="og:updated_time" content="2019-01-23T07:49:52.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2. Java内存区域与内存溢出异常">
 <meta name="twitter:description" content="概述对于从事C、C++程序开发的开发人员来说，他们既拥有每个对象的“所有权”，又担负着每一个对象生命开始到终结的维护责任。 对于java程序员来说，在虚拟机自动内存管理机制的帮助下，不再需要对每个对象都去写配对的delete/free代码，不容易出现内存泄漏和内存溢出问题。但也正是因为这样，一旦出现了内存泄漏和内存溢出的问题，如果不了解虚拟机是如何使用内存的，那么排错将会成为一项异常艰难的工作。">
-<meta name="twitter:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2.%20Java内存区域与内存溢出异常/运行时数据区域.png">
+<meta name="twitter:image" content="https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2/运行时数据区域.png">
     
-        <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -123,7 +123,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -195,7 +195,7 @@
 <h1 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h1><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="运行时数据区域.png" alt="运行时数据区域" title>
+                    <img src="/2018/12/02/Java/深入理解java虚拟机/2/运行时数据区域.png" alt="运行时数据区域" title>
                 </div>
                 <div class="image-caption">运行时数据区域</div>
             </figure>
@@ -256,14 +256,14 @@
 <li>如果使用句柄访问的话，那么Java堆中将会划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址，而句柄中包含了对象实例数据与类型数据各自的具体地址信息。<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="句柄方式访问对象.png" alt="句柄方式访问对象" title>
+                    <img src="/2018/12/02/Java/深入理解java虚拟机/2/句柄方式访问对象.png" alt="句柄方式访问对象" title>
                 </div>
                 <div class="image-caption">句柄方式访问对象</div>
             </figure></li>
 <li>如果使用直接指针访问，那么Java堆对象的布局中就必须考虑如何放置访问类型数据的相关信息，而reference中存储的直接就是对象地址。<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="直接指针方式访问对象.png" alt="直接指针方式访问对象" title>
+                    <img src="/2018/12/02/Java/深入理解java虚拟机/2/直接指针方式访问对象.png" alt="直接指针方式访问对象" title>
                 </div>
                 <div class="image-caption">直接指针方式访问对象</div>
             </figure>
@@ -312,7 +312,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -322,7 +322,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — GxkOrd - blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — MyBlog - GxkOrd&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -332,7 +332,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2. Java内存区域与内存溢出异常》 — GxkOrd - blog&url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&via=https://gxkord.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2. Java内存区域与内存溢出异常》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&via=https://gxkord.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -388,31 +388,38 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-        var gitment = new Gitment({
-            owner: '',
-            repo: '',
-            oauth: {
-                client_id: '',
-                client_secret: '',
-            },
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: '',
+          clientSecret: '',
+          repo: '',
+          owner: '',
+          admin: [''],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
         })
-        gitment.render('comments')
+
+        gitalk.render('gitalk-container')
     </script>
 </section>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -467,7 +474,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
    -->
@@ -490,7 +497,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -500,7 +507,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — GxkOrd - blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&title=《2. Java内存区域与内存溢出异常》 — MyBlog - GxkOrd&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -510,7 +517,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2. Java内存区域与内存溢出异常》 — GxkOrd - blog&url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&via=https://gxkord.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2. Java内存区域与内存溢出异常》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2018/12/02/Java/深入理解java虚拟机/2. Java内存区域与内存溢出异常/&via=https://gxkord.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
