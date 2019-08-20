@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="声明：本专题为刘伟老师所著《Java设计模式》的笔记  设计模式的诞生与发展模式的诞生与定义模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作A pattern Lang">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/软件模式的基本结构.png">
-<meta property="og:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/常用设计模式一览.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/%E8%BD%AF%E4%BB%B6%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%A7%88.jpg">
 <meta property="og:updated_time" content="2019-01-23T07:48:25.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1. 设计模式概述">
 <meta name="twitter:description" content="声明：本专题为刘伟老师所著《Java设计模式》的笔记  设计模式的诞生与发展模式的诞生与定义模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作A pattern Lang">
-<meta name="twitter:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/软件模式的基本结构.png">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/%E8%BD%AF%E4%BB%B6%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -195,15 +195,7 @@
 <h1 id="设计模式的诞生与发展"><a href="#设计模式的诞生与发展" class="headerlink" title="设计模式的诞生与发展"></a>设计模式的诞生与发展</h1><h2 id="模式的诞生与定义"><a href="#模式的诞生与定义" class="headerlink" title="模式的诞生与定义"></a>模式的诞生与定义</h2><p>模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作<em>A pattern Language: Towns,Buildings,Construction</em>（中译本名为《建筑模式语言：城镇·建筑·构造》）中把这些认同规律归纳为253个模式，对每一个模式都从Context（模式可适用的前提条件）、Theme或Problem（在特定条件下要解决的目标问题）、Solution（对目标问题求解过程中各种物理关系的记述）3个侧面进行描述，并给出了用户需求分析到建筑环境结构设计直至经典实例的过程模型。</p>
 <p>可以简单地定义：<strong>模式是在特定环境下人们解决某类重复问题的一套成功或有效的解决方案。</strong><br><strong>A pattern is a successful or efficient solution to a recurring problem within a context.</strong></p>
 <h2 id="软件模式概述"><a href="#软件模式概述" class="headerlink" title="软件模式概述"></a>软件模式概述</h2><p>最早将模式的思想引入软件工程方法学的是1991-1992年以“四人组（Gang of Four，GoF，分别是Erich Gamma、Richard Helm、Ralph Johnson和John Vlissides）”自称的4位著名软件工程学者，他们在1994年归纳发表了23中在软件开发中使用频率较高的设计模式，旨在用模式来统一交流沟通面向对象方法在分析、设计和实现间的鸿沟。</p>
-<p>软件模式可以被认为是对软件开发这一特定“问题”的“解法”的某种统一表示，它和Alexander所描述的模式定义完全相同，即软件模式是在一定条件下的软件开发问题及其解法。软件模式的基本结构由4个部分组成，即问题描述、前提条件（环境或约束条件）、解法和效果，如下图所示。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/01/16/Java/Java设计模式/1/软件模式的基本结构.png" alt="软件模式的基本结构" title>
-                </div>
-                <div class="image-caption">软件模式的基本结构</div>
-            </figure>
-
+<p>软件模式可以被认为是对软件开发这一特定“问题”的“解法”的某种统一表示，它和Alexander所描述的模式定义完全相同，即软件模式是在一定条件下的软件开发问题及其解法。软件模式的基本结构由4个部分组成，即问题描述、前提条件（环境或约束条件）、解法和效果，如下图所示。<br><img src="/2019/01/16/Java/Java设计模式/1/%E8%BD%AF%E4%BB%B6%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.png" alt="软件模式的基本结构"></p>
 <h1 id="设计模式的定义与分类"><a href="#设计模式的定义与分类" class="headerlink" title="设计模式的定义与分类"></a>设计模式的定义与分类</h1><h2 id="设计模式的定义"><a href="#设计模式的定义" class="headerlink" title="设计模式的定义"></a>设计模式的定义</h2><p>设计模式(Design Pattern)是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。设计模式是一种用于对软件系统中不断重现的设计问题的解决方案进行文档化的技术，也是一种共享专家设计经验的技术。</p>
 <p>GoF对设计模式的定义如下：<br><strong>设计模式是在特定环境下为解决某一通用软件问题提供的一套定制的解决方案，该方案描述了对象和类之间的互相作用。</strong><br><strong>Design patterns are descriptions of communicating objects and classes that are customized to solve a general design problem in a particular context.</strong></p>
 <h2 id="设计模式的基本要素"><a href="#设计模式的基本要素" class="headerlink" title="设计模式的基本要素"></a>设计模式的基本要素</h2><p><strong>1. 模式名称（Pattern Name）</strong><br>通过一两个词来描述模式的问题、解决方案和效果，以便更好地理解模式并方便开发人员之间的交流，绝大多数模式都是根据其功能或模式结构来命名的。</p>
@@ -212,14 +204,7 @@
 <p><strong>4. 效果（Consequences）</strong><br>描述了模式的优缺点以及在使用模式时应权衡的问题。</p>
 <h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p><strong>1. 根据目的分类</strong><br>设计模式根据目的可分为创建型(Creational)，结构型(Structural)和行为型(Behavioral)三种。<br>（1）创建型模式主要用于描述如何创建对象。<br>（2）结构型模式主要用于描述如何实现类或对象的组合。<br>（3）行为型模式主要用于描述类或对象怎样交互以及怎样分配职责。</p>
 <p><strong>2.根据范围分类</strong><br>设计模式根据范围可分为类模式和对象模式两种。<br>（1）类模式处理类和子类之间的关系。<br>（2）对象模式处理对象间的关系。</p>
-<h1 id="常用设计模式"><a href="#常用设计模式" class="headerlink" title="常用设计模式"></a>常用设计模式</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/01/16/Java/Java设计模式/1/常用设计模式一览.jpg" alt="常用设计模式一览" title>
-                </div>
-                <div class="image-caption">常用设计模式一览</div>
-            </figure>
-
+<h1 id="常用设计模式"><a href="#常用设计模式" class="headerlink" title="常用设计模式"></a>常用设计模式</h1><p><img src="/2019/01/16/Java/Java设计模式/1/%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%A7%88.jpg" alt="常用设计模式一览"></p>
 <h1 id="设计模式的优点"><a href="#设计模式的优点" class="headerlink" title="设计模式的优点"></a>设计模式的优点</h1><ol>
 <li><p>设计模式来源众多专家的经验和智慧，它们是从许多优秀的软件系统中总结出的成功的、能够实现可维护性复用的设计方案，使用这些方案将可以让我们避免做一些重复性的工作，也许我们冥思苦想得到的一个“自以为很了不起”的设计方案其实就是某一个设计模式。在时间就是金钱的今天，设计模式无疑会为有助于我们提高开发和设计效率，但它不保证一定会提高。</p>
 </li>
@@ -348,38 +333,31 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: 'e205625b1f56207cd5d2',
-          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
-          repo: 'gxkord.github.io',
-          owner: 'GxkOrd',
-          admin: ['GxkOrd'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
+        var gitment = new Gitment({
+            owner: 'GxkOrd',
+            repo: 'gxkord.github.io',
+            oauth: {
+                client_id: 'e205625b1f56207cd5d2',
+                client_secret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+            },
         })
-
-        gitalk.render('gitalk-container')
+        gitment.render('comments')
     </script>
 </section>
+
+
+
+
+
+
+
+
+
 
 
 

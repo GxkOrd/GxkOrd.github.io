@@ -29,12 +29,12 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="2018，可以称得上悠闲，也可以说是惨淡。 2018，考上了新的学校，有了一个新的身份，也创建了自己的博客。看了不少的电影，学了不多的知识。 2018，留下了不少遗憾：想刷LeetCode，由于某些原因只做了12道；想学Spring，却也没有每天坚持；想学机器学习，借到的书被一直搁置在书角；想通关的游戏，在Steam里没时间玩；电视剧电影看了一部又一部，反而极少拿出时间安静地读书…… 2019，给">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/.io//你好，2019.png">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%BD%A0%E5%A5%BD%EF%BC%8C2019.png">
 <meta property="og:updated_time" content="2019-01-23T07:57:46.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018">
 <meta name="twitter:description" content="2018，可以称得上悠闲，也可以说是惨淡。 2018，考上了新的学校，有了一个新的身份，也创建了自己的博客。看了不少的电影，学了不多的知识。 2018，留下了不少遗憾：想刷LeetCode，由于某些原因只做了12道；想学Spring，却也没有每天坚持；想学机器学习，借到的书被一直搁置在书角；想通关的游戏，在Steam里没时间玩；电视剧电影看了一部又一部，反而极少拿出时间安静地读书…… 2019，给">
-<meta name="twitter:image" content="https://gxkord.github.io/.io//你好，2019.png">
+<meta name="twitter:image" content="https://gxkord.github.io/.io//%E4%BD%A0%E5%A5%BD%EF%BC%8C2019.png">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -186,15 +186,7 @@
 <p>2018，留下了不少遗憾：想刷LeetCode，由于某些原因只做了12道；想学Spring，却也没有每天坚持；想学机器学习，借到的书被一直搁置在书角；想通关的游戏，在Steam里没时间玩；电视剧电影看了一部又一部，反而极少拿出时间安静地读书……</p>
 <p>2019，给自己定了几个小目标：刷完LeetCode前200，搞懂SSM并有个小成果，学完吴恩达的CS229课程，拿到《Iris.Fall》《Slay the Spire》所有奖杯，每天都要学英语、读书……</p>
 <p>最后，放上B站关注了好久的一位UP主（独立菌儿）的视频：<br><a href="http://www.bilibili.com/video/av39426478" target="_blank" rel="noopener">http://www.bilibili.com/video/av39426478</a></p>
-<p>诚如电影《熔炉》的结尾时所说：“我们一路奋斗，不是为了改变世界，而是为了不让这个世界改变我们”。<strong>愿我们在新的一年都能保持独立思考，不卑不亢不怂，长成自己想要到的样子。</strong></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//你好，2019.png" alt="你好，2019" title>
-                </div>
-                <div class="image-caption">你好，2019</div>
-            </figure>
-
+<p>诚如电影《熔炉》的结尾时所说：“我们一路奋斗，不是为了改变世界，而是为了不让这个世界改变我们”。<strong>愿我们在新的一年都能保持独立思考，不卑不亢不怂，长成自己想要到的样子。</strong><br><img src="/.io//%E4%BD%A0%E5%A5%BD%EF%BC%8C2019.png" alt="你好，2019"></p>
 
         </div>
 
@@ -311,38 +303,31 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: 'e205625b1f56207cd5d2',
-          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
-          repo: 'gxkord.github.io',
-          owner: 'GxkOrd',
-          admin: ['GxkOrd'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
+        var gitment = new Gitment({
+            owner: 'GxkOrd',
+            repo: 'gxkord.github.io',
+            oauth: {
+                client_id: 'e205625b1f56207cd5d2',
+                client_secret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+            },
         })
-
-        gitalk.render('gitalk-container')
+        gitment.render('comments')
     </script>
 </section>
+
+
+
+
+
+
+
+
+
 
 
 

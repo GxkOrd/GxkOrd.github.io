@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="Springboot入门SpringBoot简介 简化Spring应用开发的一个框架  整个Spring技术栈的一个大整合  J2EE开发的一站式解决方案   微服务2014，martin fowler 微服务：架构风格（服务微化） 一个应用应该是一组小型服务，可以通过HTTP的方式进行互通。   单体应用：ALL IN ONE  微服务：每一个功能元素最终都是一个可独立替换和独立升级的软件单元；">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/2019/07/20/Java/SpringBoot/1/SLF4J具体绑定.png">
-<meta property="og:image" content="https://gxkord.github.io/2019/07/20/Java/SpringBoot/1/SpringBoot日志关系.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/07/20/Java/SpringBoot/1/SLF4J%E5%85%B7%E4%BD%93%E7%BB%91%E5%AE%9A.png">
+<meta property="og:image" content="https://gxkord.github.io/2019/07/20/Java/SpringBoot/1/SpringBoot%E6%97%A5%E5%BF%97%E5%85%B3%E7%B3%BB.jpg">
 <meta property="og:updated_time" content="2019-07-25T10:35:57.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1. SpringBoot入门">
 <meta name="twitter:description" content="Springboot入门SpringBoot简介 简化Spring应用开发的一个框架  整个Spring技术栈的一个大整合  J2EE开发的一站式解决方案   微服务2014，martin fowler 微服务：架构风格（服务微化） 一个应用应该是一组小型服务，可以通过HTTP的方式进行互通。   单体应用：ALL IN ONE  微服务：每一个功能元素最终都是一个可独立替换和独立升级的软件单元；">
-<meta name="twitter:image" content="https://gxkord.github.io/2019/07/20/Java/SpringBoot/1/SLF4J具体绑定.png">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/07/20/Java/SpringBoot/1/SLF4J%E5%85%B7%E4%BD%93%E7%BB%91%E5%AE%9A.png">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -720,14 +720,7 @@
 <p>应该给系统里面导入slf4j的jar包和logback的实现jar包。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(HelloWorld.class);</span><br><span class="line">    logger.info(<span class="string">"Hello World"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/07/20/Java/SpringBoot/1/SLF4J具体绑定.png" alt="SLF4J具体绑定" title>
-                </div>
-                <div class="image-caption">SLF4J具体绑定</div>
-            </figure>
-
+<p><img src="/2019/07/20/Java/SpringBoot/1/SLF4J%E5%85%B7%E4%BD%93%E7%BB%91%E5%AE%9A.png" alt="SLF4J具体绑定"></p>
 <p>每一个日志的实现框架都有自己的配置文件。使用slf4j以后，<strong>配置文件还是做成日志实现框架的配置文件</strong>。</p>
 <h3 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h3><p>如开发a系统（slf4j+logback）：Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis……</p>
 <p>c</p>
@@ -743,14 +736,7 @@
 <h2 id="SpringBoot日志关系"><a href="#SpringBoot日志关系" class="headerlink" title="SpringBoot日志关系"></a>SpringBoot日志关系</h2><p>SpringBoot的日志功能：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/07/20/Java/SpringBoot/1/SpringBoot日志关系.jpg" alt="SpringBoot日志关系" title>
-                </div>
-                <div class="image-caption">SpringBoot日志关系</div>
-            </figure>
-
+<p><img src="/2019/07/20/Java/SpringBoot/1/SpringBoot%E6%97%A5%E5%BF%97%E5%85%B3%E7%B3%BB.jpg" alt="SpringBoot日志关系"></p>
 <p>总结：</p>
 <ol>
 <li><p>SpringBoot底层也是使用slf4jJ+logback</p>
@@ -925,38 +911,31 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: 'e205625b1f56207cd5d2',
-          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
-          repo: 'gxkord.github.io',
-          owner: 'GxkOrd',
-          admin: ['GxkOrd'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
+        var gitment = new Gitment({
+            owner: 'GxkOrd',
+            repo: 'gxkord.github.io',
+            oauth: {
+                client_id: 'e205625b1f56207cd5d2',
+                client_secret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+            },
         })
-
-        gitalk.render('gitalk-container')
+        gitment.render('comments')
     </script>
 </section>
+
+
+
+
+
+
+
+
+
 
 
 

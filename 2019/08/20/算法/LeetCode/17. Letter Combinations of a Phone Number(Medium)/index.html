@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="题目描述原题 Description:Given a string containing digits from  2-9  inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telep">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/2019/08/20/算法/LeetCode/17/题目描述.png">
-<meta property="og:image" content="https://gxkord.github.io/2019/08/20/算法/LeetCode/17/题目描述.png">
+<meta property="og:image" content="https://gxkord.github.io/2019/08/20/算法/LeetCode/17/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png">
+<meta property="og:image" content="https://gxkord.github.io/2019/08/20/算法/LeetCode/17/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png">
 <meta property="og:updated_time" content="2019-08-20T05:52:44.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="17. Letter Combinations of a Phone Number(Medium)">
 <meta name="twitter:description" content="题目描述原题 Description:Given a string containing digits from  2-9  inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telep">
-<meta name="twitter:image" content="https://gxkord.github.io/2019/08/20/算法/LeetCode/17/题目描述.png">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/08/20/算法/LeetCode/17/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -192,14 +192,7 @@
             <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
 <p><strong>Description</strong>:<br>Given a string containing digits from  <code>2-9</code>  inclusive, return all possible letter combinations that the number could represent.</p>
 <p>A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/08/20/算法/LeetCode/17/题目描述.png" alt="题目描述" title>
-                </div>
-                <div class="image-caption">题目描述</div>
-            </figure>
-
+<p><img src="/2019/08/20/算法/LeetCode/17/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="题目描述"></p>
 <blockquote>
 <p><strong>Example</strong>: </p>
 <blockquote>
@@ -213,14 +206,7 @@
 </blockquote>
 <h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><blockquote>
 <p><strong>描述</strong>:<br>给定包含2-9（包含2和9）的数字的字符串，返回该数字可能表示的所有可能的字母组合。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/2019/08/20/算法/LeetCode/17/题目描述.png" alt="题目描述" title>
-                </div>
-                <div class="image-caption">题目描述</div>
-            </figure>
-
+<p><img src="/2019/08/20/算法/LeetCode/17/%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0.png" alt="题目描述"></p>
 <blockquote>
 <p><strong>例如</strong>:</p>
 <blockquote>
@@ -401,38 +387,31 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: 'e205625b1f56207cd5d2',
-          clientSecret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
-          repo: 'gxkord.github.io',
-          owner: 'GxkOrd',
-          admin: ['GxkOrd'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
+        var gitment = new Gitment({
+            owner: 'GxkOrd',
+            repo: 'gxkord.github.io',
+            oauth: {
+                client_id: 'e205625b1f56207cd5d2',
+                client_secret: 'bf2100fc02b84c67d18feed89bea2f4a26ae7b00',
+            },
         })
-
-        gitalk.render('gitalk-container')
+        gitment.render('comments')
     </script>
 </section>
+
+
+
+
+
+
+
+
+
 
 
 
