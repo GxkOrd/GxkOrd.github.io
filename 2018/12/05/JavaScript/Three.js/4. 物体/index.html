@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="创建物体的两个必要条件 几何形状(Geometry) 材质(Material)  几何形状作用储存一个物体的顶点信息。 基本几何形状立方体(CubeGeometry)12345678910new THREE.CubeGeometry(    width,   // x方向上的长度    height,  // y方向上的长度    depth,   // z方向上的长度    widthSegme">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/05/JavaScript/Three.js/4/%E7%90%83%E4%BD%93.png">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/05/JavaScript/Three.js/4/%E5%9C%86%E7%8E%AF.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/05/JavaScript/Three.js/4/球体.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/05/JavaScript/Three.js/4/圆环.png">
 <meta property="og:updated_time" content="2019-04-19T09:58:28.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4. 物体">
 <meta name="twitter:description" content="创建物体的两个必要条件 几何形状(Geometry) 材质(Material)  几何形状作用储存一个物体的顶点信息。 基本几何形状立方体(CubeGeometry)12345678910new THREE.CubeGeometry(    width,   // x方向上的长度    height,  // y方向上的长度    depth,   // z方向上的长度    widthSegme">
-<meta name="twitter:image" content="https://gxkord.github.io/2018/12/05/JavaScript/Three.js/4/%E7%90%83%E4%BD%93.png">
+<meta name="twitter:image" content="https://gxkord.github.io/2018/12/05/JavaScript/Three.js/4/球体.png">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -203,7 +203,14 @@
 
 <h4 id="球体-SphereGeometry"><a href="#球体-SphereGeometry" class="headerlink" title="球体(SphereGeometry)"></a>球体(SphereGeometry)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> THREE.SphereGeometry(</span><br><span class="line">    radius,    <span class="comment">// 半径</span></span><br><span class="line">    segmentsWidth,  <span class="comment">// 经度上的切片数</span></span><br><span class="line">    segmentsHeight,  <span class="comment">// 纬度上的切片数</span></span><br><span class="line">    phiStart,    <span class="comment">// 经度开始的弧度</span></span><br><span class="line">    phiLegth,    <span class="comment">// 经度跨过的弧度</span></span><br><span class="line">    thetaStart,  <span class="comment">// 纬度开始的弧度</span></span><br><span class="line">    thetaLength  <span class="comment">// 纬度跨过的弧度</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2018/12/05/JavaScript/Three.js/4/%E7%90%83%E4%BD%93.png" alt="球体"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/05/JavaScript/Three.js/4/球体.png" alt="球体" title>
+                </div>
+                <div class="image-caption">球体</div>
+            </figure>
+
 <h4 id="圆形-CircleGeometry"><a href="#圆形-CircleGeometry" class="headerlink" title="圆形(CircleGeometry)"></a>圆形(CircleGeometry)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> THREE.CircleGeometry(</span><br><span class="line">    radius,  <span class="comment">// 半径</span></span><br><span class="line">    segments,     <span class="comment">// 切片数</span></span><br><span class="line">    thetaStart,    <span class="comment">// 开始弧度</span></span><br><span class="line">    thetaLength    <span class="comment">// 跨过的弧度</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <h4 id="圆柱体-CylinderGeometry"><a href="#圆柱体-CylinderGeometry" class="headerlink" title="圆柱体(CylinderGeometry)"></a>圆柱体(CylinderGeometry)</h4><ul>
@@ -226,7 +233,14 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> THREE.TorusGeometry(</span><br><span class="line">    radius,  <span class="comment">// 圆环半径</span></span><br><span class="line">    tube,    <span class="comment">// 管道半径</span></span><br><span class="line">    radialSegments,  <span class="comment">// 纵切分段数</span></span><br><span class="line">    tubularSegments, <span class="comment">// 横切分段数</span></span><br><span class="line">    arc  <span class="comment">// 圆环面的弧度</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2018/12/05/JavaScript/Three.js/4/%E5%9C%86%E7%8E%AF.png" alt="圆环"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/05/JavaScript/Three.js/4/圆环.png" alt="圆环" title>
+                </div>
+                <div class="image-caption">圆环</div>
+            </figure>
+
 <h4 id="圆环结-TorusKnotGeometry"><a href="#圆环结-TorusKnotGeometry" class="headerlink" title="圆环结(TorusKnotGeometry)"></a>圆环结(TorusKnotGeometry)</h4><blockquote>
 <p>它的形状类似于打了结的甜甜圈。</p>
 </blockquote>

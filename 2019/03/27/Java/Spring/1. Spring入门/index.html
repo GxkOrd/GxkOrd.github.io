@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="概述Spring是什么Spring是分层的java SE/EE 应用一站式的轻量级开源框架，以 IoC（Inverse of Control，控制反转）和 AOP（Aspect Oriented Programming，切面编程）为内核，提供了展示层Spring MVC、持久层Spring JDBC及业务层事务管理等一站式的企业级应用技术。 Spring之父Rod Johnson  一个技术和商业">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/27/Java/Spring/1/Spring%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/27/Java/Spring/1/Spring框架结构.png">
 <meta property="og:image" content="https://gxkord.github.io/2019/03/27/Java/Spring/1/%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%AD%89%E7%BA%A7.png">
 <meta property="og:updated_time" content="2019-04-29T06:12:05.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1. Spring入门">
 <meta name="twitter:description" content="概述Spring是什么Spring是分层的java SE/EE 应用一站式的轻量级开源框架，以 IoC（Inverse of Control，控制反转）和 AOP（Aspect Oriented Programming，切面编程）为内核，提供了展示层Spring MVC、持久层Spring JDBC及业务层事务管理等一站式的企业级应用技术。 Spring之父Rod Johnson  一个技术和商业">
-<meta name="twitter:image" content="https://gxkord.github.io/2019/03/27/Java/Spring/1/Spring%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/03/27/Java/Spring/1/Spring框架结构.png">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -221,7 +221,14 @@
 </li>
 </ol>
 <h2 id="Spring体系结构"><a href="#Spring体系结构" class="headerlink" title="Spring体系结构"></a>Spring体系结构</h2><p>Spring核心框架由4000多个类组成，整个框架按其所属功能可以划分为5个模块，如下图所示。</p>
-<p><img src="/2019/03/27/Java/Spring/1/Spring%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84.png" alt="Spring框架结构"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/03/27/Java/Spring/1/Spring框架结构.png" alt="Spring框架结构" title>
+                </div>
+                <div class="image-caption">Spring框架结构</div>
+            </figure>
+
 <h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2><ol>
 <li><p>创建一个JavaBean</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HelloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"调用了无参构造器..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello:"</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

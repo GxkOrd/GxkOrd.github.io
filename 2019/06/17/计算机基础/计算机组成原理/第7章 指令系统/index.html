@@ -21,27 +21,27 @@
     
     
     <meta name="keywords" content="计算机组成原理">
-    <meta name="description" content="机器指令 机器指令：每一条机器语言的语句。  指令系统：全部机器指令的集合。     指令的格式是什么  指令码 地址码 寻址方式   指令的字长  固定长度、可变字长     指令的一般格式  操作码（反映机器做说明操作） (1) 长度固定 用于指令字长较长的情况，RISC 如 IBM 370，操作码八位 (2) 长度可变 操作码分散在指令字的不同字段中。 (3) 扩展操作码技术 操作码的位数随">
+    <meta name="description" content="机器指令 机器指令：每一条机器语言的语句。  指令系统：全部机器指令的集合。     指令的格式是什么  指令码 地址码 寻址方式   指令的字长  固定长度、可变字长     指令的一般格式                                                                                             指令的一般格式">
 <meta name="keywords" content="计算机组成原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第7章 指令系统">
 <meta property="og:url" content="https://gxkord.github.io/2019/06/17/计算机基础/计算机组成原理/第7章 指令系统/index.html">
 <meta property="og:site_name" content="MyBlog - GxkOrd">
-<meta property="og:description" content="机器指令 机器指令：每一条机器语言的语句。  指令系统：全部机器指令的集合。     指令的格式是什么  指令码 地址码 寻址方式   指令的字长  固定长度、可变字长     指令的一般格式  操作码（反映机器做说明操作） (1) 长度固定 用于指令字长较长的情况，RISC 如 IBM 370，操作码八位 (2) 长度可变 操作码分散在指令字的不同字段中。 (3) 扩展操作码技术 操作码的位数随">
+<meta property="og:description" content="机器指令 机器指令：每一条机器语言的语句。  指令系统：全部机器指令的集合。     指令的格式是什么  指令码 地址码 寻址方式   指令的字长  固定长度、可变字长     指令的一般格式                                                                                             指令的一般格式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//指令的一般格式.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%80%E7%A7%8D%E6%89%A9%E5%B1%95%E6%93%8D%E4%BD%9C%E7%A0%81%E7%9A%84%E5%AE%89%E6%8E%92%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E5%9B%9B%E5%9C%B0%E5%9D%80%E6%8C%87%E4%BB%A4.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%89%E5%9C%B0%E5%9D%80%E6%8C%87%E4%BB%A4.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E4%BA%8C%E5%9C%B0%E5%9D%80%E6%8C%87%E4%BB%A4.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E5%A4%A7%E7%AB%AF%E3%80%81%E5%A4%A7%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E5%B0%8F%E7%AB%AF%E3%80%81%E5%B0%8F%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//大端、大尾方式.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//小端、小尾方式.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E4%BB%8E%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE%E5%BC%80%E5%A7%8B%E5%AD%98%E5%82%A8.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E4%BB%8E%E4%B8%80%E4%B8%AA%E5%AD%98%E5%82%A8%E5%AD%97%E7%9A%84%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE%E5%BC%80%E5%A7%8B%E8%AE%BF%E9%97%AE.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E8%BE%B9%E7%95%8C%E5%AF%B9%E5%87%86%E6%96%B9%E5%BC%8F.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E8%B0%83%E7%94%A8%E5%92%8C%E8%BF%94%E5%9B%9E%E6%8C%87%E4%BB%A4%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E6%8C%87%E4%BB%A4%E7%9A%84%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%80%E7%A7%8D%E4%B8%80%E5%9C%B0%E5%9D%80%E6%8C%87%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//指令的寻址方式示意图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//一种一地址指令的格式.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E7%AB%8B%E5%8D%B3%E5%AF%BB%E5%9D%80.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80.jpg">
 <meta property="og:image" content="https://gxkord.github.io/.io//%E9%9A%90%E5%90%AB%E5%AF%BB%E5%9D%80.jpg">
@@ -56,8 +56,8 @@
 <meta property="og:updated_time" content="2019-06-18T10:16:32.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第7章 指令系统">
-<meta name="twitter:description" content="机器指令 机器指令：每一条机器语言的语句。  指令系统：全部机器指令的集合。     指令的格式是什么  指令码 地址码 寻址方式   指令的字长  固定长度、可变字长     指令的一般格式  操作码（反映机器做说明操作） (1) 长度固定 用于指令字长较长的情况，RISC 如 IBM 370，操作码八位 (2) 长度可变 操作码分散在指令字的不同字段中。 (3) 扩展操作码技术 操作码的位数随">
-<meta name="twitter:image" content="https://gxkord.github.io/.io//%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg">
+<meta name="twitter:description" content="机器指令 机器指令：每一条机器语言的语句。  指令系统：全部机器指令的集合。     指令的格式是什么  指令码 地址码 寻址方式   指令的字长  固定长度、可变字长     指令的一般格式                                                                                             指令的一般格式">
+<meta name="twitter:image" content="https://gxkord.github.io/.io//指令的一般格式.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -231,7 +231,14 @@
 </li>
 </ul>
 </blockquote>
-<h2 id="指令的一般格式"><a href="#指令的一般格式" class="headerlink" title="指令的一般格式"></a>指令的一般格式</h2><p><img src="/.io//%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg" alt="指令的一般格式"></p>
+<h2 id="指令的一般格式"><a href="#指令的一般格式" class="headerlink" title="指令的一般格式"></a>指令的一般格式</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//指令的一般格式.jpg" alt="指令的一般格式" title>
+                </div>
+                <div class="image-caption">指令的一般格式</div>
+            </figure>
+
 <ol>
 <li><p>操作码（反映机器做说明操作）</p>
 <p>(1) <strong>长度固定</strong></p>
@@ -298,8 +305,20 @@
 <p>字符：ASCII</p>
 <p>逻辑数：逻辑运算</p>
 <h2 id="数据在存储器中的存放方式"><a href="#数据在存储器中的存放方式" class="headerlink" title="数据在存储器中的存放方式"></a>数据在存储器中的存放方式</h2><p><strong>例</strong>：12345678H的存放方式</p>
-<p>(1) <img src="/.io//%E5%A4%A7%E7%AB%AF%E3%80%81%E5%A4%A7%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg" alt="大端、大尾方式"></p>
-<p>(2) <img src="/.io//%E5%B0%8F%E7%AB%AF%E3%80%81%E5%B0%8F%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg" alt="小端、小尾方式"></p>
+<p>(1) <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//大端、大尾方式.jpg" alt="大端、大尾方式" title>
+                </div>
+                <div class="image-caption">大端、大尾方式</div>
+            </figure></p>
+<p>(2) <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//小端、小尾方式.jpg" alt="小端、小尾方式" title>
+                </div>
+                <div class="image-caption">小端、小尾方式</div>
+            </figure></p>
 <p>字节编址，数据在存储器中的存放方式</p>
 <ol>
 <li><p>从任意位置开始存储</p>
@@ -407,8 +426,22 @@
 <p>由转移指令指出</p>
 </li>
 </ul>
-<p><img src="/.io//%E6%8C%87%E4%BB%A4%E7%9A%84%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg" alt="指令的寻址方式示意图"></p>
-<h2 id="数据寻址"><a href="#数据寻址" class="headerlink" title="数据寻址"></a>数据寻址</h2><p><img src="/.io//%E4%B8%80%E7%A7%8D%E4%B8%80%E5%9C%B0%E5%9D%80%E6%8C%87%E4%BB%A4%E7%9A%84%E6%A0%BC%E5%BC%8F.jpg" alt="一种一地址指令的格式"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//指令的寻址方式示意图.jpg" alt="指令的寻址方式示意图" title>
+                </div>
+                <div class="image-caption">指令的寻址方式示意图</div>
+            </figure>
+
+<h2 id="数据寻址"><a href="#数据寻址" class="headerlink" title="数据寻址"></a>数据寻址</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//一种一地址指令的格式.jpg" alt="一种一地址指令的格式" title>
+                </div>
+                <div class="image-caption">一种一地址指令的格式</div>
+            </figure>
+
 <p><strong>形式地址</strong>：指令字中的地址</p>
 <p><strong>有效地址</strong>：操作数的真实地址</p>
 <p>约定：<strong>指令字长 = 存储字长 = 机器字长</strong></p>

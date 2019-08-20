@@ -201,8 +201,24 @@
 
 <h2 id="两种方法的不同点"><a href="#两种方法的不同点" class="headerlink" title="两种方法的不同点"></a>两种方法的不同点</h2><p>setInterval可以手动设置FPS，而requestAnmationFrame在浏览器处理繁忙时会采取跳帧处理画面。</p>
 <h1 id="记录FPS"><a href="#记录FPS" class="headerlink" title="记录FPS"></a>记录FPS</h1><p><strong>stat.js</strong>是Three.js的作者Mr. Doob的另一个有用的JavaScript库。<a href="https://github.com/mrdoob/stats.js/blob/master/build/stats.min.js" target="_blank" rel="noopener">stat.js下载地址</a></p>
-<p>很多情况下，我们希望知道实时的FPS信息，从而更好地监测动画效果。这时候，stat.js就能提供一个很好的帮助，它占据屏幕中的一小块位置（如左上角），效果为：<br><img src="/2018/12/07/JavaScript/Three.js/6/fps0.png" alt="每秒的帧数(默认)"></p>
-<p>单击后显示每帧渲染时间：<br><img src="/2018/12/07/JavaScript/Three.js/6/fps1.png" alt="每帧渲染时间"></p>
+<p>很多情况下，我们希望知道实时的FPS信息，从而更好地监测动画效果。这时候，stat.js就能提供一个很好的帮助，它占据屏幕中的一小块位置（如左上角），效果为：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/07/JavaScript/Three.js/6/fps0.png" alt="每秒的帧数(默认)" title>
+                </div>
+                <div class="image-caption">每秒的帧数(默认)</div>
+            </figure>
+
+<p>单击后显示每帧渲染时间：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/07/JavaScript/Three.js/6/fps1.png" alt="每帧渲染时间" title>
+                </div>
+                <div class="image-caption">每帧渲染时间</div>
+            </figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var stat = null;</span><br><span class="line">function init() &#123;</span><br><span class="line">    stat = new Stats();</span><br><span class="line">    stat.domElement.style.position = &apos;absolute&apos;;</span><br><span class="line">    stat.domElement.style.right = &apos;0px&apos;;</span><br><span class="line">    stat.domElement.style.top = &apos;0px&apos;;</span><br><span class="line">    document.body.appendChild(stat.domElement);</span><br><span class="line">    // Three.js init ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在动画绘制函数(&quot;动画制作方法&quot;中的func)中调用stat.begin() 与 stat.end()，分别表示一帧的开始与结束。</span><br></pre></td></tr></table></figure>
 
 

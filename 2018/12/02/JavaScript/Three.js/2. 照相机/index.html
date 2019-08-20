@@ -21,23 +21,23 @@
     
     
     <meta name="keywords" content="3D,WebGL,Three.js入门">
-    <meta name="description" content="什么是照相机？照相机（camera）一种将三维场景投影到二维显示器的工具。 分类(1) 正交投影(orthographic projection)    – 平行投影，投影线垂直于投影面    – 用途：制图，建模(2)透视投影(perspective projection)    – 中心投影，近大远小    – 用途：用于模仿人眼观察 正交投影相机 1234THREE.Orthographic">
+    <meta name="description" content="什么是照相机？照相机（camera）一种将三维场景投影到二维显示器的工具。 分类(1) 正交投影(orthographic projection)    – 平行投影，投影线垂直于投影面    – 用途：制图，建模(2)透视投影(perspective projection)    – 中心投影，近大远小    – 用途：用于模仿人眼观察 正交投影相机">
 <meta name="keywords" content="3D,WebGL,Three.js入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2. 照相机">
 <meta property="og:url" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2. 照相机/index.html">
 <meta property="og:site_name" content="MyBlog - GxkOrd">
-<meta property="og:description" content="什么是照相机？照相机（camera）一种将三维场景投影到二维显示器的工具。 分类(1) 正交投影(orthographic projection)    – 平行投影，投影线垂直于投影面    – 用途：制图，建模(2)透视投影(perspective projection)    – 中心投影，近大远小    – 用途：用于模仿人眼观察 正交投影相机 1234THREE.Orthographic">
+<meta property="og:description" content="什么是照相机？照相机（camera）一种将三维场景投影到二维显示器的工具。 分类(1) 正交投影(orthographic projection)    – 平行投影，投影线垂直于投影面    – 用途：制图，建模(2)透视投影(perspective projection)    – 中心投影，近大远小    – 用途：用于模仿人眼观察 正交投影相机">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/%E6%AD%A3%E4%BA%A4%E7%9B%B8%E6%9C%BA.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/%E9%80%8F%E8%A7%86%E7%9B%B8%E6%9C%BA-%E4%B8%BB%E8%A7%86%E5%9B%BE.png">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/%E9%80%8F%E8%A7%86%E7%9B%B8%E6%9C%BA-%E4%BE%A7%E8%A7%86%E5%9B%BE.png">
-<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/%E9%80%8F%E8%A7%86%E7%9B%B8%E6%9C%BA-%E4%BF%AF%E8%A7%86%E5%9B%BE.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/正交相机.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/透视相机-主视图.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/透视相机-侧视图.png">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/透视相机-俯视图.png">
 <meta property="og:updated_time" content="2019-04-19T09:54:05.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2. 照相机">
-<meta name="twitter:description" content="什么是照相机？照相机（camera）一种将三维场景投影到二维显示器的工具。 分类(1) 正交投影(orthographic projection)    – 平行投影，投影线垂直于投影面    – 用途：制图，建模(2)透视投影(perspective projection)    – 中心投影，近大远小    – 用途：用于模仿人眼观察 正交投影相机 1234THREE.Orthographic">
-<meta name="twitter:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/%E6%AD%A3%E4%BA%A4%E7%9B%B8%E6%9C%BA.jpg">
+<meta name="twitter:description" content="什么是照相机？照相机（camera）一种将三维场景投影到二维显示器的工具。 分类(1) 正交投影(orthographic projection)    – 平行投影，投影线垂直于投影面    – 用途：制图，建模(2)透视投影(perspective projection)    – 中心投影，近大远小    – 用途：用于模仿人眼观察 正交投影相机">
+<meta name="twitter:image" content="https://gxkord.github.io/2018/12/02/JavaScript/Three.js/2/正交相机.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -193,10 +193,38 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="什么是照相机？"><a href="#什么是照相机？" class="headerlink" title="什么是照相机？"></a>什么是照相机？</h1><p>照相机（camera）一种将三维场景投影到二维显示器的工具。</p>
 <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><p>(1) 正交投影(orthographic projection)<br>    – 平行投影，投影线垂直于投影面<br>    – 用途：制图，建模<br>(2)透视投影(perspective projection)<br>    – 中心投影，近大远小<br>    – 用途：用于模仿人眼观察</p>
-<h1 id="正交投影相机"><a href="#正交投影相机" class="headerlink" title="正交投影相机"></a>正交投影相机</h1><p><img src="/2018/12/02/JavaScript/Three.js/2/%E6%AD%A3%E4%BA%A4%E7%9B%B8%E6%9C%BA.jpg" alt="正交相机"></p>
+<h1 id="正交投影相机"><a href="#正交投影相机" class="headerlink" title="正交投影相机"></a>正交投影相机</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/02/JavaScript/Three.js/2/正交相机.jpg" alt="正交相机" title>
+                </div>
+                <div class="image-caption">正交相机</div>
+            </figure>
+
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">THREE.OrthographicCamera(left,right,top,bottom,near,far)</span><br><span class="line"><span class="comment">// 这六个参数分别表示照相机拍到的空间的六个面的位置，这六个面围成的长方体，称为视景体(Frustum)</span></span><br><span class="line"><span class="comment">// 若要保持相机横纵比，(right-left)与(top-bottom)的比例需要与canvas的宽高比一致</span></span><br><span class="line"><span class="comment">// near和far应为正值，且far&gt;near</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="透视投影相机"><a href="#透视投影相机" class="headerlink" title="透视投影相机"></a>透视投影相机</h1><p><img src="/2018/12/02/JavaScript/Three.js/2/%E9%80%8F%E8%A7%86%E7%9B%B8%E6%9C%BA-%E4%B8%BB%E8%A7%86%E5%9B%BE.png" alt="透视相机 - 主视图"><br><img src="/2018/12/02/JavaScript/Three.js/2/%E9%80%8F%E8%A7%86%E7%9B%B8%E6%9C%BA-%E4%BE%A7%E8%A7%86%E5%9B%BE.png" alt="透视相机 - 侧视图"><br><img src="/2018/12/02/JavaScript/Three.js/2/%E9%80%8F%E8%A7%86%E7%9B%B8%E6%9C%BA-%E4%BF%AF%E8%A7%86%E5%9B%BE.png" alt="透视相机 - 俯视图"></p>
+<h1 id="透视投影相机"><a href="#透视投影相机" class="headerlink" title="透视投影相机"></a>透视投影相机</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/02/JavaScript/Three.js/2/透视相机-主视图.png" alt="透视相机 - 主视图" title>
+                </div>
+                <div class="image-caption">透视相机 - 主视图</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/02/JavaScript/Three.js/2/透视相机-侧视图.png" alt="透视相机 - 侧视图" title>
+                </div>
+                <div class="image-caption">透视相机 - 侧视图</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/02/JavaScript/Three.js/2/透视相机-俯视图.png" alt="透视相机 - 俯视图" title>
+                </div>
+                <div class="image-caption">透视相机 - 俯视图</div>
+            </figure>
+
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">THREE.PerspectiveCamera(fov,aspect,near,far)</span><br><span class="line"><span class="comment">// fov：可视角度</span></span><br><span class="line"><span class="comment">// aspect：实际窗口的纵横比</span></span><br><span class="line"><span class="comment">// near：近处的裁面的距离</span></span><br><span class="line"><span class="comment">// far：远处的裁面的距离</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>照相机默认的观察方向是指向z轴负方向（就是朝向屏幕），所以当变化坐标以后，就要将照相机指向原点，才能观察到物体。</p>
