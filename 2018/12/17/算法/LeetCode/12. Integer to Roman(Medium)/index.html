@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>12. Integer to Roman(Medium) | GxkOrd - blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode,LeetCode - Medium">
+    <meta name="description" content="题目描述原题 Description:Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.    Symbol Value    I 1   V 5   X 10   L 50   C 100   D 500   M 1000   For example, two is written">
+<meta name="keywords" content="LeetCode,LeetCode - Medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12. Integer to Roman(Medium)">
+<meta property="og:url" content="https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/index.html">
+<meta property="og:site_name" content="GxkOrd - blog">
+<meta property="og:description" content="题目描述原题 Description:Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.    Symbol Value    I 1   V 5   X 10   L 50   C 100   D 500   M 1000   For example, two is written">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-19T10:12:59.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12. Integer to Roman(Medium)">
+<meta name="twitter:description" content="题目描述原题 Description:Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.    Symbol Value    I 1   V 5   X 10   L 50   C 100   D 500   M 1000   For example, two is written">
+    
+        <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">12. Integer to Roman(Medium)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">12. Integer to Roman(Medium)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-17T11:12:23.000Z" itemprop="datePublished" class="page-time">
+  2018-12-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题翻译"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原题翻译</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法一-Mine"><span class="post-toc-number">2.</span> <span class="post-toc-text">解法一(Mine)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法/LeetCode/12. Integer to Roman(Medium)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">12. Integer to Roman(Medium)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-17 19:12:23" datetime="2018-12-17T11:12:23.000Z"  itemprop="datePublished">2018-12-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
+<p><strong>Description</strong>:<br>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td>1</td>
+</tr>
+<tr>
+<td>V</td>
+<td>5</td>
+</tr>
+<tr>
+<td>X</td>
+<td>10</td>
+</tr>
+<tr>
+<td>L</td>
+<td>50</td>
+</tr>
+<tr>
+<td>C</td>
+<td>100</td>
+</tr>
+<tr>
+<td>D</td>
+<td>500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>For example, two is written as II in Roman numeral, just two one’s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.</p>
+<p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:</p>
+<ul>
+<li>I can be placed before V (5) and X (10) to make 4 and 9. <blockquote>
+<ul>
+<li>X can be placed before L (50) and C (100) to make 40 and 90. </li>
+<li>C can be placed before D (500) and M (1000) to make 400 and 900.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.</p>
+<blockquote>
+<p><strong>Example 1</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: 3<br><strong>Output</strong>: “III”</p>
+</blockquote>
+<p><strong>Example 2</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: 4<br><strong>Output</strong>: “IV”</p>
+</blockquote>
+<p><strong>Example 3</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: 9<br><strong>Output</strong>: “IX”</p>
+</blockquote>
+<p><strong>Example 4</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: 58<br><strong>Output</strong>: “LVIII”<br><strong>Explanation</strong>: L = 50, V = 5, III = 3.</p>
+</blockquote>
+<p><strong>Example 5</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: 1994<br><strong>Output</strong>: “MCMXCIV”<br><strong>Explanation</strong>: M = 1000, CM = 900, XC = 90 and IV = 4.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><blockquote>
+<p><strong>描述</strong>:<br>罗马数字由七个不同的符号表示：I，V，X，L，C，D和M。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td>1</td>
+</tr>
+<tr>
+<td>V</td>
+<td>5</td>
+</tr>
+<tr>
+<td>X</td>
+<td>10</td>
+</tr>
+<tr>
+<td>L</td>
+<td>50</td>
+</tr>
+<tr>
+<td>C</td>
+<td>100</td>
+</tr>
+<tr>
+<td>D</td>
+<td>500</td>
+</tr>
+<tr>
+<td>M</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
+<ul>
+<li>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<blockquote>
+<ul>
+<li>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 </li>
+<li>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p>给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。</p>
+<blockquote>
+<p><strong>例1</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: 3<br><strong>输出</strong>: “III”</p>
+</blockquote>
+<p><strong>例2</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: 4<br><strong>输出</strong>: “IV”</p>
+</blockquote>
+<p><strong>例3</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: 9<br><strong>输出</strong>: “IX”</p>
+</blockquote>
+<p><strong>例4</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: 58<br><strong>输出</strong>: “LVIII”<br><strong>解释</strong>: L = 50, V = 5, III = 3.</p>
+</blockquote>
+<p><strong>例5</strong>: </p>
+<blockquote>
+<p><strong>输入</strong>: 1994<br><strong>输出</strong>: “MCMXCIV”<br><strong>解释</strong>: M = 1000, CM = 900, XC = 90， IV = 4.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="解法一-Mine"><a href="#解法一-Mine" class="headerlink" title="解法一(Mine)"></a>解法一(Mine)</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>对每一位上的数字分别处理，对个十百位上的4,9进行特殊处理。</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        StringBuilder s = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        <span class="comment">// 千位</span></span><br><span class="line">        temp = num / <span class="number">1000</span>;</span><br><span class="line">        <span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"M"</span>);</span><br><span class="line">            temp--;</span><br><span class="line">        &#125;</span><br><span class="line">        num %= <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 百位</span></span><br><span class="line">        temp = num / <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">if</span>(temp == <span class="number">9</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"CM"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp == <span class="number">4</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"CD"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (temp &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">                s.append(<span class="string">"D"</span>);</span><br><span class="line">                temp -= <span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                s.append(<span class="string">"C"</span>);</span><br><span class="line">                temp--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        num %= <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 十位</span></span><br><span class="line">        temp = num / <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span>(temp == <span class="number">9</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"XC"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp == <span class="number">4</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"XL"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (temp &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">                s.append(<span class="string">"L"</span>);</span><br><span class="line">                temp -= <span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                s.append(<span class="string">"X"</span>);</span><br><span class="line">                temp--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        num %= <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 个位</span></span><br><span class="line">        temp = num;</span><br><span class="line">        <span class="keyword">if</span>(temp == <span class="number">9</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"IX"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp == <span class="number">4</span>) &#123;</span><br><span class="line">            s.append(<span class="string">"IV"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (temp &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">                s.append(<span class="string">"V"</span>);</span><br><span class="line">                temp -= <span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                s.append(<span class="string">"I"</span>);</span><br><span class="line">                temp--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-Medium/">LeetCode - Medium</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/&title=《12. Integer to Roman(Medium)》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/&title=《12. Integer to Roman(Medium)》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《12. Integer to Roman(Medium)》 — GxkOrd - blog&url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/31/一些话/年终总结/2018/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2018</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">11. Container With Most Water(Medium)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/&title=《12. Integer to Roman(Medium)》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/&title=《12. Integer to Roman(Medium)》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《12. Integer to Roman(Medium)》 — GxkOrd - blog&url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3a0U4jMQwFUP7/p9lXJHbSazuGCp15qgrt5AxSbK7z8RFfn1+ur+88vf5+PX3n06fOd7l84eHh4Q2Wfr5NsqDkoZwZve95XAkeHh7eGi/ZuCcberVI5K9fWPDw8PDehjcpFb3SgoeHh/dXedXtvkfCw8PDewdeEkacF3R+EHng+/SY1rMWPDw8vJiXT5He5/XKfA8PDw9vPFXvDcOS8pDHE3kx+M+n8PDw8BZ4+YabN7tzcBJMFNaJh4eHt8A7h7DV8DR/BMl3VgtDIavGw8PDa/F6AWg++sob8V4gW86n8fDw8C51pHmsMIl3z8130qBXwws8PDy8Dd55Q++ViqSBzu+SgKOpHR4eHt4ar7fd9zb6SSOeNOV4eHh4G7z8YFOyoMkiqm13XgXw8PDw7vJ6N5uMqc6tfDX+eLFaPDw8vF/ilSOAcWBRHbk9rhMPDw9vmTcZhk0eR7UgJb+Ph4eHt83LW9veO73oNikqhTMReHh4eJd41f/Z82MBvWFYr8WP/oZ4eHh4l3iTQ1d58Hr3XoUDDXh4eHjLvFsbdK+EJBt9eW14eHh4a7yNcVQ1MqgeUBgdusLDw8Mb85LxUvX38w19UmBerBMPDw9vmVc9dHVrlNUbnkUPHQ8PD2+Bl2/Kk02/WlqiA1XxCvHw8PA2eHkYkUcJyYPI2+hRnIGHh4f3I7z5pjxppqtt94s/Dx4eHt4yrxq29sZdF7b7vLzh4eHhXeX1Fppv1tXWvBdPPP4UDw8Pb4GXX5O4djI2m7zGw8PD2+NNikEvls3D4klIgYeHh7fNy2/TKxXV41nVojWa2uHh4eEt8+aLnhzSKscfeHh4eG/G6xWDpAWvHlZYKQx4eHh4xYh2fhCq1xD3HvfoZAQeHh5ekXcrWs0b6/nxrEl4gYeHhzfg/QMX5tpP1mCcPgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

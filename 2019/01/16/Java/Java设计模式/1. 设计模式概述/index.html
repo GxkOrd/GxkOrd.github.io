@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>1. 设计模式概述 | GxkOrd - blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="《Java设计模式》">
+    <meta name="description" content="声明：本专题为刘伟老师所著《Java设计模式》的笔记  设计模式的诞生与发展模式的诞生与定义模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作A pattern Lang">
+<meta name="keywords" content="《Java设计模式》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1. 设计模式概述">
+<meta property="og:url" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/index.html">
+<meta property="og:site_name" content="GxkOrd - blog">
+<meta property="og:description" content="声明：本专题为刘伟老师所著《Java设计模式》的笔记  设计模式的诞生与发展模式的诞生与定义模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作A pattern Lang">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/软件模式的基本结构.png">
+<meta property="og:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/常用设计模式一览.jpg">
+<meta property="og:updated_time" content="2019-01-23T07:48:25.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1. 设计模式概述">
+<meta name="twitter:description" content="声明：本专题为刘伟老师所著《Java设计模式》的笔记  设计模式的诞生与发展模式的诞生与定义模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作A pattern Lang">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/01/16/Java/Java设计模式/1/软件模式的基本结构.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">1. 设计模式概述</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">1. 设计模式概述</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-16T08:46:13.000Z" itemprop="datePublished" class="page-time">
+  2019-01-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设计模式的诞生与发展"><span class="post-toc-number">1.</span> <span class="post-toc-text">设计模式的诞生与发展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模式的诞生与定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">模式的诞生与定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件模式概述"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">软件模式概述</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设计模式的定义与分类"><span class="post-toc-number">2.</span> <span class="post-toc-text">设计模式的定义与分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式的定义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">设计模式的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式的基本要素"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">设计模式的基本要素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式的分类"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">设计模式的分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用设计模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">常用设计模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设计模式的优点"><span class="post-toc-number">4.</span> <span class="post-toc-text">设计模式的优点</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/Java设计模式/1. 设计模式概述"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">1. 设计模式概述</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-16 16:46:13" datetime="2019-01-16T08:46:13.000Z"  itemprop="datePublished">2019-01-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>声明：本专题为刘伟老师所著《Java设计模式》的笔记</p>
+</blockquote>
+<h1 id="设计模式的诞生与发展"><a href="#设计模式的诞生与发展" class="headerlink" title="设计模式的诞生与发展"></a>设计模式的诞生与发展</h1><h2 id="模式的诞生与定义"><a href="#模式的诞生与定义" class="headerlink" title="模式的诞生与定义"></a>模式的诞生与定义</h2><p>模式（Pattern）起源于建筑业而非软件业，模式之父——美国加利福尼亚大学环境结构中心研究所所长Christopher Alexander博士用了约20年的时间，对舒适住宅和周边环境进行了大量的调查和资料收集工作，发现人们对舒适住宅和城市环境存在一些共同的认同规律。他在其著作<em>A pattern Language: Towns,Buildings,Construction</em>（中译本名为《建筑模式语言：城镇·建筑·构造》）中把这些认同规律归纳为253个模式，对每一个模式都从Context（模式可适用的前提条件）、Theme或Problem（在特定条件下要解决的目标问题）、Solution（对目标问题求解过程中各种物理关系的记述）3个侧面进行描述，并给出了用户需求分析到建筑环境结构设计直至经典实例的过程模型。</p>
+<p>可以简单地定义：<strong>模式是在特定环境下人们解决某类重复问题的一套成功或有效的解决方案。</strong><br><strong>A pattern is a successful or efficient solution to a recurring problem within a context.</strong></p>
+<h2 id="软件模式概述"><a href="#软件模式概述" class="headerlink" title="软件模式概述"></a>软件模式概述</h2><p>最早将模式的思想引入软件工程方法学的是1991-1992年以“四人组（Gang of Four，GoF，分别是Erich Gamma、Richard Helm、Ralph Johnson和John Vlissides）”自称的4位著名软件工程学者，他们在1994年归纳发表了23中在软件开发中使用频率较高的设计模式，旨在用模式来统一交流沟通面向对象方法在分析、设计和实现间的鸿沟。</p>
+<p>软件模式可以被认为是对软件开发这一特定“问题”的“解法”的某种统一表示，它和Alexander所描述的模式定义完全相同，即软件模式是在一定条件下的软件开发问题及其解法。软件模式的基本结构由4个部分组成，即问题描述、前提条件（环境或约束条件）、解法和效果，如下图所示。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/01/16/Java/Java设计模式/1/软件模式的基本结构.png" alt="软件模式的基本结构" title>
+                </div>
+                <div class="image-caption">软件模式的基本结构</div>
+            </figure>
+
+<h1 id="设计模式的定义与分类"><a href="#设计模式的定义与分类" class="headerlink" title="设计模式的定义与分类"></a>设计模式的定义与分类</h1><h2 id="设计模式的定义"><a href="#设计模式的定义" class="headerlink" title="设计模式的定义"></a>设计模式的定义</h2><p>设计模式(Design Pattern)是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。设计模式是一种用于对软件系统中不断重现的设计问题的解决方案进行文档化的技术，也是一种共享专家设计经验的技术。</p>
+<p>GoF对设计模式的定义如下：<br><strong>设计模式是在特定环境下为解决某一通用软件问题提供的一套定制的解决方案，该方案描述了对象和类之间的互相作用。</strong><br><strong>Design patterns are descriptions of communicating objects and classes that are customized to solve a general design problem in a particular context.</strong></p>
+<h2 id="设计模式的基本要素"><a href="#设计模式的基本要素" class="headerlink" title="设计模式的基本要素"></a>设计模式的基本要素</h2><p><strong>1. 模式名称（Pattern Name）</strong><br>通过一两个词来描述模式的问题、解决方案和效果，以便更好地理解模式并方便开发人员之间的交流，绝大多数模式都是根据其功能或模式结构来命名的。</p>
+<p><strong>2. 问题（Problem）</strong><br>描述了应该在何时使用模式，它包含了设计中存在的问题以及问题存在的原因。</p>
+<p><strong>3. 解决方案（Solution）</strong><br>描述了一个设计模式的组成成分，以及这些组成成分之间的相互关系，各自的职责和协作方式，通常解决方案通过UML类图和核心代码来进行描述。</p>
+<p><strong>4. 效果（Consequences）</strong><br>描述了模式的优缺点以及在使用模式时应权衡的问题。</p>
+<h2 id="设计模式的分类"><a href="#设计模式的分类" class="headerlink" title="设计模式的分类"></a>设计模式的分类</h2><p><strong>1. 根据目的分类</strong><br>设计模式根据目的可分为创建型(Creational)，结构型(Structural)和行为型(Behavioral)三种。<br>（1）创建型模式主要用于描述如何创建对象。<br>（2）结构型模式主要用于描述如何实现类或对象的组合。<br>（3）行为型模式主要用于描述类或对象怎样交互以及怎样分配职责。</p>
+<p><strong>2.根据范围分类</strong><br>设计模式根据范围可分为类模式和对象模式两种。<br>（1）类模式处理类和子类之间的关系。<br>（2）对象模式处理对象间的关系。</p>
+<h1 id="常用设计模式"><a href="#常用设计模式" class="headerlink" title="常用设计模式"></a>常用设计模式</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2019/01/16/Java/Java设计模式/1/常用设计模式一览.jpg" alt="常用设计模式一览" title>
+                </div>
+                <div class="image-caption">常用设计模式一览</div>
+            </figure>
+
+<h1 id="设计模式的优点"><a href="#设计模式的优点" class="headerlink" title="设计模式的优点"></a>设计模式的优点</h1><ol>
+<li><p>设计模式来源众多专家的经验和智慧，它们是从许多优秀的软件系统中总结出的成功的、能够实现可维护性复用的设计方案，使用这些方案将可以让我们避免做一些重复性的工作，也许我们冥思苦想得到的一个“自以为很了不起”的设计方案其实就是某一个设计模式。在时间就是金钱的今天，设计模式无疑会为有助于我们提高开发和设计效率，但它不保证一定会提高。</p>
+</li>
+<li><p>设计模式提供了一套通用的设计词汇和一种通用的形式来方便开发人员之间沟通和交流，使得设计方案更加通俗易懂。交流通常很耗时，任何有助于提高交流效率的东西都可以为我们节省不少时间。无论你使用哪种编程语言，做什么类型的项目，甚至你处于一个国际化的开发团队，当面对同一个设计模式时，你和别人的理解并无二异，因为设计模式是跨语言、跨平台、跨应用、跨国界的。</p>
+</li>
+<li><p>大部分设计模式都兼顾了系统的可重用性和可扩展性，这使得我们可以更好地重用一些已有的设计方案、功能模块甚至一个完整的软件系统，避免我们经常做一些重复的设计、编写一些重复的代码。此外，随着软件规模的日益增大，软件寿命的日益变长，系统的可维护性和可扩展性也越来越重要，许多设计模式将有助于提高系统的灵活性和可扩展性，让我们在不修改或者少修改现有系统的基础上增加、删除或者替换功能模块。如果一点设计模式都不懂，想要做到这一点恐怕还是很困难的。</p>
+</li>
+<li><p>合理使用设计模式并对设计模式的使用情况进行文档化，将有助于别人更快地理解系统。如果某一天因为升职或跳槽等原因，别人接手了你的项目，只要他也懂设计模式，应该能够很快理解你的设计思路和实现方案，让你升职无后患之忧，跳槽也心安理得，何乐而不为呢？</p>
+</li>
+<li><p>最后一点对初学者很重要，学习设计模式将有助于初学者更加深入地理解面向对象思想，让你知道：如何将代码分散在几个不同的类中？为什么要有“接口”？何谓针对抽象编程？何时不应该使用继承？如果不修改源代码增加新功能？同时还让你能够更好地阅读和理解现有类库（如JDK）与其他系统中的源代码，让你早点脱离面向对象编程的“菜鸟期”。</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《Java设计模式》/">《Java设计模式》</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/&title=《1. 设计模式概述》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/&title=《1. 设计模式概述》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1. 设计模式概述》 — GxkOrd - blog&url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/01/16/算法/LeetCode/13. Roman to Integer(Easy)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">13. Roman to Integer(Easy)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/31/一些话/年终总结/2018/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2018</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/&title=《1. 设计模式概述》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/&title=《1. 设计模式概述》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《1. 设计模式概述》 — GxkOrd - blog&url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/01/16/Java/Java设计模式/1. 设计模式概述/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3aQW4CMQwFUO5/aSp1VQkmfNsJUOnNqhraIW8Wifvt2y2+7r/X1Z3HT9d/+/f+43Ou7qy/ZXTh4eHhtZZ+da15a3ZyP3/+mn35CvDw8PCO8dZfmWzQ66Uky6oeIdFLxMPDw/sor1c0z18ZHh4e3v/lrRfU2+7nBw8eHh7ep3hJGJGDJ+Xyx7IWPDw8vNouXWiAfcPPB/t7eHh4eIOuer7h5pt4/mm1ZH+yWjw8PLwDvCRsrR4Pk/GpJOyotsTw8PDwzvF6AcRkUCB5lZNQGA8PD+8Eb9dwQA+Qx8HrUvvy1ePh4eG9hVdtg1Vr114s2xw+wMPDwzvASx4xOQbyKDYPiEfNMDw8PLwxbzJWNWmAVaPk3hPw8PDwTvB6bbDePjwf5MpbX1FJjYeHh9fi9cab8rI7f2Z16Coq0/Hw8PAO8HpHwmTUIFlclfTiPh4eHt4xXrVxNV9uNYDIo5ANfTk8PDy8oB6uxrXV0rYaN1SLezw8PLz38OYRQGFrHhTlvTXj4eHhneBNmvfrw6PXSJsMGUT/N+Dh4eGNedVNPyFNqvu8MRaV7Hh4eHgHeL1rVyurd2fXiAMeHh5ej3cfX0nhW93Ee6/vMmvBw8PDO8Crxg1JFDtps02+8UkYgYeHh/cW3t5FVGOFanR7q55OeHh4eFt5u9pdu8YCekX2ZUmNh4eHN+blsHz7PjGMlR8JL8at8PDw8Ma8vIyetLt6owmTTl2UUuPh4eEd4E2K417YUR0UiGJcPDw8vK288lY7SEfzUrjKaJLw8PDwBrx8y84jjPxl5U9oFt94eHh4x3i9zboXBPfiiTwCxsPDw/seXq/dVV16/juFkhoPDw/vo7xeTJA0yapjClFxj4eHh3eMl7em8nJ5Mj6Vl+MvjhM8PDy8A7xe8Jq/mknckBxaGy48PDy8lPcDJ5baT2Pw5tAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

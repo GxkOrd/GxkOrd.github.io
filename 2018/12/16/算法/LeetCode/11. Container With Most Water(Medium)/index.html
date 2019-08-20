@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>11. Container With Most Water(Medium) | GxkOrd - blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode,LeetCode - Medium">
+    <meta name="description" content="题目描述原题 Description:Given n non-negative integers a1, a2, …, an , where each represents a point at coordinate (i, ai).n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and">
+<meta name="keywords" content="LeetCode,LeetCode - Medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11. Container With Most Water(Medium)">
+<meta property="og:url" content="https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/index.html">
+<meta property="og:site_name" content="GxkOrd - blog">
+<meta property="og:description" content="题目描述原题 Description:Given n non-negative integers a1, a2, …, an , where each represents a point at coordinate (i, ai).n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/16/算法/LeetCode/11/例子解释.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2018/12/16/算法/LeetCode/11/例子解释.jpg">
+<meta property="og:updated_time" content="2019-04-19T10:12:39.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11. Container With Most Water(Medium)">
+<meta name="twitter:description" content="题目描述原题 Description:Given n non-negative integers a1, a2, …, an , where each represents a point at coordinate (i, ai).n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and">
+<meta name="twitter:image" content="https://gxkord.github.io/2018/12/16/算法/LeetCode/11/例子解释.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">11. Container With Most Water(Medium)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">11. Container With Most Water(Medium)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-16T10:03:22.000Z" itemprop="datePublished" class="page-time">
+  2018-12-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">原题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题翻译"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原题翻译</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法一-Mine"><span class="post-toc-number">2.</span> <span class="post-toc-text">解法一(Mine)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解法二"><span class="post-toc-number">3.</span> <span class="post-toc-text">解法二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要思想-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">主要思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">源码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法/LeetCode/11. Container With Most Water(Medium)"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">11. Container With Most Water(Medium)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-16 18:03:22" datetime="2018-12-16T10:03:22.000Z"  itemprop="datePublished">2018-12-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
+<p><strong>Description</strong>:<br>Given n non-negative integers a1, a2, …, an , where each represents a point at coordinate (i, ai).<br>n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).<br>Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p><strong>Note</strong>:<br>You may not slant the container and n is at least 2.</p>
+<blockquote>
+<p><strong>Example</strong>: </p>
+<blockquote>
+<p><strong>Input</strong>: [1,8,6,2,5,4,8,3,7]<br><strong>Output</strong>: 49<br><strong>Explanation</strong>:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/16/算法/LeetCode/11/例子解释.jpg" alt="Example_Explanation" title>
+                </div>
+                <div class="image-caption">Example_Explanation</div>
+            </figure>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><blockquote>
+<p><strong>描述</strong>:<br>给定n个非负整数a1，a2，…，an，其中每个表示坐标（i，ai）处的点。<br>绘制n条垂直线，使得线i的两个端点位于（i，ai）和（i，0）。<br>找到两条线，它们与x轴一起形成一个容器，这样容器就含有最多的水。</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<blockquote>
+<p><strong>另外</strong>:<br>不要倾斜容器，n至少为2。</p>
+<blockquote>
+<p><strong>例如</strong>: </p>
+<blockquote>
+<p><strong>输如</strong>: [1,8,6,2,5,4,8,3,7]<br><strong>输出</strong>: 49<br><strong>解释</strong>:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2018/12/16/算法/LeetCode/11/例子解释.jpg" alt="例子解释" title>
+                </div>
+                <div class="image-caption">例子解释</div>
+            </figure>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="解法一-Mine"><a href="#解法一-Mine" class="headerlink" title="解法一(Mine)"></a>解法一(Mine)</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>得到可能出现的面积，求最大值。</p>
+<blockquote>
+<p>时间复杂度：O(n^2)。<br>打败了22.44%的答案。</p>
+</blockquote>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = Math.min(height[i], height[j]);</span><br><span class="line">            <span class="keyword">int</span> r = temp * (j - i);</span><br><span class="line">            <span class="keyword">if</span>(r &gt; result)</span><br><span class="line">                result = r;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h1><h2 id="主要思想-1"><a href="#主要思想-1" class="headerlink" title="主要思想"></a>主要思想</h2><p>仔细想想，解法一有什么问题？<br>在本题的例子中，第一条线高度为1，如果按照第一种解法运行，右边界需要从左往右遍历，依次求面积进行比较。但事实上，容器的高是由最短的线决定的，容器的面积毫无疑问地随右边界的增加而增加。我们真的有必要求出每块面积进行比较吗？<br>没错，这道题可以由一个标准的<strong>首尾指针法</strong>来解。</p>
+<blockquote>
+<p>时间复杂度：O(n)。</p>
+<h2 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">&gt;     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">&gt;         <span class="keyword">int</span> maxarea = <span class="number">0</span>, l = <span class="number">0</span>, r = height.length - <span class="number">1</span>;</span><br><span class="line">&gt;         <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">&gt;             maxarea = Math.max(maxarea, Math.min(height[l], height[r]) * (r - l));</span><br><span class="line">&gt;             <span class="keyword">if</span> (height[l] &lt; height[r])</span><br><span class="line">&gt;                 l++;</span><br><span class="line">&gt;             <span class="keyword">else</span></span><br><span class="line">&gt;                 r--;</span><br><span class="line">&gt;         &#125;</span><br><span class="line">&gt;         <span class="keyword">return</span> maxarea;</span><br><span class="line">&gt;     &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode-Medium/">LeetCode - Medium</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/&title=《11. Container With Most Water(Medium)》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/&title=《11. Container With Most Water(Medium)》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《11. Container With Most Water(Medium)》 — GxkOrd - blog&url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/17/算法/LeetCode/12. Integer to Roman(Medium)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">12. Integer to Roman(Medium)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/14/Java/深入理解java虚拟机/3. 垃圾收集器与内存分配策略/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">3. 垃圾收集器与内存分配策略</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/&title=《11. Container With Most Water(Medium)》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/&title=《11. Container With Most Water(Medium)》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《11. Container With Most Water(Medium)》 — GxkOrd - blog&url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/16/算法/LeetCode/11. Container With Most Water(Medium)/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNklEQVR42u3aQW7jQAwEwPz/015gTwEWkbs5MhBxSyfDUaQp6UCzOV9f8fH6e3z//P3495zr6/z0v/9eITk/ue/wwMbGxn4I+3V55OzkkV1/c31m8l+JBRsbG3srOylayS2TB3r9KNsrJEUUGxsbGzspWieFMLlv3iZhY2NjY7eXu7dhiBoJbGxsbOxR4cnj+/b6Sblq13lbloaNjY3969mzQe/v/Pzx+TY2Njb2L2Pf1RIkrcJ5mXnddGBjY2NvYucRfL6I9kHkbU9SxorCho2Njb2C3W6RSW5wPbi9jqLy0W8Sab2p29jY2Ngr2O1GmbwVSdqPT6dA0fqxsbGxV7DzH/T5aDYvJ7MGJn9hb0IlbGxs7BXslney0JP0K1lDvVkHGxsbexG73aDTxjpJecublnyFxbYebGxs7Aey89ho9gjazTonwVYxwMbGxsZex56FSvnP/Rzfrupoyw42Njb2InZbzGYbZZLi1L6SWeSEjY2NvY89Y7QNzKzknJTJHysXNjY29lJ2vsS7hgSzrTn5YPjHc7CxsbHXsZPicb7E2bC2LZ9Jo4KNjY29lZ2XlhycBD1HpWjUkGBjY2NvYrehz9Ftyih/FloVcRg2Njb2IvYsaWkXnQf9N491r6+GjY2NvYLdjmmTRiL/Jh9OtA3Pm9EFNjY29iJ2++M+iZlOov/ZmDlpXbCxsbG3sttQqd3iczI2aAe6w3eLjY2N/Vh2vjlmNtadlbEZeBgnYWNjYy9it6FSW3jy0UL7yOpNSNjY2NiL2PlF21jnfHjQlq46kMLGxsZex87bkjylmQ2M2809w4eLjY2NvYjdHkkAdNJstGW13pqDjY2NvZp9Eh6dBPrX35yMoovRLzY2NvbD2bMS0o4ZPhFR3VCNsbGxsR/LfpXHLAA6Hx7kY+Po9WBjY2MvYp+Ut08PbpOg6hOFFhsbG/uJ7Hs3wSdjg9kjbgcSb/6KjY2NvY7dFptzXn7+bETxdf50sbGxsZeyk1FrXurq7e93xUzY2NjY/yX73kIyi/jz9bx5cNjY2Njr2LNy0m6LnI0BZlvz37xabGxs7EXsu4pN3h7MYv3PjS6wsbGxH8v+AwNcESSbux0wAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

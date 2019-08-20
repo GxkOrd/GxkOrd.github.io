@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>第4章 存储器 | GxkOrd - blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="计算机组成原理">
+    <meta name="description" content="概述存储器分类 按存储介质分类  半导体存储器（TTL、MOS）   按材料不同，可分为TTL（双极型）半导体存储器和MOS半导体存储器。   磁表面存储器（磁头、磁载体）  磁芯存储器（硬磁材料、环状元件）  光盘存储器（激光、磁光材料）    按存取方式分类  存取时间与物理地址无关（随机访问）  随机存储器：在程序的执行过程中可读可写。  只读存储器：在程序的执行过程中只读。    存取时间">
+<meta name="keywords" content="计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第4章 存储器">
+<meta property="og:url" content="https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/index.html">
+<meta property="og:site_name" content="GxkOrd - blog">
+<meta property="og:description" content="概述存储器分类 按存储介质分类  半导体存储器（TTL、MOS）   按材料不同，可分为TTL（双极型）半导体存储器和MOS半导体存储器。   磁表面存储器（磁头、磁载体）  磁芯存储器（硬磁材料、环状元件）  光盘存储器（激光、磁光材料）    按存取方式分类  存取时间与物理地址无关（随机访问）  随机存储器：在程序的执行过程中可读可写。  只读存储器：在程序的执行过程中只读。    存取时间">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://gxkord.github.io/.io//存储器三个主要特性的关系.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%BB%E5%AD%98-%E8%BE%85%E5%AD%98%E5%B1%82%E6%AC%A1.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E7%BC%93%E5%AD%98-%E4%B8%BB%E5%AD%98%E5%B1%82%E6%AC%A1.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%BB%E5%AD%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%BB%E5%AD%98%E5%92%8CCPU%E7%9A%84%E8%81%94%E7%B3%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%A4%A7%E7%AB%AF%E3%80%81%E5%A4%A7%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%B0%8F%E7%AB%AF%E3%80%81%E5%B0%8F%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E8%8A%AF%E7%89%87%E5%AE%B9%E9%87%8F%E8%AE%A1%E7%AE%97.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E7%9A%84%E8%AF%91%E7%A0%81%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F-%E7%BA%BF%E9%80%89%E6%B3%95.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E7%9A%84%E8%AF%91%E7%A0%81%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F-%E9%87%8D%E5%90%88%E6%B3%95.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E9%9D%99%E6%80%81RAM.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E9%9D%99%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E9%9D%99%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E7%94%B5%E8%B7%AF%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Intel2114%E5%A4%96%E7%89%B9%E6%80%A7.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Intel2114-RAM%E7%9F%A9%E9%98%B564%C3%9764-%E8%AF%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Intel2114-RAM%E7%9F%A9%E9%98%B564%C3%9764-%E5%86%99.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF-%E4%B8%89%E7%AE%A1%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF-%E5%8D%95%E7%AE%A1%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%89%E7%AE%A1%E5%8A%A8%E6%80%81RAM%E8%8A%AF%E7%89%87-Intel1103-%E8%AF%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%89%E7%AE%A1%E5%8A%A8%E6%80%81RAM%E8%8A%AF%E7%89%87-Intel1103-%E5%86%99.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8D%95%E7%AE%A1%E5%8A%A8%E6%80%81RAM4116-16K%C3%971%E4%BD%8D-%E5%A4%96%E7%89%B9%E6%80%A7.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM4116-16K%C3%971%E4%BD%8D%E8%8A%AF%E7%89%87-%E8%AF%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM4116-16K%C3%971%E4%BD%8D%E8%8A%AF%E7%89%87-%E5%86%99.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM%E7%9A%84%E5%88%B7%E6%96%B0-%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM%E7%9A%84%E5%88%B7%E6%96%B0-%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8A%A8%E6%80%81RAM%E7%9A%84%E5%88%B7%E6%96%B0-%E5%BC%82%E6%AD%A5%E5%88%B7%E6%96%B0.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//ROM-PROM.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//ROM-EPROM.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%AD%98%E5%82%A8%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95-%E4%BD%8D%E6%89%A9%E5%B1%95.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%AD%98%E5%82%A8%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95-%E5%AD%97%E6%89%A9%E5%B1%95.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%AD%98%E5%82%A8%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95-%E5%AD%97%E4%BD%8D%E5%90%8C%E6%97%B6%E6%89%A9%E5%B1%95.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%B1%89%E6%98%8E%E7%A0%81%E5%88%86%E7%BB%84%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E6%B1%89%E6%98%8E%E7%A0%81%E5%88%86%E7%BB%84-%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%BB%93%E6%9E%9C.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//汉明码-例题.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%8D%95%E4%BD%93%E5%A4%9A%E5%AD%97%E7%B3%BB%E7%BB%9F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%A4%9A%E4%BD%93%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F-%E9%AB%98%E4%BD%8D%E4%BA%A4%E5%8F%89.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%A4%9A%E4%BD%93%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F-%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89-4%E4%B8%AA%E5%AD%98%E5%82%A8%E4%BD%93%E4%BA%A4%E5%8F%89%E8%AE%BF%E9%97%AE%E7%9A%84%E6%97%B6%E9%97%B4%E5%85%B3%E7%B3%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E5%9B%9B%E4%BD%93%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%E5%AD%98%E5%82%A8%E5%99%A8%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Cache%E7%9A%84%E6%8F%90%E5%87%BA.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Cache-%E4%B8%BB%E5%AD%98%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Cache%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86%E6%A1%86%E5%9B%BE.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Cache%E7%9A%84%E8%AF%BB%E6%95%B0%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Cache-%E4%B8%BB%E5%AD%98%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84-%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//Cache-%E4%B8%BB%E5%AD%98%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84-%E7%BB%84%E7%9B%B8%E8%81%94%E6%98%A0%E5%B0%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A3%81%E8%AE%B0%E5%BD%95%E5%8E%9F%E7%90%86-%E5%86%99.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A3%81%E8%AE%B0%E5%BD%95%E5%8E%9F%E7%90%86-%E8%AF%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A1%AC%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A3%81%E7%9B%98%E9%A9%B1%E5%8A%A8%E5%99%A8.jpg">
+<meta property="og:image" content="https://gxkord.github.io/.io//%E8%BD%AF%E7%9B%98%E7%89%87.jpg">
+<meta property="og:updated_time" content="2019-04-08T13:41:11.330Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第4章 存储器">
+<meta name="twitter:description" content="概述存储器分类 按存储介质分类  半导体存储器（TTL、MOS）   按材料不同，可分为TTL（双极型）半导体存储器和MOS半导体存储器。   磁表面存储器（磁头、磁载体）  磁芯存储器（硬磁材料、环状元件）  光盘存储器（激光、磁光材料）    按存取方式分类  存取时间与物理地址无关（随机访问）  随机存储器：在程序的执行过程中可读可写。  只读存储器：在程序的执行过程中只读。    存取时间">
+<meta name="twitter:image" content="https://gxkord.github.io/.io//存储器三个主要特性的关系.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第4章 存储器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第4章 存储器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-16T07:05:00.000Z" itemprop="datePublished" class="page-time">
+  2019-03-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储器分类"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">存储器分类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储器的层次结构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">存储器的层次结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#主存储器"><span class="post-toc-number">2.</span> <span class="post-toc-text">主存储器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#半导体存储芯片简介"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">半导体存储芯片简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#随机存取存储器"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">随机存取存储器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#只读存储器（ROM）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">只读存储器（ROM）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储器与CPU的连接"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">存储器与CPU的连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储器的校验"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">存储器的校验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提高访问速度的措施"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">提高访问速度的措施</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#高速缓冲存储器"><span class="post-toc-number">3.</span> <span class="post-toc-text">高速缓冲存储器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cache-主存地址映射"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Cache-主存地址映射</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#替换算法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">替换算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#辅助存储器（非重要）"><span class="post-toc-number">4.</span> <span class="post-toc-text">辅助存储器（非重要）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#磁记录原理和记录方式"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">磁记录原理和记录方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#硬磁盘存储器"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">硬磁盘存储器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软磁盘存储器"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">软磁盘存储器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#光盘存储器"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">光盘存储器</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-计算机基础/计算机组成原理/第4章 存储器"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第4章 存储器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-16 15:05:00" datetime="2019-03-16T07:05:00.000Z"  itemprop="datePublished">2019-03-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机基础/">计算机基础</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="存储器分类"><a href="#存储器分类" class="headerlink" title="存储器分类"></a>存储器分类</h2><ol>
+<li><p>按存储介质分类</p>
+<ul>
+<li>半导体存储器（TTL、MOS）</li>
+</ul>
+<blockquote>
+<p>按材料不同，可分为TTL（双极型）半导体存储器和MOS半导体存储器。</p>
+</blockquote>
+<ul>
+<li><p>磁表面存储器（磁头、磁载体）</p>
+</li>
+<li><p>磁芯存储器（硬磁材料、环状元件）</p>
+</li>
+<li><p>光盘存储器（激光、磁光材料）</p>
+</li>
+</ul>
+</li>
+<li><p>按存取方式分类</p>
+<ul>
+<li><p>存取时间与物理地址无关（随机访问）</p>
+<ul>
+<li><p>随机存储器：在<strong>程序的执行过程中</strong>可<strong>读</strong>可<strong>写</strong>。</p>
+</li>
+<li><p>只读存储器：在<strong>程序的执行过程中</strong>只<strong>读</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>存取时间与物理地址有关（串行访问）</p>
+<ul>
+<li><p>顺序存取存储器（磁带）</p>
+</li>
+<li><p>直接存取存储器（磁盘）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>按在计算机中的作用分类</p>
+<ul>
+<li><p>主存储器 </p>
+<ul>
+<li><p>RAM（静态RAM、动态RAM）</p>
+</li>
+<li><p>ROM（MROM、PROM、EPROM、EEPROM）</p>
+</li>
+</ul>
+</li>
+<li><p>Flash Memory</p>
+</li>
+<li><p>高速缓冲存储器（Cache）</p>
+</li>
+<li><p>辅助存储器（如：磁盘、磁带、光盘）</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><ol>
+<li>存储器三个主要特性的关系</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//存储器三个主要特性的关系.jpg" alt="存储器三个主要特性的关系" title>
+                </div>
+                <div class="image-caption">存储器三个主要特性的关系</div>
+            </figure>
+
+<ol start="2">
+<li><p>缓存-主存层次和主存-辅存层次</p>
+<ul>
+<li><p>(1) 主存-辅存层次是为了解决主存容量小的问题。</p>
+<p>辅存容量较大，可以将暂时不需要的数据（或指令）保存起来，主存需要时再读取。</p>
+<p><img src="/.io//%E4%B8%BB%E5%AD%98-%E8%BE%85%E5%AD%98%E5%B1%82%E6%AC%A1.jpg" alt="主存-辅存层次"></p>
+<blockquote>
+<p>主存和辅存的整体，称为<strong>虚拟存储器</strong>。主存和辅存的地址空间相互独立，所以虚拟存储器中的数据需要<strong>虚地址（逻辑地址）</strong>来存取。</p>
+<p>相对的，主存中的地址称为<strong>实地址（物理地址）</strong>。</p>
+</blockquote>
+</li>
+<li><p>(2) 缓存-主存层次是为了解决主存速度慢的问题。</p>
+<p>缓存中保存了主存中部分常用数据（或指令）的副本，以提高CPU对这些常用信息（或指令）的读取速度。</p>
+<p><img src="/.io//%E7%BC%93%E5%AD%98-%E4%B8%BB%E5%AD%98%E5%B1%82%E6%AC%A1.jpg" alt="缓存-主存层次"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h1><h2 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h2><ol>
+<li><p>主存的基本组成</p>
+<p>实际上，通过MAR中的地址访问某个存储单元时，还需要经过<em>地址译码</em>、<em>驱动</em>等电路，才能找到所需访问的单元。读出时，需经过<em>读出放大器</em>，才能将选中单元的存储字送到MDR。写入时，MDR中的数据也必须经过<em>写入电路</em>才能真正写入到被选中单元中。</p>
+<p><img src="/.io//%E4%B8%BB%E5%AD%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg" alt="主存的基本组成"></p>
+</li>
+<li><p>主存和CPU的联系 </p>
+</li>
+</ol>
+<p><img src="/.io//%E4%B8%BB%E5%AD%98%E5%92%8CCPU%E7%9A%84%E8%81%94%E7%B3%BB.jpg" alt="主存和CPU的联系"></p>
+<ol start="3">
+<li><p>主存中存储单元地址的分配</p>
+<p>12345678H这个数据如何在主存储器中进行存储？</p>
+<ul>
+<li><p>(1) <strong>高位字节</strong>地址为字地址（大端、大尾方式）</p>
+<p><img src="/.io//%E5%A4%A7%E7%AB%AF%E3%80%81%E5%A4%A7%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg" alt="大端、大尾方式"></p>
+</li>
+<li><p>(2) <strong>低位字节</strong>地址为字地址（小端、小尾方式）</p>
+<p><img src="/.io//%E5%B0%8F%E7%AB%AF%E3%80%81%E5%B0%8F%E5%B0%BE%E6%96%B9%E5%BC%8F.jpg" alt="小端、小尾方式"></p>
+<p>设地址线<strong>24</strong>根——按<strong>字节</strong>寻址——<strong>2^24 = 16MB</strong></p>
+<p>若字长为<strong>16</strong>位——按 <strong>字</strong> 寻址——<strong>8MW</strong></p>
+<p>若字节为<strong>32</strong>位——按 <strong>字</strong> 寻址——<strong>4MW</strong></p>
+</li>
+</ul>
+</li>
+<li><p>主存的技术指标</p>
+<p>(1) 存储容量：主存存放二进制代码的总位数。</p>
+<p>(2) 存储速度 </p>
+<ul>
+<li><p>存取时间：存储器的<strong>访问时间</strong>（读出时间或写入时间）。</p>
+</li>
+<li><p>存取周期：<strong>连续两次独立的存储器操作</strong>（读或写）所需的<strong>最小间隔时间</strong>。（读周期或写周期）</p>
+</li>
+</ul>
+<p>(3) 存储器带宽</p>
+<p>表示单位时间内存储器存取的信息量，单位可用字/秒或字节/秒或位/秒来表示。</p>
+<blockquote>
+<p>计算：若存周期为500ns，每个存储周期可访问16位（数据总线宽度），求它的带宽？</p>
+<p>解：</p>
+<p>$\frac{16位}{50ns} = \frac{16位×10^9}{50秒} = 32M位/秒$</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="半导体存储芯片简介"><a href="#半导体存储芯片简介" class="headerlink" title="半导体存储芯片简介"></a>半导体存储芯片简介</h2><ol>
+<li><p>半导体存储芯片的基本结构</p>
+<p><em>译码驱动</em>能把地址总线送过来的地址信号翻译成对应存储单元的选择信号，该信号在<em>读/写电路</em>的配合下完成对选中单元的读/写操作。</p>
+<p>读/写电路包括读出<em>放大器</em>和<em>写入电路</em>，用来完成读/写操作。</p>
+<p>存储芯片通过地址总线、数据总线和控制总线与外部连接。</p>
+<p><img src="/.io//%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.jpg" alt="半导体存储芯片的基本结构"></p>
+<p><img src="/.io//%E8%8A%AF%E7%89%87%E5%AE%B9%E9%87%8F%E8%AE%A1%E7%AE%97.jpg" alt="芯片容量计算.jpg"></p>
+<p>片选线：$\overline{CS}$、$\overline{CE}$</p>
+<p>读/写控制线：$\overline{WE}$（低电平写 高电平读）</p>
+<p>  $\overline{OE}$（允许读）、$\overline{WE}$（允许写）</p>
+<p><strong>存储芯片片选线的作用</strong>：</p>
+<p>用16K × 1位的存储芯片组成64K × 8位的存储器：</p>
+<p>![32片存储芯片组成64K × 8位的存储器](用16K × 1位的存储芯片组成64K × 8位的存储器.jpg)</p>
+<p>当地址为65535时，</p>
+<p>由于$64K = 64 × 2^{10} = 65536$，显然，65535保存在最后一组（右）。</p>
+<p>可以在最后一组的芯片的同一位置各存放一位数据组成一个字符（共8位）。</p>
+</li>
+<li><p>半导体存储芯片的译码驱动方式</p>
+<p>(1) 线选法</p>
+<blockquote>
+<p><strong>译码器</strong>：</p>
+<p>以<strong>二次译码器</strong>为例，2个输入，4个输出。若输入00，则<em>输出线0</em>有效，其他输出线无效；若输入01，则<em>输出线1</em>有效，其他输出线无效。</p>
+</blockquote>
+<p>下图的<strong>地址译码器</strong>与之类似。输入有四个(A1,A2,A3,A4)，输出有16个（2^4，与输入相对应）。</p>
+<p><strong>读/写控制电路</strong>用来表示位，位线的数量与位数相等。</p>
+<p><img src="/.io//%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E7%9A%84%E8%AF%91%E7%A0%81%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F-%E7%BA%BF%E9%80%89%E6%B3%95.jpg" alt="线选法"></p>
+<p>而对于容量大(m × n)的半导体存储芯片，若使用线选法，则需要大量的数据线(logm + n条)。这<strong>严重增加了集成芯片的难度</strong>。</p>
+<p>(2) 重合法</p>
+<p>下图有两根MOS管，用来控制电流的流向，从而切换译码器。</p>
+<p>对于m × n的半导体存储芯片，若使用重合法，则需要log(m+n)条数据线。</p>
+<p><img src="/.io//%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E7%9A%84%E8%AF%91%E7%A0%81%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F-%E9%87%8D%E5%90%88%E6%B3%95.jpg" alt="重合法"></p>
+</li>
+</ol>
+<h2 id="随机存取存储器"><a href="#随机存取存储器" class="headerlink" title="随机存取存储器"></a>随机存取存储器</h2><ol>
+<li><p><strong>静态RAM（SRAM）</strong></p>
+<blockquote>
+<p>Q：</p>
+<ul>
+<li><p>保存0和1的原理是什么？</p>
+</li>
+<li><p>基本单元电路的构成是什么？</p>
+</li>
+<li><p>对单元电路如何读出和写入？</p>
+</li>
+<li><p>典型芯片的结构是什么样子的？</p>
+</li>
+<li><p>静态RAM芯片如何进行读出和写入操作？</p>
+</li>
+</ul>
+</blockquote>
+<p>(1) 静态RAM基本电路</p>
+<blockquote>
+<p>有哪些保存0和1的方式？</p>
+<ul>
+<li><p>开关（开：1；关：0）</p>
+</li>
+<li><p>熔丝（连通：1；断开：0）- 难以更改</p>
+</li>
+<li><p><strong>触发器</strong></p>
+</li>
+</ul>
+</blockquote>
+<p>T1~T4：由MOS管组成的触发器（用来存放0和1）</p>
+<p>T5、T6：行开关</p>
+<p>T7、T8：列开关</p>
+<p>A：触发器原端</p>
+<p>A’：触发器非端</p>
+<p><img src="/.io//%E9%9D%99%E6%80%81RAM.jpg" alt="静态RAM"></p>
+<p>① 静态RAM基本电路的<strong>读</strong>操作</p>
+<p>行选 → T5、T6开</p>
+<p>列选 → T7、T8开</p>
+<p>读操作有效</p>
+<p>VA → T6 → T8 → 读放 → Dout</p>
+<p><img src="/.io//%E9%9D%99%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E7%94%B5%E8%B7%AF%E7%9A%84%E8%AF%BB%E6%93%8D%E4%BD%9C.jpg" alt="静态RAM基本电路的读操作"></p>
+<p>② 静态RAM基本电路的<strong>写</strong>操作</p>
+<p>行选 → T5、T6开</p>
+<p>列选 → T7、T8开</p>
+<p>写操作有效</p>
+<p>DIN → 两个写放</p>
+<p> DIN(左) → 反相 → T7 → T5 → A‘</p>
+<p> DIN(右) → T8 → T6 → A</p>
+<p><img src="/.io//%E9%9D%99%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E7%94%B5%E8%B7%AF%E7%9A%84%E5%86%99%E6%93%8D%E4%BD%9C.jpg" alt="静态RAM基本电路的写操作"></p>
+<p>(2) 静态RAM芯片举例（简单了解）</p>
+<p>①  Intel2114外特性 </p>
+<p><img src="/.io//Intel2114%E5%A4%96%E7%89%B9%E6%80%A7.jpg" alt="Intel2114外特性"></p>
+<p>② Intel2114 RAM矩阵(64 × 64) - 读</p>
+<p><img src="/.io//Intel2114-RAM%E7%9F%A9%E9%98%B564%C3%9764-%E8%AF%BB.jpg" alt="Intel2114 RAM矩阵(64 × 64) - 读"></p>
+<p>③ Intel2114 RAM矩阵(64 × 64) -写</p>
+<p><img src="/.io//Intel2114-RAM%E7%9F%A9%E9%98%B564%C3%9764-%E5%86%99.jpg" alt="Intel2114 RAM矩阵(64 × 64)-写"></p>
+</li>
+<li><p>动态RAM（DRAM）</p>
+<blockquote>
+<p>Q：</p>
+<ul>
+<li><p>保存0和1的原理是什么？</p>
+</li>
+<li><p>基本单元电路的构成是什么？</p>
+</li>
+<li><p>对单元电路如何读出和写入？</p>
+</li>
+<li><p>典型芯片的结构是什么样子的？</p>
+</li>
+<li><p>动态RAM芯片如何进行读出和写入操作？</p>
+</li>
+<li><p>动态RAM为什么要刷新，刷新方法？</p>
+</li>
+</ul>
+</blockquote>
+<p>(1) 动态RAM基本单元电路</p>
+<p>靠电容存储电荷的原理来寄存信息。若电容上存在足够多的电荷表示存“1”，电容上无电荷表示存“0”。</p>
+<ul>
+<li><p>三管式</p>
+<blockquote>
+<ul>
+<li><p><strong>读出</strong>时，先对<em>预充电管T4</em>置一<em>预充电信号</em>，使读数据线达到高电平VDD。然后由读选择线打开T2，若<em>T1的极间电容Cg</em>存有足够电荷（被认为原存“1”），使T1导通，则因T2、T1接地，使读数据线降为零电平，读出“0”信息；若Cg没有足够电荷（原存“0”），则T1截止，读数据线为高电平不变，读出“1”信息。可见，读出线的高低电平可以区分“1”和“0”，且<strong>读出与原存信息相反</strong>。</p>
+</li>
+<li><p>写入时，将写信号加到写数据线上，然后由写数据线打开T3，这样，Cg便能随输入信息充电（写“1”）或放电（写“2”），且<strong>写入与输入信息相同</strong>。</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF-%E4%B8%89%E7%AE%A1%E5%BC%8F.jpg" alt="三管MOS动态RAM基本单元电路"></p>
+</li>
+<li><p>单管式</p>
+<blockquote>
+<p>为了提高集成度，将三管电路简化为单管。</p>
+<ul>
+<li><p>去掉T1，将信息保存到电容 Cs中。</p>
+</li>
+<li><p>将T2、T3合并为一个管子T。</p>
+</li>
+<li><p><strong>读出</strong>时，字线上的高电平使T接通，若Cs有电荷，视为“1”；若Cs无电荷，视为“0”。（读出结束时，Cs中电荷释放完毕，所以为破坏性读出，必须再生。）</p>
+</li>
+<li><p><strong>写入</strong>时，字线上的高电平使T接通，若数据线为高电平，经过T对Cs充电，使其存“1”；若数据线为低电平，Cs经T放电，使其存“0”。</p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM%E5%9F%BA%E6%9C%AC%E5%8D%95%E5%85%83%E7%94%B5%E8%B7%AF-%E5%8D%95%E7%AE%A1%E5%BC%8F.jpg" alt="单管MOS动态RAM基本单元电路"></p>
+</li>
+</ul>
+<p>(2) 动态RAM芯片举例</p>
+<p>① 三管动态RAM芯片(Intel 1103) - 读</p>
+<p><img src="/.io//%E4%B8%89%E7%AE%A1%E5%8A%A8%E6%80%81RAM%E8%8A%AF%E7%89%87-Intel1103-%E8%AF%BB.jpg" alt="三管动态RAM芯片(Intel 1103) - 读"></p>
+<p>② 三管动态RAM芯片(Intel 1103) - 写</p>
+<p><img src="/.io//%E4%B8%89%E7%AE%A1%E5%8A%A8%E6%80%81RAM%E8%8A%AF%E7%89%87-Intel1103-%E5%86%99.jpg" alt="三管动态RAM芯片(Intel 1103) - 写"></p>
+<p>③ 单管动态RAM 4116 (16K × 1位)外特性</p>
+<p><img src="/.io//%E5%8D%95%E7%AE%A1%E5%8A%A8%E6%80%81RAM4116-16K%C3%971%E4%BD%8D-%E5%A4%96%E7%89%B9%E6%80%A7.jpg" alt="单管动态RAM 4116 (16K × 1位)外特性"></p>
+<p>④ 4116(16K × 1位)芯片<strong>读</strong>原理</p>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM4116-16K%C3%971%E4%BD%8D%E8%8A%AF%E7%89%87-%E8%AF%BB.jpg" alt="4116(16K × 1位)芯片**读**原理"></p>
+<p>⑤ 4116(16K × 1位)芯片<strong>写</strong>原理</p>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM4116-16K%C3%971%E4%BD%8D%E8%8A%AF%E7%89%87-%E5%86%99.jpg" alt="4116(16K × 1位)芯片**写**原理"></p>
+<p>(4) 动态RAM刷新（刷新与行地址有关）</p>
+<p>① 集中刷新（存取周期为0.5μs）</p>
+<p>以128 × 128为例：</p>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM%E7%9A%84%E5%88%B7%E6%96%B0-%E9%9B%86%E4%B8%AD%E5%88%B7%E6%96%B0.jpg" alt="集中刷新时间分配示意图"></p>
+<p><strong>“死区”</strong>为 $0.5μs × 128 = 64μs$</p>
+<p><strong>“死时间率”</strong>为 $128/4000 × 100% = 3.2%$</p>
+<p>② 分散刷新（存取周期1μs）</p>
+<p>以128 × 128为例：</p>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM%E7%9A%84%E5%88%B7%E6%96%B0-%E5%88%86%E6%95%A3%E5%88%B7%E6%96%B0.jpg" alt="分散刷新时间分配示意图"></p>
+<p><strong>无“死区”</strong></p>
+<p>存取周期为$0.5μs + 0.5μs = 1μs$（<strong>周期变长，性能降低</strong>）</p>
+<p>③ 异步刷新（分散刷新与集中刷新相结合）（存储周期为0.5μs）</p>
+<p>对于128×128的存储芯片：</p>
+<p>若每隔<strong>15.6μs</strong>刷新一行</p>
+<p><img src="/.io//%E5%8A%A8%E6%80%81RAM%E7%9A%84%E5%88%B7%E6%96%B0-%E5%BC%82%E6%AD%A5%E5%88%B7%E6%96%B0.jpg" alt="异步刷新时间分配示意图"></p>
+<p>每行每隔<strong>2ms</strong>刷新一次</p>
+<p>死区为<strong>0.5μs</strong></p>
+<p><strong>将刷新安排在指令译码阶段，不会出现“死区”问题。</strong></p>
+</li>
+<li><p>动态RAM和静态RAM的比较</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>DRAM</th>
+<th>SRAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>存储原理</td>
+<td>电容</td>
+<td>触发器</td>
+</tr>
+<tr>
+<td>集成度</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>芯片引脚</td>
+<td>少</td>
+<td>多</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>慢</td>
+<td>快</td>
+</tr>
+<tr>
+<td>刷新</td>
+<td>有</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p>   DRAM（动态RAM）常用于做主存；SRAM（静态RAM）常用于做缓存。</p>
+<h2 id="只读存储器（ROM）"><a href="#只读存储器（ROM）" class="headerlink" title="只读存储器（ROM）"></a>只读存储器（ROM）</h2><ul>
+<li><p>早期的只读存储器——由厂家写内容</p>
+</li>
+<li><p>改进1——用户可以自己写（一次性）</p>
+</li>
+<li><p>改进2——可以多次写（要能对信息进行擦除）</p>
+</li>
+<li><p>改进3——电可擦写（特定设备）</p>
+</li>
+<li><p>改进4——电可擦写（直接连接到计算机）</p>
+</li>
+</ul>
+<ol>
+<li><p>掩模ROM（MROM）</p>
+<p>行列选择交叉处有MOS管为“1”</p>
+<p>行列选择交叉处无MOS管为“0”</p>
+</li>
+<li><p>PROM（一次性编程）</p>
+<p><img src="/.io//ROM-PROM.jpg" alt="PROM"></p>
+<p>熔丝断：为“0”</p>
+<p>熔丝未断：为“1”</p>
+</li>
+<li><p>EPROM（多次性编程）</p>
+<p>N型沟道浮动栅MOS电路</p>
+<p><img src="/.io//ROM-EPROM.jpg" alt="EPROM"></p>
+<p>D端加正电压——形成浮动栅——S与D不导通为“0”</p>
+<p>D端不加正电压——不形成浮动栅——S与D导通为“1”</p>
+<p><strong>使用紫外线驱散浮动栅（擦除过程麻烦）</strong></p>
+</li>
+<li><p>EEPROM（多次编程）</p>
+<p>电可擦写</p>
+<p>局部擦写</p>
+<p>全部擦写</p>
+</li>
+<li><p>Flash Memory（闪速型存储器）</p>
+</li>
+</ol>
+<blockquote>
+<p>EPROM —— 价格便宜 集成度高</p>
+<p>EEPROM —— 电可擦洗重写</p>
+<p>Flash Memory —— 比EEPROM快 具备RAM功能</p>
+</blockquote>
+<h2 id="存储器与CPU的连接"><a href="#存储器与CPU的连接" class="headerlink" title="存储器与CPU的连接"></a>存储器与CPU的连接</h2><ol>
+<li><p>存储器容量的扩展</p>
+<ul>
+<li><p>(1) 位扩展（增加存储字长）</p>
+<p>用<strong>2片</strong>1K × 4位存储芯片组成1K × 8位的存储器</p>
+<blockquote>
+<p>1K → 10根地址线</p>
+<p>8位 → 8根数据线</p>
+</blockquote>
+<p><img src="/.io//%E5%AD%98%E5%82%A8%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95-%E4%BD%8D%E6%89%A9%E5%B1%95.jpg" alt="由2片1K×4位的芯片组成1K×8位的存储器"></p>
+</li>
+<li><p>(2) 字扩展</p>
+<p>用<strong>2片</strong>1K × 8位存储芯片组成2K × 8位的存储器</p>
+<blockquote>
+<p>2K → 11根地址线</p>
+<p>8位 → 8根数据线</p>
+</blockquote>
+<p><img src="/.io//%E5%AD%98%E5%82%A8%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95-%E5%AD%97%E6%89%A9%E5%B1%95.jpg" alt="由2片1K×8位的芯片组成2K×8位的存储器"></p>
+</li>
+<li><p>(3) 字、位同时扩展</p>
+<p>用<strong>8片</strong>1K × 4位存储芯片组成4K × 8位的存储器</p>
+<blockquote>
+<p>4K → 12根地址线</p>
+<p>8位 → 8根数据线</p>
+</blockquote>
+<p><img src="/.io//%E5%AD%98%E5%82%A8%E5%99%A8%E5%AE%B9%E9%87%8F%E7%9A%84%E6%89%A9%E5%B1%95-%E5%AD%97%E4%BD%8D%E5%90%8C%E6%97%B6%E6%89%A9%E5%B1%95.jpg" alt="由8片1K×4位存储芯片组成4K×8位的存储器"></p>
+</li>
+</ul>
+</li>
+<li><p>存储器与CPU的连接</p>
+<p>(1) 地址线的连接 </p>
+<p>(2) 数据线的连接</p>
+<p>(3) 读/写命令线的连接</p>
+<p>(4) 片选线的连接</p>
+<p>(5) 合理选择存储芯片</p>
+<p>(6) 其他（时序、负载）</p>
+<blockquote>
+<p> 例4.1、例4.2。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="存储器的校验"><a href="#存储器的校验" class="headerlink" title="存储器的校验"></a>存储器的校验</h2><ol>
+<li><p>为什么要对存储器的信息进行校验？</p>
+</li>
+<li><p>为了能够校验出信息是否正确，如何进行编码？</p>
+</li>
+<li><p>检测和纠错能力与什么因素有关？</p>
+</li>
+<li><p>校验出信息出错后是如何进行纠错的？</p>
+</li>
+<li><p>除了教材上讲的校验码，你还知道哪些容错编码？原理是什么？</p>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li><p>合法代码集合</p>
+<ol>
+<li><p>{000, 001, 010, 011, 100, 101, 110, 111}</p>
+<p>若出现错误代码，不会被发现。</p>
+<p><strong>检0位错，纠0位错。</strong></p>
+</li>
+<li><p>{000, 011, 101, 110}（代码中1的个数为偶数。）</p>
+<p>若出现错误代码100，能检测到1位错，但并不能纠错（来源可能是000或101或110）。</p>
+<p><strong>检1位错，纠0位错。</strong></p>
+</li>
+<li><p>{000, 111}（3位表示1位）</p>
+<p>若出现错误代码100，几乎可以认定是第1位出错了（正确代码为000）。</p>
+<p>若出现错误代码110，几乎可以认定是第3位出错了（正确代码为111）。</p>
+<p><strong>检1位错，纠1位错。</strong></p>
+</li>
+<li><p>{0000, 1111}（4位表示1位）</p>
+<p>若出现错误代码1000，几乎可以认定是第1位出错了（正确代码为0000）。</p>
+<p>若出现错误代码1100，几乎可以认定是第1位出错了（正确代码无法确定）。</p>
+<p><strong>检2位错，纠1位错。</strong></p>
+</li>
+<li><p>{00000, 11111}（5位表示1位）</p>
+<p>若出现错误代码11000，几乎可以认定第2、3位出错了（正确代码为00000）。</p>
+<p>若出现错误代码11100，几乎可以认定第4、5位出错了（正确代码为11111）。</p>
+<p><strong>检2位错，纠2位错。</strong></p>
+</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li><p>编码的最小距离</p>
+<p>指任意两组合法代码之间<strong>二进制位</strong>的<strong>最少差异数</strong>。</p>
+<p><strong>编码的纠错、检错能力与编码的最小距离有关。</strong></p>
+<p>$L - 1 = D + C (D &gt;= C)$</p>
+<blockquote>
+<p>L —— 编码的最小距离</p>
+<p>D —— 检测错误的位数</p>
+<p>C —— 纠正错误的位数</p>
+</blockquote>
+<p>例如，当L=3时，这种编码可视为最多能检错二位，或能检错一位、纠错一位。</p>
+<p><strong>汉明码是具有一位纠错能力的编码。</strong></p>
+</li>
+<li><p>汉明码的组成</p>
+<ul>
+<li><p>汉明码采用奇偶检验</p>
+</li>
+<li><p>汉明码采用分组检验</p>
+</li>
+</ul>
+<p>若要储存的信息为00100011，增加1位校验位<strong>1</strong>00100011，使‘1’的个数为偶数。若读出的信息中‘1’的个数为奇数，即可检1位错。</p>
+<blockquote>
+<p>一种分组方式（基于划分的分组方式）：可以采用4位一组，得到<strong>1</strong>0010 <strong>0</strong>0011，若前五位中‘1’为奇数，则前五位有1位错，这样就能大大缩短需要检错的范围。</p>
+</blockquote>
+<ul>
+<li><p>汉明码的分组是一种非划分方式。</p>
+<ul>
+<li><p>若有7位数据（1 - 2 - 3 - 4 - 5 - 6 - 7），将其分成3组，每组有1位校验位，共包含4位数据位。如下图所示：</p>
+<p><img src="/.io//%E6%B1%89%E6%98%8E%E7%A0%81%E5%88%86%E7%BB%84%E6%96%B9%E5%BC%8F.jpg" alt="汉明码分组方式"></p>
+<p>按上图方式对三组数据进行奇偶校验（异或），得到校验结果$P_3$，$P_2$，$P_1$。（校验结果为1则该组出错）</p>
+<p>结论如下：</p>
+<p><img src="/.io//%E6%B1%89%E6%98%8E%E7%A0%81%E5%88%86%E7%BB%84-%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E7%BB%93%E6%9E%9C.jpg" alt="汉明码分组-奇偶校验结果"></p>
+</li>
+<li><p>如何分组？</p>
+<p>第1组：XXXX1（1）</p>
+<p>第2组：XXX1X（2）</p>
+<p>第3组：XX1XX（4）</p>
+<p>第4组：X1XXX（8）</p>
+<p>以此类推……</p>
+</li>
+</ul>
+</li>
+<li><p>汉明码的组成需要添加多少位检测位？</p>
+<p>$2^k&gt;=n+k+1$</p>
+</li>
+<li><p>检测位的位置？</p>
+<p>$2^i(i=0,1,2,3,…)$</p>
+</li>
+<li><p>检测位的取值？</p>
+<p>与该位所在的检测“小组”所承担的奇偶校验任务有关。</p>
+<blockquote>
+<p>各检测位$C_i$所承担的检测小组为：</p>
+<p><strong>$C_1$</strong>检测的g1小组包含第1, 2, 3, 7, 9, 11, …位（二进制编码为X…XXX1）</p>
+<p><strong>$C_2$</strong>检测的g2小组包含第2, 3, 6, 7, 10, 11, …位（二进制编码为X…XX1X）</p>
+<p><strong>$C_4$</strong>检测的g3小组包含第4, 5, 6, 7, 12, 13, …位（二进制编码为X…X1XX）</p>
+<p><strong>$C_8$</strong>检测的g4小组包含第8, 9, 10, 11, 12, 13, …位（二进制编码为X…1XXX）</p>
+<p>……</p>
+<p>$g_i$小组独占$2^{i-1}$位，二进制编码为0…10…0</p>
+<p>$g_i$和$g_j$小组共同占第$2^{i-1}+2^{j-1}$位，二进制编码为0…010…010…0</p>
+<p>$g_i$、$g_j$和$g_l$小组共同占第$2^{i-1}+2^{j-1}+2^{l-1}$位</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong>例题</strong>：求0101按“偶校验”配置的汉明码？</p>
+<p><strong>解</strong>：</p>
+<p>$∵n=4$</p>
+<p>根据$2^k&gt;=n+k+1$，得$k=3$</p>
+<p>汉明码排序如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/.io//汉明码-例题.jpg" alt="汉明码排序" title>
+                </div>
+                <div class="image-caption">汉明码排序</div>
+            </figure>
+
+<p>$C_1=3⊕5⊕7=0$</p>
+<p>$C_2=3⊕6⊕7=1$</p>
+<p>$C_4=5⊕6⊕7=0$</p>
+<p>$∴$ 0101的汉明码为 <strong>0100101</strong></p>
+</blockquote>
+</li>
+<li><p>汉明码的纠错过程</p>
+<p>形成新的检验位$P_i$，其位数与增添的检测位有关，</p>
+<p>如增添3位（k=3），新的检测位$P_4$、$P_2$、$P_1$</p>
+<p>以k=3位例，$P_i$的取值为：</p>
+<p>  $P_1=1⊕3⊕5⊕7$</p>
+<p>  $P_2=2⊕3⊕6⊕7$</p>
+<p>  $P_4=4⊕5⊕6⊕7$</p>
+<p>对于按“偶校验”配置的汉明码：</p>
+<p>不出错时， $P_1=0$，$P_2=0$，$P_4=0$</p>
+<blockquote>
+<p><strong>例题</strong>：已知接收的汉明码为0100111，</p>
+<p>（按配偶原则配置）试问要求传送的信息是什么？</p>
+<p><strong>解</strong>：</p>
+<p>纠错过程如下：</p>
+<p>$P_1=1⊕3⊕5⊕7=0$ 无错</p>
+<p>$P_2=2⊕3⊕6⊕7=1$ 有错</p>
+<p>$P_4=4⊕5⊕6⊕7=1$ 有错</p>
+<p>即第6位出错，可纠正为01001<strong>0</strong>1，</p>
+<p>故要求传送的信息为<strong>0101</strong>。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="提高访问速度的措施"><a href="#提高访问速度的措施" class="headerlink" title="提高访问速度的措施"></a>提高访问速度的措施</h2><ul>
+<li><p>采用高速器件</p>
+</li>
+<li><p>采用层次结构欧Cache-主存</p>
+</li>
+<li><p><strong>调整主存结构</strong></p>
+</li>
+</ul>
+<ol>
+<li><p>单体多字系统</p>
+<p>由于程序和数据在存储体内是连续存放的，因此CPU访存取出的信息也是连续的，如果可在一个存储周期内，从<strong>同一地址</strong>取出4条指令，然后再逐条送至CPU执行，即每隔1/4存取周期，主存向CPU送一条指令，这样显然<strong>增大了存储器的带宽</strong>，提高了单体存储器的工作速度，如下图所示。</p>
+<p><img src="/.io//%E5%8D%95%E4%BD%93%E5%A4%9A%E5%AD%97%E7%B3%BB%E7%BB%9F.jpg" alt="单体多字系统"></p>
+<p>存在的问题：</p>
+<ul>
+<li><p>若只需向存储体写入16位数据（单字长），而数据寄存器却多读出了48位，若想让这48位不存入存储体，会增加寄存器的复杂性。</p>
+</li>
+<li><p>若需要取出的数据（或指令）不是连续的，必然会使数据寄存器取出无用的数据。</p>
+</li>
+</ul>
+<blockquote>
+<p>虽然单体多字系统把数据分开存取，但它们依然是以整体的方式存在的。</p>
+</blockquote>
+</li>
+<li><p>多体并行系统</p>
+<ul>
+<li><p>高位交叉（顺序编址）</p>
+<p><img src="/.io//%E5%A4%9A%E4%BD%93%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F-%E9%AB%98%E4%BD%8D%E4%BA%A4%E5%8F%89.jpg" alt="多体并行系统-高位交叉"></p>
+<p>存在的问题：</p>
+<ul>
+<li><p>某个存储体可能会非常繁忙，其余存储体空闲。</p>
+</li>
+<li><p>这种方式主要适用于存储器容量的扩展，并不适合提高存储器的带宽。</p>
+</li>
+</ul>
+</li>
+<li><p>低位交叉（各个体轮流编址）</p>
+<p><img src="/.io//%E5%A4%9A%E4%BD%93%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F-%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89.jpg" alt="多体并行系统-低位交叉"></p>
+<p><strong>低位交叉的特点</strong>：</p>
+<p>在不改变存储周期的前提下，增加存储器的带宽。</p>
+<p><img src="/.io//%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89-4%E4%B8%AA%E5%AD%98%E5%82%A8%E4%BD%93%E4%BA%A4%E5%8F%89%E8%AE%BF%E9%97%AE%E7%9A%84%E6%97%B6%E9%97%B4%E5%85%B3%E7%B3%BB.jpg" alt="4个存储体交叉访问的时间关系"></p>
+<p>以四体低位交叉存储器为例，存储周期位$T$，总线传输周期为$τ$，为实现流水线方式存取，应满足$T=4τ$。</p>
+<p><img src="/.io//%E5%9B%9B%E4%BD%93%E4%BD%8E%E4%BD%8D%E4%BA%A4%E5%8F%89%E7%BC%96%E5%9D%80%E5%AD%98%E5%82%A8%E5%99%A8%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg" alt="四体低位交叉编址存储器流水线工作方式示意图"></p>
+<p>连续读取4个字所需时间位$T+(4-1)τ$</p>
+</li>
+</ul>
+</li>
+<li><p>高性能存储芯片</p>
+<ul>
+<li><p>SDRAM(同步RAM)</p>
+<p>在系统时钟的控制下进行读出和写入。</p>
+<p><strong>CPU无须等待</strong>。</p>
+</li>
+<li><p>RDRAM</p>
+<p>由<strong>Rambus</strong>开发，主要解决<strong>存储器带宽</strong>问题。</p>
+</li>
+<li><p>带Cache的DRAM</p>
+<p>在DRAM的芯片内<strong>集成</strong>了一个由<strong>SRAM</strong>组成的<strong>Cache</strong>，有利于<strong>猝发式读取</strong>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="高速缓冲存储器"><a href="#高速缓冲存储器" class="headerlink" title="高速缓冲存储器"></a>高速缓冲存储器</h1><h2 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h2><ol>
+<li><p>问题的提出</p>
+<p>避免CPU“空等”现象</p>
+<p>CPU和主存（DRAM）的速度差异</p>
+<p><img src="/.io//Cache%E7%9A%84%E6%8F%90%E5%87%BA.jpg" alt="Cache的提出"></p>
+<p><strong>程序访问的局部性原理</strong>：指令和数据在主存的地址分布不是随机的，而是相对的簇聚，使得CPU在执行程序时，访存具有相对的局部性。</p>
+</li>
+<li><p>Cache工作原理</p>
+<ul>
+<li><p>(1) 主存和缓存的编址</p>
+<p><img src="/.io//Cache-%E4%B8%BB%E5%AD%98%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84.jpg" alt="Cache-主存存储空间的基本结构"> </p>
+<p><strong>主存和缓存按块存储，块的大小相同。</strong></p>
+<blockquote>
+<p>实际上，缓存中块内地址的意义不大。这是因为主存的块内地址和缓存中的块内地址位数是相同的，而且“块”在主存和Cache之间是整体传输的，块内字节顺序不会发生变化。</p>
+<p>缓存中的标记，是用来保存对应主存块号的。若CPU给出一个内存地址，并希望在缓存中访问到这个地址，首先要对比缓存中的标记，确定该块是否已经被读取到了Cache中。</p>
+</blockquote>
+</li>
+<li><p>(2) 命中与未命中</p>
+<p>缓存共有C块，主存共有M块（M&gt;&gt;C）</p>
+<ul>
+<li><p><strong>命中</strong></p>
+<p>主存块<strong>调入</strong>缓存</p>
+<p>主存块与缓冲块<strong>建立</strong>了对应关系</p>
+<p>用<strong>标记</strong>记录与某缓存块建立了对应的<strong>主存块号</strong></p>
+</li>
+<li><p>未命中</p>
+<p>主存块<strong>未调入</strong>缓存</p>
+<p>主存块与缓冲块<strong>未建立</strong>对应关系</p>
+</li>
+</ul>
+</li>
+<li><p>(3) Cache的命中率</p>
+<p>CPU欲访问的信息在Cache中的<strong>比率</strong></p>
+<p><strong>命中率</strong>与Cache的<strong>容量</strong>与<strong>块长</strong>有关</p>
+<p>一般每块可取4~8个字</p>
+<p><strong>块长取一个存取周期内从主存调出的信息长度</strong></p>
+</li>
+<li><p>(4) Cache - 主存系统的效率</p>
+<p>效率<strong>e</strong>与<strong>命中率</strong>有关</p>
+<p>$e=\frac{访问Cache的时间}{平均访问时间}×100%$</p>
+<p>设Cache<strong>命中率</strong>为h，访问<strong>Cache</strong>的时间为$t_c$，访问<strong>主存</strong>的时间为$t_m$，</p>
+<p>则$e=\frac{t_c}{h×t_c+(1-h)×t_m}×100%$</p>
+</li>
+</ul>
+</li>
+<li><p>Cache的基本结构</p>
+<p><img src="/.io//Cache%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86%E6%A1%86%E5%9B%BE.jpg" alt="Cache的基本结构原理框图"></p>
+<blockquote>
+<p>CPU（通过<strong>地址总线</strong>）给出地址，这个地址包括<strong>（主存）块号</strong>和<strong>块内地址</strong>。块内地址直接传给Cache，使用块号在<strong>主存Cache地址映像机构</strong>中确认<strong>是否命中</strong>。如果发生命中，得到Cache的块号；如果未命中，查看Cache中<strong>是否有空间可装入主存块</strong>。若有，访问主存装入Cache；若没有，启用<strong>Cache替换机构</strong>，根据替换算法，决定Cache中哪块可以被替换，然后<strong>访问主存替换Cache</strong>即可。</p>
+</blockquote>
+</li>
+<li><p>Cache的<strong>读写</strong>操作</p>
+<ul>
+<li><p><strong>读</strong></p>
+<p><img src="/.io//Cache%E7%9A%84%E8%AF%BB%E6%95%B0%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B.jpg" alt="Cache的读数操作流程"></p>
+</li>
+<li><p><strong>写</strong></p>
+<ul>
+<li><p>写直达法（Write-through）</p>
+<p>写操作时数据既写入Cache又写入主存</p>
+<p><strong>写操作时间就是访问主存时间</strong>，Cache块退出时，不需要对主存执行写操作，更新策略比较容易实现</p>
+</li>
+<li><p>写回法（Write-back）</p>
+<p>写操作只把数据写入Cache而不写入主存</p>
+<p>当Cache数据被替换出去时才写回主存</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Cache的改进</p>
+<ul>
+<li><p>(1) 增加Cache的级数</p>
+<p>片载（片内）Cache</p>
+<p>片外Cache</p>
+</li>
+<li><p>(2) 统一缓存和分立缓存</p>
+<ul>
+<li><p>统一缓存：指令和数据放在同一缓存内的Cache</p>
+</li>
+<li><p>分立缓存：分成指令Cache、数据Cache</p>
+</li>
+</ul>
+<blockquote>
+<p>两种缓存的选取主要考虑两个因素：</p>
+<ul>
+<li><p>与主存结构有关。如果计算机的主存是统一的（指令和数据存储在统一主存中），则相应的Cache采用统一缓存；如果主存采用指令、数据分开存储的方案，则相应的Cache采用分立缓存。</p>
+</li>
+<li><p>与指令执行的控制方式有关。当采用超前控制或流水线控制方式时，一般采用分立缓存。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Cache-主存地址映射"><a href="#Cache-主存地址映射" class="headerlink" title="Cache-主存地址映射"></a>Cache-主存地址映射</h2><ol>
+<li><p>直接映射</p>
+<p><img src="/.io//Cache-%E4%B8%BB%E5%AD%98%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84-%E7%9B%B4%E6%8E%A5%E6%98%A0%E5%B0%84.jpg" alt="直接映射"></p>
+<blockquote>
+<p>根据Cache存储体的大小将主存储体划分成多个区，每个区与Cache存体大小相同。</p>
+</blockquote>
+<p><strong>每个缓存块i</strong>可以和<strong>若干</strong>个<strong>主存块</strong>对应。</p>
+<p><strong>每个主存块j</strong>只能和<strong>一</strong>个<strong>缓存块</strong>对应。</p>
+<p><strong>优点</strong>：实现简单，只需利用主存地址的某些位直接判断，就可确定所需字块是否在缓存中。</p>
+<p><strong>缺点</strong>：不够灵活，因每个内存块只能固定地对应某个缓存块，即使缓存内还空着许多位置也不能占用，使缓存的存储空间得不到充分的利用。此外，如果程序恰好要重复访问对应同一缓存位置的不同主存块，就要不停地进行替换，从而降低命中率。</p>
+<blockquote>
+<p><em>例题：设主存容量为1MB，采用直接映射方式的Cache容量为16KB，块长为4，每字32位。试问主存地址位ABCDEH的存储单元在Cache中的什么位置？</em></p>
+<p>解：</p>
+<p>每块容量：$4×\frac{32}{8}=16B=2^4B$，即<strong>字块内地址4位</strong>。</p>
+<p>块数：$\frac{16KB}{16B}=1K=1024$，即<strong>Cache字块地址10位</strong>。</p>
+<p>主存容量$1MB=2^{20}B$，即地址总格式20位，分为$\frac{1MB}{4×\frac{32}{8}B}=2^{16}$块，每块$2^4B$，采用直接映射方式，主存字块标记为$20-14=6$位。</p>
+<p>综上，主存地址格式为：</p>
+<p><strong>主存字块标记（6位）Cache字块地址（10位）字块内地址（4位）</strong></p>
+<p>主存地址$ABCDEH=(1010 1011 1100 1101 1110)_2$，主存字块标记为<strong>101010</strong>，Cache字块地址为<strong>1111001101</strong>，字块内地址为<strong>1110</strong>，<strong>故该主存单元应映射到Cache的101010块的第1110字节，即第42块第14字节位置</strong>。</p>
+</blockquote>
+</li>
+<li><p>全相联映射</p>
+<p>允许主存中每一字块映射到Cache中的任何一块位置上。</p>
+<p><strong>优点</strong>：灵活，命中率高，缩短了块冲突率。</p>
+<p><strong>缺点</strong>：</p>
+<p>(1) 主存字块标记需要与Cache的所有标记进行<strong>同时</strong>比较，电路会非常复杂。</p>
+<p>(2) 主存字块标记从t位增加到t+c位，这就使Cache”标记“的位数增多，比较器的长度就会增长。</p>
+</li>
+<li><p>组相联映射</p>
+<blockquote>
+<p>组相联映射是对直接映射和全相联映射的一种折中。</p>
+</blockquote>
+<p><img src="/.io//Cache-%E4%B8%BB%E5%AD%98%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84-%E7%BB%84%E7%9B%B8%E8%81%94%E6%98%A0%E5%B0%84.jpg" alt="组相联映射"></p>
+<p>$i = jmodQ$</p>
+<p><strong>某一主存块j</strong>按模<strong>Q</strong>映射到<strong>缓存</strong>的<strong>第i组</strong>中的<strong>任一块</strong>。</p>
+</li>
+</ol>
+<h2 id="替换算法"><a href="#替换算法" class="headerlink" title="替换算法"></a>替换算法</h2><ol>
+<li><p>先进先出（FIFO）算法</p>
+</li>
+<li><p>近期最少使用（LRU）算法 </p>
+</li>
+<li><p>随机法</p>
+</li>
+</ol>
+<h1 id="辅助存储器（非重要）"><a href="#辅助存储器（非重要）" class="headerlink" title="辅助存储器（非重要）"></a>辅助存储器（非重要）</h1><h2 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h2><ol>
+<li><p>特点</p>
+<p>不直接与CPU交换信息。</p>
+</li>
+<li><p>磁表面存储器的技术指标</p>
+<p>(1) 记录密度（道密度$D_t$、位密度$D_b$）</p>
+<p>(2) 存储容量</p>
+<blockquote>
+<p>$C=n×k×s$，n为存放信息的盘面数，k为每个盘面的磁道数，s为每条磁道上记录的二进制代码数。</p>
+</blockquote>
+<p>(3) 平均寻址地址</p>
+<blockquote>
+<p>寻道时间 + 等待时间</p>
+</blockquote>
+<blockquote>
+<p>辅存的速度：寻址时间、磁头读写时间</p>
+</blockquote>
+<p>(4) 数据传输率</p>
+<blockquote>
+<p>$D_r=D_b×V$</p>
+</blockquote>
+<p>(5) 误码率</p>
+<blockquote>
+<p>出错信息位数与读取信息的总位数。 </p>
+</blockquote>
+</li>
+</ol>
+<h2 id="磁记录原理和记录方式"><a href="#磁记录原理和记录方式" class="headerlink" title="磁记录原理和记录方式"></a>磁记录原理和记录方式</h2><ol>
+<li><p>磁记录原理</p>
+<p><strong>写</strong>：</p>
+<p><img src="/.io//%E7%A3%81%E8%AE%B0%E5%BD%95%E5%8E%9F%E7%90%86-%E5%86%99.jpg" alt="磁记录原理-写"></p>
+<p><strong>读</strong>：</p>
+<p><img src="/.io//%E7%A3%81%E8%AE%B0%E5%BD%95%E5%8E%9F%E7%90%86-%E8%AF%BB.jpg" alt="磁记录原理-读"></p>
+</li>
+</ol>
+<h2 id="硬磁盘存储器"><a href="#硬磁盘存储器" class="headerlink" title="硬磁盘存储器"></a>硬磁盘存储器</h2><ol>
+<li><p>硬磁盘存储器的类型</p>
+<p>(1) 固定磁头和移动磁头</p>
+<p>(2) 可换盘和固定盘</p>
+</li>
+<li><p>硬磁盘存储器结构</p>
+<p><img src="/.io//%E7%A1%AC%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8%E7%BB%93%E6%9E%84.jpg" alt="硬磁盘存储器结构"></p>
+<p>(1) 磁盘驱动器</p>
+<p><img src="/.io//%E7%A3%81%E7%9B%98%E9%A9%B1%E5%8A%A8%E5%99%A8.jpg" alt="磁盘驱动器"></p>
+<p>(2) 磁盘控制器</p>
+<ul>
+<li><p>接收主机发来的命令，转换成磁盘驱动器的控制命令。</p>
+</li>
+<li><p>实现主机和驱动器之间的数据格式转换。</p>
+</li>
+<li><p>控制磁盘驱动器读写。</p>
+<p><strong>磁盘控制器</strong>是主机与磁盘驱动器之间的<strong>接口</strong>。</p>
+</li>
+</ul>
+<p>(3) 盘片</p>
+<p>由硬质铝合金材料制成。</p>
+</li>
+</ol>
+<h2 id="软磁盘存储器"><a href="#软磁盘存储器" class="headerlink" title="软磁盘存储器"></a>软磁盘存储器</h2><ol>
+<li>概述</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>硬盘</th>
+<th>软盘</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>速度</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>磁头</td>
+<td>固定、活动（浮动）</td>
+<td>活动（接触盘片）</td>
+</tr>
+<tr>
+<td>盘片</td>
+<td>固定盘、盘组大部分不可换</td>
+<td>可换盘片</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>环境</td>
+<td>苛刻</td>
+<td></td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><p>软盘片</p>
+<p><img src="/.io//%E8%BD%AF%E7%9B%98%E7%89%87.jpg" alt="软盘片"></p>
+</li>
+</ol>
+<h2 id="光盘存储器"><a href="#光盘存储器" class="headerlink" title="光盘存储器"></a>光盘存储器</h2><ol>
+<li><p>概述</p>
+<p>采用光存储技术 —- <strong>利用激光写入和读出</strong></p>
+<p>第一代光存储技术 —- 采用非磁性介质 —- 不可擦写</p>
+<p>第二代光存储技术 —- 采用磁性介质 —- 可擦写</p>
+</li>
+<li><p>光盘的存储原理</p>
+<p>只读型和只写一次型 —- 热作用（物理或化学）</p>
+<p>可擦写光盘 —- 热磁效应</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机组成原理/">计算机组成原理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/&title=《第4章 存储器》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/&title=《第4章 存储器》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第4章 存储器》 — GxkOrd - blog&url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/23/Java/Java设计模式/2. 面向对象设计原则/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2. 面向对象设计原则</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/15/计算机基础/计算机组成原理/第3章 系统总线/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">第3章 系统总线</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '',
+                client_secret: '',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/&title=《第4章 存储器》 — GxkOrd - blog&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/&title=《第4章 存储器》 — GxkOrd - blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第4章 存储器》 — GxkOrd - blog&url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/03/16/计算机基础/计算机组成原理/第4章 存储器/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMklEQVR42u3aQW7jQAwEQP//015gr7HkJqkEFl06LYzsaGoMhCF7Ho/4ef5/jj55/niOPj9a5+fnR3s4esvjNx5sbGzsm7Cfp0++uQlpssPkoF/sARsbG3sd+5xxDjgvb+dr5sfUW/Pwc2xsbOyvZJ+3BJPVkpWT9gYbGxsbe1IYri0/+XAKGxsbGzsf1uSM0binCPj1WRo2Njb2x7OrQe8n//sX821sbGzsj2Q/i0/SGPSi3/ztFyiwsbGxF7GT5qFaEZJ2olosJ+Wq0IFhY2Nj35CdXLKsjmyS1ZIyVi1XhdACGxsbexG7V0jmDUw1Tk5+Mn8jNjY29lZ2r8zkjF7QW21Cyv8LGxsbeym7+jO9wCBvKqplqXxfCRsbG/vm7GQwlIe4vbi3OmCqRhpvUhFsbGzsFeweuDckmjczvR2+KGDY2NjY69iThqHXnFTXSdaPyhs2Njb217CrEWz16kx+NFddDMLGxsbeyu6Vimvjgd5hPXoPNjY29gp2PrLJXzxpXarFtTf2wsbGxt7Ezof11ZFQ7ypnr0HqXdPExsbG3sHOX9krJ5MmZ7Lym6PBxsbGXsROFspj4KTgNS9KDqKCckOCjY2NvYI9+Rs+P4Jeo5LHCeW4FxsbG/uG7F7UWoXlpSgvgdXCWVgCGxsb+4bsQjgaM3rHcW1IXMi3sbGxsW/O7rUK1bFRLwbolb03u8XGxsZexK7+Vr92JDS5DJR/AdH9U2xsbOzbsicDo2oY3Ps2esHzm31iY2Njr2MnA5pqg9FrRarH0TwsbGxs7EXsvG2YZKZ5s5G0Lr2jx8bGxt7Kzq+/zIdHyXaT8pkPmw6/AGxsbOyl7DwuzWtjvn7eTuQjsMOjxMbGxl7EzluLpIWYBMbX7qocYGNjY2Pflv0sPnl7UA0D/iZ4wMbGxt7HnpSQq8La3gDrqvKGjY2NvYOdj2/yWDdvY6qr9aKIF59gY2Njr2NXt5WXljy+rQYPvTqFjY2N/c3swrWYS4dW58hqII2NjY2NXT2OajuRD7N678LGxsbeys6HStVh0GTEn4yomteGsLGxsRexJ0Fvb7hT3fQkwR6l39jY2Nifzv4HnxWGkvWadAIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
