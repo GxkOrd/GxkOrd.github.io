@@ -29,21 +29,21 @@
 <meta property="og:site_name" content="GxkOrd - blog">
 <meta property="og:description" content="概述软件的可维护性（Maintainability）和可复用性（Reusability）是两个非常重要的用于衡量软件质量的属性。  软件的可维护性：软件能够被理解、改正、适应及扩展的难易程度。  软件的可复用性：软件能够被重复使用的难易程度。   面向对象设计的目标之一在于支持可维护性复用，也是后续设计模式学习的基础。 常见的面向对象原则有7种。 单一职责原则使用频率：★★★★☆ 定义  单一职责">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/单一职责原则-例子-初始设计方案结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/单一职责原则-例子-重构后结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/依赖倒转原则-例子-初始设计方案结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/依赖倒转原则-例子-重构后结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/接口隔离原则-例子-初始设计方案结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/接口隔离原则-例子-重构后结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/合成复用原则-例子-初始设计方案结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/合成复用原则-例子-重构后结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/迪米特法则-例子-初始设计方案结构图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/迪米特法则-例子-重构后结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/单一职责原则-例子-初始设计方案结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/单一职责原则-例子-重构后结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/依赖倒转原则-例子-初始设计方案结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/依赖倒转原则-例子-重构后结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/接口隔离原则-例子-初始设计方案结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/接口隔离原则-例子-重构后结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/合成复用原则-例子-初始设计方案结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/合成复用原则-例子-重构后结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/迪米特法则-例子-初始设计方案结构图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/迪米特法则-例子-重构后结构图.jpg">
 <meta property="og:updated_time" content="2019-04-19T09:39:49.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2. 面向对象设计原则">
 <meta name="twitter:description" content="概述软件的可维护性（Maintainability）和可复用性（Reusability）是两个非常重要的用于衡量软件质量的属性。  软件的可维护性：软件能够被理解、改正、适应及扩展的难易程度。  软件的可复用性：软件能够被重复使用的难易程度。   面向对象设计的目标之一在于支持可维护性复用，也是后续设计模式学习的基础。 常见的面向对象原则有7种。 单一职责原则使用频率：★★★★☆ 定义  单一职责">
-<meta name="twitter:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2/单一职责原则-例子-初始设计方案结构图.jpg">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/03/23/Java/Java设计模式/2.%20面向对象设计原则/单一职责原则-例子-初始设计方案结构图.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
     
@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -221,7 +221,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/单一职责原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
+                    <img src="单一职责原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
                 </div>
                 <div class="image-caption">初始设计方案结构图</div>
             </figure>
@@ -251,7 +251,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/单一职责原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
+                    <img src="单一职责原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
                 </div>
                 <div class="image-caption">重构后结构图</div>
             </figure>
@@ -303,7 +303,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/依赖倒转原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
+                    <img src="依赖倒转原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
                 </div>
                 <div class="image-caption">初始设计方案结构图</div>
             </figure>
@@ -313,7 +313,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/依赖倒转原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
+                    <img src="依赖倒转原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
                 </div>
                 <div class="image-caption">重构后结构图</div>
             </figure>
@@ -335,7 +335,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/接口隔离原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
+                    <img src="接口隔离原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
                 </div>
                 <div class="image-caption">初始设计方案结构图</div>
             </figure>
@@ -361,7 +361,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/接口隔离原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
+                    <img src="接口隔离原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
                 </div>
                 <div class="image-caption">重构后结构图</div>
             </figure>
@@ -388,7 +388,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/合成复用原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
+                    <img src="合成复用原则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
                 </div>
                 <div class="image-caption">初始设计方案结构图</div>
             </figure>
@@ -400,7 +400,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/合成复用原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
+                    <img src="合成复用原则-例子-重构后结构图.jpg" alt="重构后结构图" title>
                 </div>
                 <div class="image-caption">重构后结构图</div>
             </figure>
@@ -431,7 +431,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/迪米特法则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
+                    <img src="迪米特法则-例子-初始设计方案结构图.jpg" alt="初始设计方案结构图" title>
                 </div>
                 <div class="image-caption">初始设计方案结构图</div>
             </figure>
@@ -443,7 +443,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2019/03/23/Java/Java设计模式/2/迪米特法则-例子-重构后结构图.jpg" alt="重构后结构图" title>
+                    <img src="迪米特法则-例子-重构后结构图.jpg" alt="重构后结构图" title>
                 </div>
                 <div class="image-caption">重构后结构图</div>
             </figure>
@@ -642,7 +642,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
    -->

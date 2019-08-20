@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="GxkOrd - blog">
 <meta property="og:description" content="本专题为山东师范大学段会川老师的课程学习笔记。  概述定义 在计算机科学中，穷举搜索(exhaustive search)或蛮力搜索(brute-force search)，也称为生成+测试法(generate and test)，是一种非常通用的问题求解方法，也是最基本的算法设计方法。  该方法由两部分构成：  系统化地枚举问题各种可能地候选解。  检查每个解是否满足问题地求解要求。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://gxkord.github.io/.io//子集树.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//n=3%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//0-1%E8%83%8C%E5%8C%85%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/19/算法/算法设计与分析/第5讲%20穷举法/子集树.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/19/算法/算法设计与分析/第5讲%20穷举法/n=3%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/19/算法/算法设计与分析/第5讲%20穷举法/0-1%E8%83%8C%E5%8C%85%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg">
 <meta property="og:updated_time" content="2019-05-21T11:58:23.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第5讲 穷举法">
 <meta name="twitter:description" content="本专题为山东师范大学段会川老师的课程学习笔记。  概述定义 在计算机科学中，穷举搜索(exhaustive search)或蛮力搜索(brute-force search)，也称为生成+测试法(generate and test)，是一种非常通用的问题求解方法，也是最基本的算法设计方法。  该方法由两部分构成：  系统化地枚举问题各种可能地候选解。  检查每个解是否满足问题地求解要求。">
-<meta name="twitter:image" content="https://gxkord.github.io/.io//子集树.jpg">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/04/19/算法/算法设计与分析/第5讲%20穷举法/子集树.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="GxkOrd - blog" href="/atom.xml">
     
@@ -123,7 +123,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -393,7 +393,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//子集树.jpg" alt="子集树" title>
+                    <img src="子集树.jpg" alt="子集树" title>
                 </div>
                 <div class="image-caption">子集树</div>
             </figure>
@@ -416,7 +416,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleSubsetBinaryTreeTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 测试SimpleSubsetBinaryTree</span></span><br><span class="line">        SimpleSubsetBinaryTree tree1 = <span class="keyword">new</span> SimpleSubsetBinaryTree(<span class="number">3</span>);</span><br><span class="line">        tree1.init();</span><br><span class="line">        tree1.output();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试结果</p>
-<p><img src="/.io//n=3%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg" alt="n=3的子集树遍历测试结果"></p>
+<p><img src="n=3%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg" alt="n=3的子集树遍历测试结果"></p>
 </li>
 <li><p>思考</p>
 <p><strong>要求</strong>：输入目标运行时间T，是否可以通过程序直接获得子集树规模的极大值？</p>
@@ -444,7 +444,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 0-1背包问题的子集树遍历算法测试</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KnapsackSubsetBinaryTreeTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] weightArr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] valueArr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">10</span>, <span class="number">40</span>, <span class="number">30</span>, <span class="number">50</span>&#125;;</span><br><span class="line">        KnapsackSubsetBinaryTree knapsackSubsetBinaryTree = <span class="keyword">new</span> KnapsackSubsetBinaryTree(weightArr, valueArr);</span><br><span class="line">        knapsackSubsetBinaryTree.init();</span><br><span class="line">        knapsackSubsetBinaryTree.output();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试结果</p>
-<p><img src="/.io//0-1%E8%83%8C%E5%8C%85%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg" alt="0-1背包的子集树遍历测试结果"></p>
+<p><img src="0-1%E8%83%8C%E5%8C%85%E7%9A%84%E5%AD%90%E9%9B%86%E6%A0%91%E9%81%8D%E5%8E%86%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C.jpg" alt="0-1背包的子集树遍历测试结果"></p>
 </li>
 </ol>
 
@@ -642,7 +642,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
    -->
