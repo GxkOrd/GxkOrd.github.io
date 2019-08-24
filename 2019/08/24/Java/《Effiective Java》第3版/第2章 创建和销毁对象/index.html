@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>第2章 创建和销毁对象 | MyBlog - GxkOrd</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="《Effiective Java》第3版,静态工厂方法">
+    <meta name="description" content="声明：本专题为Joshua Bloch所著《Effiective Java》的笔记。    James Gosling（Java之父）：“我很希望10年前就拥有这本书。可能有人认为我不需要任何Java方面的书籍，但是我需要这本书。”  这本书完全称得上是编程神作，这无关编程语言。  它唯一的缺点就是中文翻译有些瑕疵，但如果发现了这些瑕疵，就说明你的技术又深入了一步。  这本书是在我刚接触编程时获">
+<meta name="keywords" content="《Effiective Java》第3版,静态工厂方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第2章 创建和销毁对象">
+<meta property="og:url" content="https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/index.html">
+<meta property="og:site_name" content="MyBlog - GxkOrd">
+<meta property="og:description" content="声明：本专题为Joshua Bloch所著《Effiective Java》的笔记。    James Gosling（Java之父）：“我很希望10年前就拥有这本书。可能有人认为我不需要任何Java方面的书籍，但是我需要这本书。”  这本书完全称得上是编程神作，这无关编程语言。  它唯一的缺点就是中文翻译有些瑕疵，但如果发现了这些瑕疵，就说明你的技术又深入了一步。  这本书是在我刚接触编程时获">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-24T13:08:51.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第2章 创建和销毁对象">
+<meta name="twitter:description" content="声明：本专题为Joshua Bloch所著《Effiective Java》的笔记。    James Gosling（Java之父）：“我很希望10年前就拥有这本书。可能有人认为我不需要任何Java方面的书籍，但是我需要这本书。”  这本书完全称得上是编程神作，这无关编程语言。  它唯一的缺点就是中文翻译有些瑕疵，但如果发现了这些瑕疵，就说明你的技术又深入了一步。  这本书是在我刚接触编程时获">
+    
+        <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">GxkOrd</h5>
+          <a href="mailto:gxk295238892@gmail.com" title="gxk295238892@gmail.com" class="mail">gxk295238892@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/GxkOrd" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第2章 创建和销毁对象</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第2章 创建和销毁对象</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-24T02:20:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第1条：考虑使用静态工厂方法替代构造方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">第1条：考虑使用静态工厂方法替代构造方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是静态工厂方法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是静态工厂方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态工厂方法的优点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">静态工厂方法的优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态工厂方法的缺点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">静态工厂方法的缺点</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/《Effiective Java》第3版/第2章 创建和销毁对象"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第2章 创建和销毁对象</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-24 10:20:00" datetime="2019-08-24T02:20:00.000Z"  itemprop="datePublished">2019-08-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>声明：本专题为Joshua Bloch所著《Effiective Java》的笔记。</p>
+</blockquote>
+<blockquote>
+<ol>
+<li><p>James Gosling（Java之父）：“我很希望10年前就拥有这本书。可能有人认为我不需要任何Java方面的书籍，但是我需要这本书。”</p>
+</li>
+<li><p>这本书完全称得上是编程神作，这无关编程语言。</p>
+</li>
+<li><p>它唯一的缺点就是中文翻译有些瑕疵，但如果发现了这些瑕疵，就说明你的技术又深入了一步。</p>
+</li>
+<li><p>这本书是在我刚接触编程时获得的，但那时读起来确实不知所云。</p>
+<p>在我独自做过javase，javaee的项目后，再来读仍觉得它难以读懂。</p>
+<p>直到我学过了数据结构、设计模式、spring、springboot等等，有了更多的项目经验，再来了解它，才发现原来自己曾经在编程上遇到的多数疑问，它早已有解答。幸得阅之于学生时代，少走些弯路。</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>本章的主题是创建和销毁对象：何时以及如何创建对象，何时以及如何避免创建对象，如何能够保证它们能够适时地销毁，以及如何管理对象销毁之前必须进行的各种清理动作。</p>
+</blockquote>
+<h1 id="第1条：考虑使用静态工厂方法替代构造方法"><a href="#第1条：考虑使用静态工厂方法替代构造方法" class="headerlink" title="第1条：考虑使用静态工厂方法替代构造方法"></a>第1条：考虑使用静态工厂方法替代构造方法</h1><h2 id="什么是静态工厂方法"><a href="#什么是静态工厂方法" class="headerlink" title="什么是静态工厂方法"></a>什么是静态工厂方法</h2><p>某个<strong>类</strong>允许客户端获得其实例的传统方式是<strong>提供一个公共的（public）构造方法</strong>。除此之外，还有一种方法是必须要考虑的，即类可以提供一个<strong>公共的（public）静态工厂方法（static factory method）</strong>，它只是一个返回类的实例的静态方法。下面是一个来自Boolean（基本类型boolean的包装类）的简单例子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 作用：将boolean基本类型值转化成一个Boolean对象引用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">valueOf</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? Boolean.TRUE : Boolean.FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态工厂方法的优点"><a href="#静态工厂方法的优点" class="headerlink" title="静态工厂方法的优点"></a>静态工厂方法的优点</h2><ol>
+<li><p><strong>静态工厂方法与构造方法不同的第一大优点在于，它们有名称。</strong>如果构造方法的参数无法确切地描述被返回的对象，那么具有适当名称的静态工厂方法会更容易使用，并且生成的客户端代码也将更易于阅读。</p>
+<p>例如，<code>BigInteger</code>的构造方法<code>BigInteger(int. int. Random)</code>返回的是一个可能为素数的值，如果使用一个名为<code>BigInteger.probablePrime</code>的静态方法来表示，显然更为清楚。（1.4的发行版本中增加了这个方法。）</p>
+<p>一个类只能有一个给定<strong>签名</strong>（方法名和参数列表）的构造方法，编程人员都知道如何避免这个限制：<em>提供两个不同参数列表顺序的构造方法</em>。实际上这是一个非常糟糕的主意。这样的API，使用者永远记不清该用哪个构造方法。阅读和使用这些构造方法的人只有在有参考文档时才知道这些代码的作用。</p>
+<p>由于静态方法有名称，所以它们不受上述的限制。<strong>当一个类需要多个相同签名的构造方法时，用静态工厂方法代替构造方法，并且慎重地选择方法名称以突出它们之间的区别。</strong></p>
+</li>
+<li><p><strong>静态工厂方法与构造方法不同的第二大优点在于，不必在每次调用时都创建一个新对象。</strong></p>
+<p>这允许不可变类（详见第17条）可以使用预先构建的实例，或者将构造好的实例缓存起来，并反复分配它们以避免创建不必要对象。<code>Boolean.valueOf(boolean)</code>很好地说明了这种技术。这种技术类似于<code>Flyweight</code>模式。如果程序经常创建相同对象，并且创建对象的代价很高，则这项技术可以极大地提升性能。</p>
+<p>静态工厂方法能够为重复地调用返回同一对象，这样有助于类总能严格控制在某个时刻哪些实例存在。这种类被称为<em>实例受控的</em>（instance-controlled）。编写实例受控类有以下原因：</p>
+<ol>
+<li><p>确保这个类是<em>单例的</em>（Singleton）（见第3条）或者不可实例化的（详见第4条）。</p>
+</li>
+<li><p>它还可确保不可变的类（详见第17条）不会存在两个相同的实例，即当且仅当<code>a==b</code>时，<code>e.equals(b)</code>，我们可以使用<code>==</code>替代<code>equals(Object)</code>，从而提升程序运行速度而不影响正确性。<code>Enum</code>类型正使用了这一点。</p>
+</li>
+</ol>
+</li>
+<li><p><strong>静态工厂方法与构造方法不同的第三大优点在于，它们可以返回其返回类型的任一子类的对象。</strong>这样，我们在选择返回的对象时就有了更大的灵活性。</p>
+<p>这种灵活性的一个应用是，API可以返回对象，而不必把对象的类变成公共的，以这种方式隐藏实现类会使API更加简洁。这种技术适用于基于接口的框架（详见第20条），其中的接口为静态工厂方法提供了自然返回类型。</p>
+<blockquote>
+<p>这里的”自然“（原文为natural），并非一种专用术语，而是指在定义接口时，所希望的返回类型。</p>
+</blockquote>
+<p>在Java 8之前，接口不能有静态方法。按照惯例，一个名为<code>Type</code>的接口的静态工厂方法放在名为<code>Types</code>的不可实例化的<em>伴随类</em>（companion class）（详见第4条）中。</p>
+<p>例如，<em>java集合框架</em>（Java Collections Framework）的接口有45个实现类，分别提供了不可修改的集合、同步集合等等。几乎所有的实现类都是通过在一个不可实例化的类（java.util.Collections）中的静态工厂方法导出的。所有静态工厂方法返回对象的类都是<em>非公共</em>（nonpublic）的。</p>
+<p>Collections Framework API 的规模要比单独导出45 个公共类要小得多，一个API方便了所有实现类。不仅是 API 的数量的减少，还包括<em>概念重量</em>（conceptual weight）：编程者使用API所必须掌握的概念的数量和难度​​。编程者知道了要返回的对象恰好有接口指定的API，就不再需要阅读实现类的文档。此外，这种静态工厂方法要求编程者通过一个该接口类的变量来引用返回的对象，而不是实现类，这是一种良好的习惯（详见第 64 条）。</p>
+<p>从 Java 8 开始，取消了接口不能包含静态方法的限制，所以不必再提供一个不可实例化的伴随类。很多公共的静态成员应该放在这个接口之中。但是，请注意，将这些静态方法的大部分实现代码放在单独的包私有类中仍然是必要的，这是因为 Java 8 要求所有接口的静态成员都是公共的。Java 9 允许私有静态方法，但静态属性和静态成员类仍然需要设为公共。</p>
+</li>
+<li><p><strong>静态工厂方法与构造方法不同的第四大优点在于，返回对象的类可以根据输入参数的不同而不同。</strong>声明的返回类型的任何子类都是允许的。为了提升软件的可维护性和性能，返回对象的类也可能随每次发行版本而不同。</p>
+<p>例如，<code>EnumSet</code>类（详见第 36 条），它没有公共构造方法，只有静态工厂方法。在OpenJDK 的实现中，是根据底层枚举类型的大小返回两个子类中的一个的实例：如果大多数枚举类型具有 64 个或更少的元素，静态工厂方法将返回一个<code>RegularEnumSet</code>实例，返回一个<code>long</code>类型；如果枚举类型具有六十五个或更多元素，则将返回一个<code>JumboEnumSet</code>实例，返回一个<code>long</code>类型的数组。</p>
+<p>这两个实现类的存在对于客户是不可见的。 如果<code>RegularEnumSet</code>不再为小枚举类型提供性能优势，则可以在未来版本中将其淘汰，而不会产生任何不良影响。同样，未来的版本可能会为了提高性能而添加<code>EnumSet</code>的第三个或第四个实现。 编程者既不知道也不需要关心他们从工厂返回的对象的类别；他们只关心它是<code>EnumSet</code>的一些子类。</p>
+</li>
+<li><p><strong>静态工厂方法与构造方法不同的第五大优点在于，在编写包含该方法的类时，返回的对象的类不需要存在。</strong>这种灵活的静态工厂方法构成了<em>服务提供者框架</em>（Service Provider Framework）的基础，例如 JDBC（Java 数据库连接，Java Database Connectivity）API。服务提供者框架，是提供者实现服务的系统，使实现对于编程者可用，将编程者与实现进行分离。</p>
+<p>服务提供者框架中有三个基本组：<em>服务接口</em>（Service Interface），<em>提供者注册 API</em>（Provider Registration API），<em>服务访问 API</em>（Service Access API）。以及一个可选的第四个组件：<em>服务提供者接口</em>（Service Provider API）。</p>
+<ol>
+<li><p>服务接口：定义了需要实现的服务。</p>
+</li>
+<li><p>提供者注册 API：提供者实现服务后，向管理者注册的API。</p>
+</li>
+<li><p>服务访问 API：编程者获得服务的API。</p>
+</li>
+<li><p>服务提供者接口：它描述了一个生成服务接口实例的工厂对象。在没有服务提供者接口的情况下，实现必须通过反射进行实例化（详见第 65 条）。</p>
+</li>
+</ol>
+<p>以下为一个完整服务提供者框架的简单实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 服务接口</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">register</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务接口具体实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"登陆成功"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"注册成功"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务提供者接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ServiceProvider</span> </span>&#123;</span><br><span class="line">    <span class="function">UserService <span class="title">getUserService</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务提供者接口具体实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceProviderImpl</span> <span class="keyword">implements</span> <span class="title">ServiceProvider</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        ServiceManager.registerProvider(<span class="string">"GxkOrd"</span>, <span class="keyword">new</span> ServiceProviderImpl());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserService <span class="title">getUserService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UserServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>// 服务管理类<br>public class ServiceManager {</p>
+<pre><code>private ServiceManager() {
+}
+
+private static final Map&lt;String, ServiceProvider&gt; SERVICE_PROVIDER_MAP = new ConcurrentHashMap&lt;&gt;();
+
+public static void registerProvider(String name, ServiceProvider provider) {
+    SERVICE_PROVIDER_MAP.put(name, provider);
+}
+
+public static UserService getUserService(String providerName) {
+    ServiceProvider provider = SERVICE_PROVIDER_MAP.get(providerName);
+    if (provider == null) {
+        throw new IllegalArgumentException(&quot;No provider registered with name = &quot; + providerName);
+    }
+    return provider.getUserService();
+}</code></pre><p>}</p>
+<p>// 测试<br>public class Test {</p>
+<pre><code>public static void main(String[] args) {
+    try {
+        Class.forName(&quot;包名.ServiceProviderImpl&quot;);
+
+        UserService userService = ServiceManager.getUserService(&quot;登陆注册&quot;);
+
+        userService.register();
+        userService.login();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+}</code></pre><p>}</p>
+<pre><code>
+服务提供者框架模式有许多变种。 例如，服务访问 API 可以向客户端返回比提供者提供的更丰富的服务接口，这是桥接（Bridge）模式。
+
+依赖注入框架（详见第 5 条）可以被看作强大的服务提供者。 
+
+从 Java 6 开始，jdk包含一个通用的服务提供者框架`java.util.ServiceLoader`，所以你不需要，一般也不应该自己编写（详见59条）。`JDBC`没有使用`ServiceLoader`，因为前者早于后者。
+</code></pre></li>
+</ol>
+<h2 id="静态工厂方法的缺点"><a href="#静态工厂方法的缺点" class="headerlink" title="静态工厂方法的缺点"></a>静态工厂方法的缺点</h2><ol>
+<li><p><strong>静态工厂方法的主要缺点在于，类如果不含公共的或者受保护的构造器，就不能被实例化。</strong>对于公共的静态工厂方法所返回的非公共类，也同样如此。</p>
+<p>例如，不可能将Collections Framework中任何方便的实现类子类化。但这也许因祸得福，因为它鼓励了程序员使用复合（composition）而不是继承（详见第 18 条），而且它是不可变的（详见第 17 条）。</p>
+</li>
+<li><p><strong>静态工厂方法的第二个缺点是，程序员很难找到它们。</strong>它们不像构造方法那样在 API 文档中突出，因此很难实例化一个提供了静态工厂方法而没有构造方法的类。可能有一天，Javadoc 工具会注意到静态工厂方法。同时，你可以通过将注意力吸引到类或接口文档中的静态工厂以及遵守通用的命名约定来减轻这个问题。下面是一些静态工厂方法的常用名称。以下清单并非完整：</p>
+<ul>
+<li><p><strong>from</strong> —— 一个类型转换方法，它接受单个参数并返回此类型的相应实例，例如：<code>Date d = Date.from(instant);</code></p>
+</li>
+<li><p><strong>of</strong> —— 一个聚合方法，接受多个参数并返回该类型的实例，并把他们合并在一起，例如：<code>Set&lt;Rank&gt; faceCards = EnumSet.of(JACK, QUEEN, KING);</code></p>
+</li>
+<li><p><strong>valueOf</strong> —— from 和 to 更为详细的替代方式，例如：<code>BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);</code></p>
+</li>
+<li><p><strong>instance</strong> 或 <strong>getInstance</strong> —— 返回一个由其参数 (如果有的话) 描述的实例，但不能说它具有相同的值，例如：<code>StackWalker luke = StackWalker.getInstance(options);</code></p>
+</li>
+<li><p><strong>create</strong> 或 <strong>newInstance</strong> —— 与 instance 或 getInstance 类似，但该方法保证每个调用返回一个新的实例，例如：<code>Object newArray = Array.newInstance(classObject, arrayLen);</code></p>
+</li>
+<li><p><strong>getType</strong> —— 与 getInstance 类似，但是如果在工厂方法中不同的类中使用。Type 是工厂方法返回的对象类型，例如：<code>FileStore fs = Files.getFileStore(path);</code></p>
+</li>
+<li><p><strong>newType</strong> —— 与 newInstance 类似，但是如果在工厂方法中不同的类中使用。Type 是工厂方法返回的对象类型，例如：<code>BufferedReader br = Files.newBufferedReader(path);</code></p>
+</li>
+<li><p><strong>type</strong> —— getType 和 newType 简洁的替代方式，例如：<code>List&lt;Complaint&gt; litany = Collections.list(legacyLitany);</code></p>
+</li>
+</ul>
+<p>总之，静态工厂方法和公共构造方法都有它们的用途，并且了解它们的相对优点是值得的。但通常，静态工厂更可取，因此避免在没有考虑静态工厂方法的情况下使用公共构造方法。</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您的到来~
+        
+    </div>
+    
+    <footer>
+        <a href="https://gxkord.github.io">
+            <img src="/img/avatar.jpg" alt="GxkOrd">
+            GxkOrd
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/《Effiective-Java》第3版/">《Effiective Java》第3版</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/静态工厂方法/">静态工厂方法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/&title=《第2章 创建和销毁对象》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/&title=《第2章 创建和销毁对象》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第2章 创建和销毁对象》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/20/Java/Java技巧/1. 不要使用ArrayList、LinkdList！/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">1. 不要使用ArrayList、LinkedList！</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "SLoeTBUGITrQ5mLkNx8CuFaP-gzGzoHsz",
+            appKey: "BioO7cbA1cY0CknBdMVVcPao",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+<!--
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+   -->
+    <div class="bottom">
+        <p><span>GxkOrd &copy; 2015 - 2019</span>
+	    <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/&title=《第2章 创建和销毁对象》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/&title=《第2章 创建和销毁对象》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第2章 创建和销毁对象》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/&via=https://gxkord.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2019/08/24/Java/《Effiective Java》第3版/第2章 创建和销毁对象/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIUlEQVR42u3awY7iQAwE0Pn/n2alPa20IlS1MxKYlxOCTNKvc6ixnZ+f+Hj8Pf7/5t/vH5fHs6u1V07WdtuBjY2N/SHsZLnXl3525vXSH8GRr7zdemxsbOx97ASTBE8bUWdXbh8PNjY2Nnb+736+rLzAuC5psLGxsbHbG7dFQh5IbTTmjwcbGxv7G9hJ8OS/tiOH6+Xmv/5KLw0bGxv77dmTJb7b51+cb2NjY2O/JftRHmfj23xMe9ZOqhXY2NjYi9hJmyYvDK7Zyca1JcT1pr+IN2xsbOwV7ISXN9znDZ08utqrYWNjY+9mJ5dOgiQ/82y0PBkPY2NjY29l51vQwiYFQ74pk3IIGxsbewc7J40a8fFQoWXURUh7e2xsbOy3Z+dx0rbsk+tMSDdsKzY2NvYKdhskCews9trC42xsjI2Njb2P3S5x0io6GxicjQ2K6MXGxsZewW5HAneNdfMSIn8AedRhY2Nj72C3DaAJ9Sxy2r+NPmNjY2MvYrdhkzf0k81qvzk7HxsbG3s3u23oT4qHCSlZTz6owMbGxt7KzjFtQp4VG22g5g0ybGxs7E3su1pIeanQFjb53fNVYWNjY38Dez7obRv9Z1F31g7DxsbG3sRuWz/FtCGOmbMCpg286DljY2NjL2XfFU7zwuO2R4WNjY29iJ2clJcEydggH9wmgZff8WmMYWNjY384O1lWEgxnUde+9JOv4UWsYmNjYy9it6/j5Miz4uRwZFtuATY2NvYmdnvLeZlRP5Px1kTRhY2Njb2IfdaXyguJu7asXfOLCgwbGxv7Y9n5ay5nDabJgCE5v41ebGxs7H3s/OWb9jWd5PNZZObDg6iLho2Njb2Cnf+Lnxcek8VNCqTowMbGxl7Hbhd91mCavMpzNoouchsbGxv7Y9l3Rd3ojaGbIu1sUIGNjY29g31Xs6a9zrxAOmuNYWNjY29ln02JJ9+3wTmpI14MCbCxsbG/hj0PvMmmtBH1ovbCxsbG/mL2ZGvyCWw+fj6MSWxsbOx17DwM5ou+q22UN7zqKTc2Njb2R7HnzZ12ofMIbMsVbGxs7KXsP4+1HF9eV4lhAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '给我回来！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MyBlog - GxkOrd';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
