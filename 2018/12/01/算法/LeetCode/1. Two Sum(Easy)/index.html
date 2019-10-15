@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="LeetCode,LeetCode - Easy">
-    <meta name="description" content="题目描述原题  Description:  Given an array of integers, return indices of the two numbers such that they add up to a specific target.  You may assume that each input would have exactly one solution, and you">
+    <meta name="description" content="题目描述原题  Description:  Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution, and you m">
 <meta name="keywords" content="LeetCode,LeetCode - Easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1. Two Sum(Easy)">
 <meta property="og:url" content="https://gxkord.github.io/2018/12/01/算法/LeetCode/1. Two Sum(Easy)/index.html">
 <meta property="og:site_name" content="MyBlog - GxkOrd">
-<meta property="og:description" content="题目描述原题  Description:  Given an array of integers, return indices of the two numbers such that they add up to a specific target.  You may assume that each input would have exactly one solution, and you">
+<meta property="og:description" content="题目描述原题  Description:  Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution, and you m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-20T03:48:07.878Z">
+<meta property="og:updated_time" content="2019-10-13T10:15:03.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1. Two Sum(Easy)">
-<meta name="twitter:description" content="题目描述原题  Description:  Given an array of integers, return indices of the two numbers such that they add up to a specific target.  You may assume that each input would have exactly one solution, and you">
+<meta name="twitter:description" content="题目描述原题  Description:  Given an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution, and you m">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -188,8 +188,9 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
 <p> <strong>Description</strong>:</p>
-<p> Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
-<p> You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
+<blockquote>
+<p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the same element twice.</p>
+</blockquote>
 <blockquote>
 <p> <strong>Example</strong>:</p>
 <p> Given nums = [2, 7, 11, 15], target = 9,</p>
@@ -198,14 +199,19 @@
 </blockquote>
 <h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><blockquote>
 <p><strong>描述</strong>：</p>
-<p>给定一个整数数组，返回两个数字的<strong>索引</strong>，使它们相加到特定目标。<br>    假设每个输入<strong>仅有</strong>一个解决方案，且不能两次使用相同的元素。</p>
+<blockquote>
+<p>给定一个整数数组，返回两个数字的<strong>索引</strong>，使它们相加到特定目标。<br>假设每个输入<strong>仅有</strong>一个解决方案，且不能两次使用相同的元素。</p>
+</blockquote>
 <blockquote>
 <p><strong>例如</strong>：<br>    给定 nums = [2, 7, 11, 15]， target = 9。<br>    由于 nums[0] + nums[1] = 2 + 7 = 9，<br>返回 [0, 1]。</p>
 </blockquote>
 </blockquote>
 <h1 id="解法一（mine）"><a href="#解法一（mine）" class="headerlink" title="解法一（mine）"></a>解法一（mine）</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>Exm？怎么会这么简单？我真的不是在做《C语言程序设计》的期中考试题？</p>
 <p>但细细想来，也确实配得上Easy的难度，两层for循环，即可轻松解决。</p>
-<p>时间复杂度：$O(n^2)$</p>
+<blockquote>
+<p>运行速度：超过了15.90%的解答。</p>
+<p>内存使用：超过了98.95%的解答。</p>
+</blockquote>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    result[<span class="number">0</span>] = i;</span><br><span class="line">                    result[<span class="number">1</span>] = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h1><blockquote>
@@ -219,7 +225,10 @@
 <p>（2）若不存在，将 nums[i] 的值和下标放入 map，进入下一次循环。</p>
 </li>
 </ol>
-<p>时间复杂度：$O(n)$</p>
+<blockquote>
+<p>运行速度：超过了98.87%的解答。</p>
+<p>内存使用：超过了65.49%的解答。</p>
+</blockquote>
 <h2 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        Map&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target-nums[i])) &#123;</span><br><span class="line">                result[<span class="number">0</span>] = map.get(target-nums[i]);</span><br><span class="line">                result[<span class="number">1</span>] = i;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -241,6 +250,10 @@
 </blockquote>
 <h2 id="主要思想-3"><a href="#主要思想-3" class="headerlink" title="主要思想"></a>主要思想</h2><blockquote>
 <p>抱歉…在写下这篇笔记的时候，我依然没看懂…（如果有大神看到，请救救孩子…）</p>
+</blockquote>
+<blockquote>
+<p>运行速度：超过了100%的解答。</p>
+<p>内存使用：超过了98.43%的解答。</p>
 </blockquote>
 <h2 id="源码-3"><a href="#源码-3" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">2048</span>;</span><br><span class="line">        <span class="keyword">int</span>[] indexes = <span class="keyword">new</span> <span class="keyword">int</span>[max];</span><br><span class="line">        <span class="keyword">int</span> bitMode = --max;</span><br><span class="line">        <span class="keyword">int</span> first = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> difference = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (difference == first) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> index = indexes[difference &amp; bitMode];</span><br><span class="line">            <span class="keyword">if</span>(index != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;index, i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            indexes[nums[i]&amp;bitMode] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

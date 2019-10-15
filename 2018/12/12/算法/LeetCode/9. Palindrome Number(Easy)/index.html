@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="题目描述原题 Description:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.  Example 1:   Input: 121Output: true  Example 2:   Input: -121Ou">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-19T10:10:10.674Z">
+<meta property="og:updated_time" content="2019-10-13T09:36:33.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="9. Palindrome Number(Easy)">
 <meta name="twitter:description" content="题目描述原题 Description:Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.  Example 1:   Input: 121Output: true  Example 2:   Input: -121Ou">
@@ -223,6 +223,10 @@
 </blockquote>
 </blockquote>
 <h1 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>把x倒置，再与x比较即可。</p>
+<blockquote>
+<p>运行速度：超过了100%的解答。</p>
+<p>内存使用：超过了5.02%的解答。</p>
+</blockquote>
 <h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>, b = x;</span><br><span class="line">        <span class="keyword">while</span>(b != <span class="number">0</span>) &#123;</span><br><span class="line">            a = a * <span class="number">10</span> + b % <span class="number">10</span>;</span><br><span class="line">            b /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a == x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
