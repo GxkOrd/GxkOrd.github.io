@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="题目描述原题 Description:  You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-13T10:14:20.805Z">
+<meta property="og:updated_time" content="2019-10-16T07:38:20.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2. Add Two Numbers(Medium)">
 <meta name="twitter:description" content="题目描述原题 Description:  You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two">
@@ -194,22 +194,22 @@
 <blockquote>
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
 </blockquote>
-<p> <strong>Example</strong>:</p>
+<p> <strong>Example:</strong></p>
 <blockquote>
-<p><strong>Input</strong>: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>Output</strong>: 7 -&gt; 0 -&gt; 8<br><strong>Explanation</strong>: 342 + 465 = 807.</p>
+<p><strong>Input:</strong> (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>Output:</strong> 7 -&gt; 0 -&gt; 8<br><strong>Explanation:</strong> 342 + 465 = 807.</p>
 </blockquote>
 </blockquote>
 <h2 id="原题翻译"><a href="#原题翻译" class="headerlink" title="原题翻译"></a>原题翻译</h2><blockquote>
-<p><strong>描述</strong>：</p>
+<p><strong>描述：</strong></p>
 <blockquote>
 <p>给定两个非空链表，表示两个非负整数。数字以相反的顺序存储，每个节点包含一个数字。将两个数字相加并将其作为链表返回。</p>
 </blockquote>
 <blockquote>
 <p>可以认为这两个数字不包含任何前导0，除了数字0本身。</p>
 </blockquote>
-<p><strong>例如</strong>：</p>
+<p><strong>例如：</strong></p>
 <blockquote>
-<p><strong>输入</strong>: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>输出</strong>: 7 -&gt; 0 -&gt; 8<br><strong>解释</strong>: 342 + 465 = 807.</p>
+<p><strong>输入：</strong>(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>输出：</strong>7 -&gt; 0 -&gt; 8<br><strong>解释：</strong>342 + 465 = 807.</p>
 </blockquote>
 </blockquote>
 <h1 id="解法一（mine）"><a href="#解法一（mine）" class="headerlink" title="解法一（mine）"></a>解法一（mine）</h1><h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><p>将两个数字表示出来，相加，再转化成结果链表（考虑到两数和可能超过了int的限制，选择BigInteger）。<br>想法很简单，然而…<strong>Memory Limit Exceeded（内存超过限制）</strong></p>
