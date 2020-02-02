@@ -29,34 +29,34 @@
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="概述输入输出系统的发展概况 早期 分散连接 CPU和I/0设备串行工作 程序查询方式  接口模块和DMA阶段 总线连接 CPU和I/O设备并行工作（中断方式、DMA方式）  具有通道结构的阶段  具有I/0处理机的阶段   输入输出系统的组成 I/0软件 (1) I/O指令  CPU指令的一部分   (2) 通道指令  通道自身的指令  指出数组的首地址、传送字数、操作命令    I/0硬件 设备">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E5%BC%82%E6%AD%A5%E5%B9%B6%E8%A1%8C%E5%BA%94%E7%AD%94%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E5%BC%82%E6%AD%A5%E4%B8%B2%E8%A1%8C%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5-%E8%BE%90%E5%B0%84%E5%BC%8F%E8%BF%9E%E6%8E%A5.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//DMA%E6%96%B9%E5%BC%8F.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84CPU%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E6%AF%94%E8%BE%83.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO设备结构框图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO%E6%80%BB%E7%BA%BF%E5%92%8C%E6%8E%A5%E5%8F%A3%E9%83%A8%E4%BB%B6.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO%E8%AE%BE%E5%A4%87%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90-%E8%BE%93%E5%85%A5.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//程序中断方式.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//CPU与打印机并行工作的时间示意图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E4%B8%ADD%E3%80%81INTR%E3%80%81MASK%E5%92%8C%E4%B8%AD%E6%96%AD%E6%9F%A5%E8%AF%A2%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%85%B3%E7%B3%BB.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E9%93%BE%E5%BC%8F%E6%8E%92%E9%98%9F%E5%99%A8.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//中断向量地址形成部件框图.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//通过向量地址寻找入口地址.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg">
-<meta property="og:image" content="https://gxkord.github.io/.io//IO%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E5%BC%82%E6%AD%A5%E5%B9%B6%E8%A1%8C%E5%BA%94%E7%AD%94%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E5%BC%82%E6%AD%A5%E4%B8%B2%E8%A1%8C%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5-%E8%BE%90%E5%B0%84%E5%BC%8F%E8%BF%9E%E6%8E%A5.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/DMA%E6%96%B9%E5%BC%8F.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84CPU%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E6%AF%94%E8%BE%83.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO设备结构框图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E6%80%BB%E7%BA%BF%E5%92%8C%E6%8E%A5%E5%8F%A3%E9%83%A8%E4%BB%B6.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E8%AE%BE%E5%A4%87%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90-%E8%BE%93%E5%85%A5.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/程序中断方式.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/CPU与打印机并行工作的时间示意图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E4%B8%ADD%E3%80%81INTR%E3%80%81MASK%E5%92%8C%E4%B8%AD%E6%96%AD%E6%9F%A5%E8%AF%A2%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%85%B3%E7%B3%BB.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E9%93%BE%E5%BC%8F%E6%8E%92%E9%98%9F%E5%99%A8.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/中断向量地址形成部件框图.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/通过向量地址寻找入口地址.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg">
+<meta property="og:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B.jpg">
 <meta property="og:updated_time" content="2019-04-27T13:34:38.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第5章 输入输出系统">
 <meta name="twitter:description" content="概述输入输出系统的发展概况 早期 分散连接 CPU和I/0设备串行工作 程序查询方式  接口模块和DMA阶段 总线连接 CPU和I/O设备并行工作（中断方式、DMA方式）  具有通道结构的阶段  具有I/0处理机的阶段   输入输出系统的组成 I/0软件 (1) I/O指令  CPU指令的一部分   (2) 通道指令  通道自身的指令  指出数组的首地址、传送字数、操作命令    I/0硬件 设备">
-<meta name="twitter:image" content="https://gxkord.github.io/.io//IO%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg">
+<meta name="twitter:image" content="https://gxkord.github.io/2019/04/18/计算机基础/计算机组成原理/第5章%20输入输出系统/IO%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="MyBlog - GxkOrd" href="/atom.xml">
     
@@ -230,7 +230,7 @@
 <ul>
 <li>CPU指令的一部分</li>
 </ul>
-<p><img src="/.io//IO%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg" alt="I/O指令的一般格式"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO%E6%8C%87%E4%BB%A4%E7%9A%84%E4%B8%80%E8%88%AC%E6%A0%BC%E5%BC%8F.jpg" alt="I/O指令的一般格式"></p>
 <p>(2) 通道指令</p>
 <ul>
 <li><p>通道自身的指令</p>
@@ -267,17 +267,17 @@
 <p>(2) 异步工作采用应答信号</p>
 <ul>
 <li><p>并行</p>
-<p><img src="/.io//%E5%BC%82%E6%AD%A5%E5%B9%B6%E8%A1%8C%E5%BA%94%E7%AD%94%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg" alt="异步并行“应答”联络方式"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E5%BC%82%E6%AD%A5%E5%B9%B6%E8%A1%8C%E5%BA%94%E7%AD%94%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg" alt="异步并行“应答”联络方式"></p>
 </li>
 <li><p>串行</p>
-<p><img src="/.io//%E5%BC%82%E6%AD%A5%E4%B8%B2%E8%A1%8C%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg" alt="异步串行联络方式"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E5%BC%82%E6%AD%A5%E4%B8%B2%E8%A1%8C%E8%81%94%E7%BB%9C%E6%96%B9%E5%BC%8F.jpg" alt="异步串行联络方式"></p>
 </li>
 </ul>
 <p>(3) 同步工作采用同步时标</p>
 </li>
 <li><p>I/0设备与主机的连接方式</p>
 <p>(1) 辐射式连接</p>
-<p><img src="/.io//IO%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5-%E8%BE%90%E5%B0%84%E5%BC%8F%E8%BF%9E%E6%8E%A5.jpg" alt="辐射式连接"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO%E8%AE%BE%E5%A4%87%E4%B8%8E%E4%B8%BB%E6%9C%BA%E8%BF%9E%E6%8E%A5-%E8%BE%90%E5%B0%84%E5%BC%8F%E8%BF%9E%E6%8E%A5.jpg" alt="辐射式连接"></p>
 <ul>
 <li><p>每台设备都配有一套控制线路和一组信号线</p>
 </li>
@@ -292,7 +292,7 @@
 </ol>
 <h2 id="I-O设备与主机信息传送的控制方式"><a href="#I-O设备与主机信息传送的控制方式" class="headerlink" title="I/O设备与主机信息传送的控制方式"></a>I/O设备与主机信息传送的控制方式</h2><ol>
 <li><p>程序查询方式</p>
-<p><img src="/.io//%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg" alt="程序查询方式流程"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg" alt="程序查询方式流程"></p>
 <ul>
 <li><p><strong>CPU和I/O串行工作</strong></p>
 </li>
@@ -302,21 +302,21 @@
 </li>
 <li><p>程序中断方式</p>
 <p>倘若CPU在启动I/O设备后，不查询设备是否已准备就绪，继续执行自身程序，只是当I/O设备准备就绪并向CPU发出中断请求后才予以响应。</p>
-<p><img src="/.io//%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F.jpg" alt="程序中断方式"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F.jpg" alt="程序中断方式"></p>
 <ul>
 <li><p><strong>没有踏步等待现象</strong></p>
 </li>
 <li><p><strong>中断现行程序</strong></p>
 </li>
 </ul>
-<p><img src="/.io//%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg" alt="程序中断方式流程"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%B5%81%E7%A8%8B.jpg" alt="程序中断方式流程"></p>
 </li>
 <li><p>直接存储器存取方式（DMA）</p>
 <p>主存和I/O之间有一条直接数据通道</p>
 <p>不中断现行程序</p>
 <p>周期挪用（周期窃用）</p>
 <p><strong>CPU和I/O并行工作</strong></p>
-<p><img src="/.io//DMA%E6%96%B9%E5%BC%8F.jpg" alt="DMA方式"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/DMA%E6%96%B9%E5%BC%8F.jpg" alt="DMA方式"></p>
 </li>
 <li><p>I/0通道方式</p>
 </li>
@@ -328,13 +328,13 @@
 </blockquote>
 <ol start="6">
 <li><p>前三种方式的CPU工作效率比较</p>
-<p><img src="/.io//%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84CPU%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E6%AF%94%E8%BE%83.jpg" alt="三种方式的CPU工作效率比较"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84CPU%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87%E6%AF%94%E8%BE%83.jpg" alt="三种方式的CPU工作效率比较"></p>
 </li>
 </ol>
 <h1 id="I-0设备（了解）"><a href="#I-0设备（了解）" class="headerlink" title="I/0设备（了解）"></a>I/0设备（了解）</h1><h2 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h2><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//IO设备结构框图.jpg" alt="I/O设备结构框图" title>
+                    <img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO设备结构框图.jpg" alt="I/O设备结构框图" title>
                 </div>
                 <div class="image-caption">I/O设备结构框图</div>
             </figure>
@@ -414,7 +414,7 @@
 <p>(2) 数据线</p>
 <p>(3) 命令线</p>
 <p>(4) 状态线</p>
-<p><img src="/.io//IO%E6%80%BB%E7%BA%BF%E5%92%8C%E6%8E%A5%E5%8F%A3%E9%83%A8%E4%BB%B6.jpg" alt="I/O总线和接口部件"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO%E6%80%BB%E7%BA%BF%E5%92%8C%E6%8E%A5%E5%8F%A3%E9%83%A8%E4%BB%B6.jpg" alt="I/O总线和接口部件"></p>
 </li>
 <li><p>接口的功能和组成</p>
 </li>
@@ -446,7 +446,7 @@
 <p>$$<br>\begin{cases}完成触发器D\工作触发器B\中断请求触发器INTR\屏蔽触发器MASK\end{cases}.<br>$$</p>
 <ol start="3">
 <li><p>I/O接口的基本组成</p>
-<p><img src="/.io//IO%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg" alt="I/O设备的基本组成"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO%E8%AE%BE%E5%A4%87%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg" alt="I/O设备的基本组成"></p>
 </li>
 </ol>
 <h2 id="接口类型"><a href="#接口类型" class="headerlink" title="接口类型"></a>接口类型</h2><ol>
@@ -469,15 +469,15 @@
 </ol>
 <h1 id="程序查询方式"><a href="#程序查询方式" class="headerlink" title="程序查询方式"></a>程序查询方式</h1><h2 id="程序查询方式的流程"><a href="#程序查询方式的流程" class="headerlink" title="程序查询方式的流程"></a>程序查询方式的流程</h2><ol>
 <li><p>查询流程</p>
-<p><img src="/.io//IO%E8%AE%BE%E5%A4%87%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.jpg" alt="IO设备的查询流程"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO%E8%AE%BE%E5%A4%87%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%B5%81%E7%A8%8B.jpg" alt="IO设备的查询流程"></p>
 </li>
 <li><p>程序流程</p>
-<p><img src="/.io//%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B.jpg" alt="程序查询方式的程序流程"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B.jpg" alt="程序查询方式的程序流程"></p>
 </li>
 </ol>
 <h2 id="程序查询方式的接口电路"><a href="#程序查询方式的接口电路" class="headerlink" title="程序查询方式的接口电路"></a>程序查询方式的接口电路</h2><ol>
 <li><p>输入</p>
-<p><img src="/.io//%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90-%E8%BE%93%E5%85%A5.jpg" alt="程序查询方式接口电路的基本组成-输入"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E7%A8%8B%E5%BA%8F%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90-%E8%BE%93%E5%85%A5.jpg" alt="程序查询方式接口电路的基本组成-输入"></p>
 <p>① 当CPU通过I/O指令启动输入设备时，指令的设备码字段通过地址线送至设备选择电路。</p>
 <p>② 若该接口的设备码与地址线上的代码吻合，其输出SEL有效。</p>
 <p>③ I/O指令的启动命令经过“与非”门将工作触发器B置为1，将完成触发器D置为0。</p>
@@ -502,7 +502,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//程序中断方式.jpg" alt="程序中断方式" title>
+                    <img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/程序中断方式.jpg" alt="程序中断方式" title>
                 </div>
                 <div class="image-caption">程序中断方式</div>
             </figure>
@@ -527,7 +527,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//CPU与打印机并行工作的时间示意图.jpg" alt="CPU与打印机并行工作的时间示意图" title>
+                    <img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/CPU与打印机并行工作的时间示意图.jpg" alt="CPU与打印机并行工作的时间示意图" title>
                 </div>
                 <div class="image-caption">CPU与打印机并行工作的时间示意图</div>
             </figure>
@@ -537,7 +537,7 @@
 <p>INTR：中断请求触发器（INTR=1表示有请求）</p>
 <p>MASK：中断屏蔽触发器（MASK=1表示被屏蔽）</p>
 <p>D：完成触发器</p>
-<p><img src="/.io//%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E4%B8%ADD%E3%80%81INTR%E3%80%81MASK%E5%92%8C%E4%B8%AD%E6%96%AD%E6%9F%A5%E8%AF%A2%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%85%B3%E7%B3%BB.jpg" alt="接口电路中D、INTR、MASK和中断查询信号的关系"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E4%B8%ADD%E3%80%81INTR%E3%80%81MASK%E5%92%8C%E4%B8%AD%E6%96%AD%E6%9F%A5%E8%AF%A2%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%85%B3%E7%B3%BB.jpg" alt="接口电路中D、INTR、MASK和中断查询信号的关系"></p>
 <blockquote>
 <p>&amp;：与非门，其运算为$\overline{A\cdot B}$。</p>
 <p>1：非门，其运算为$\overline{A}$，相当于$\overline{A\cdot 1}$。</p>
@@ -548,7 +548,7 @@
 </li>
 </ol>
 <p>$$<br>排队\begin{cases} 硬件\ \ 在CPU内或在接口电路中（链式排队器） \ 软件\ \ 详见第八章\end{cases}<br>$$</p>
-<p>   <img src="/.io//%E9%93%BE%E5%BC%8F%E6%8E%92%E9%98%9F%E5%99%A8.jpg" alt="链式排队器"></p>
+<p>   <img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E9%93%BE%E5%BC%8F%E6%8E%92%E9%98%9F%E5%99%A8.jpg" alt="链式排队器"></p>
 <p>   设备1、2、3、4的优先级按<strong>降序排列</strong></p>
 <p>   $INTR_i=1$有请求，即$\overline{INTR_i}=0$</p>
 <blockquote>
@@ -564,7 +564,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//中断向量地址形成部件框图.jpg" alt="中断向量地址形成部件框图" title>
+                    <img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/中断向量地址形成部件框图.jpg" alt="中断向量地址形成部件框图" title>
                 </div>
                 <div class="image-caption">中断向量地址形成部件框图</div>
             </figure>
@@ -572,14 +572,14 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//通过向量地址寻找入口地址.jpg" alt="通过向量地址寻找入口地址" title>
+                    <img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/通过向量地址寻找入口地址.jpg" alt="通过向量地址寻找入口地址" title>
                 </div>
                 <div class="image-caption">通过向量地址寻找入口地址</div>
             </figure>
 
 <ol start="4">
 <li><p>程序中断方式接口电路的基本组成</p>
-<p><img src="/.io//%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg" alt="程序中断方式接口电路的基本组成"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.jpg" alt="程序中断方式接口电路的基本组成"></p>
 </li>
 </ol>
 <h2 id="I-O中断处理过程"><a href="#I-O中断处理过程" class="headerlink" title="I/O中断处理过程"></a>I/O中断处理过程</h2><ol>
@@ -598,7 +598,7 @@
 </ul>
 </li>
 <li><p>I/O中断处理过程</p>
-<p><img src="/.io//IO%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B.jpg" alt="I/O中断处理过程"></p>
+<p><img src="//GxkOrd.github.io/2019/04/18/计算机基础/计算机组成原理/第5章 输入输出系统/IO%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B.jpg" alt="I/O中断处理过程"></p>
 <p>① 由CPU发启动I/O设备的命令，将I/O接口中的B置“1”，D触发器置”0“。</p>
 <p>② 接口启动输入设备开始工作。</p>
 <p>③ 输入设备将数据送入数据缓冲寄存器。</p>
