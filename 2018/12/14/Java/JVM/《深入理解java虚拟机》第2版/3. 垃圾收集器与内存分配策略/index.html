@@ -25,7 +25,7 @@
 <meta name="keywords" content="《深入理解Java虚拟机》,第二部分 自动内存管理机制,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3. 垃圾收集器与内存分配策略">
-<meta property="og:url" content="https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/index.html">
+<meta property="og:url" content="https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/index.html">
 <meta property="og:site_name" content="MyBlog - GxkOrd">
 <meta property="og:description" content="概述垃圾收集（Garbage Collection, GC）的历史比Java久远。1960年诞生于MIT的Lisp是第一门真正使用内存动态分配和垃圾收集技术的语言。 目前内存的动态分配与内存回收技术已经相当成熟，一切看起来都进入了“自动化”时代，那为什么我们还要去了解GC和内存分配？ 当需要排查各种内存溢出、内存泄漏问题时，当垃圾收集成为系统达到更高并发量的瓶颈时，就需要对这些“自动化”的技术实施">
 <meta property="og:locale" content="zh-CN">
@@ -514,7 +514,7 @@
     </div>
     
     <footer>
-        <a href="https://gxkord.github.io">
+        <a href="https://GxkOrd.github.io">
             <img src="/img/avatar.jpg" alt="GxkOrd">
             GxkOrd
         </a>
@@ -540,7 +540,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&pic=https://GxkOrd.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -550,22 +550,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&via=https://gxkord.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&via=https://GxkOrd.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -708,7 +708,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&pic=https://gxkord.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&pic=https://GxkOrd.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -718,22 +718,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&title=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&via=https://gxkord.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《3. 垃圾收集器与内存分配策略》 — MyBlog - GxkOrd&url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/&via=https://GxkOrd.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gxkord.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://GxkOrd.github.io/2018/12/14/Java/JVM/《深入理解java虚拟机》第2版/3. 垃圾收集器与内存分配策略/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -744,7 +744,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEfUlEQVR42u3awY7jOAwFwPn/n569LtBJ5j3SASx35dRI3LJUOoik+OdP/Pn78fPzmf9/k/ydf37O6uff70Z+9+RlH0yYMGHCdEumliCZbv6/nxeZE+Qc+SZhwoQJE6YnMSXDfT4lP3/fLqPdkmQO7bowYcKECROmnKYlm6Wym18xYcKECROm2eKL9PLjBrShw+c5YMKECROm38aUD5csMvm1pW+JLx4fEyZMmDAdy9QeyU/6+yv9TZgwYcKE6TZMf8vPpvzaHsyzwu4mGX47AiZMmDBhOpbpe1eVSQq6CU1mTG3ajAkTJkyYTmdqh94nmQlZfunYprKzy1dMmDBhwnQuU3vtt2/o2V9PzvhyoAtuRzFhwoQJ022YNiXd5Ju2GWizDUmQER38eeqLCRMmTJhuz5T/W1tsTfjyw35fXE6S+WH7DiZMmDBhOoSpPc7zEGF2SM82MglBkv99sS5MmDBhwnQs0+Y4bxt6vnf12IYX+WiYMGHChOl0pvawz5PYZDGb8GJ/wVnMDRMmTJgwPYKpLn2WgcWsracNKTYb89YBEyZMmDAdy9QWZzeTnl12brYhWeOwToAJEyZMmG7PNGuCyWk2RdtvpLXJyC+ewYQJEyZMhzO15dQ8gcyP4RyibdyZ/XpB1RkTJkyYMN2eqT3mkyfzI7kNPvJNytPyKCDAhAkTJky3Z2pf0IYIm4LsJpHehDWYMGHChOmpTG2DzlXtMpuWoK8HFpgwYcKE6aFM+4JpHgRsCrht6baeOSZMmDBhOpapTS+HRdL4+Zx4/0y+LkyYMGHCdC7TplFmH0xcxZ0n5znli7gJEyZMmDA9jmnG17bOzN44uxadFa8xYcKECdO5TEkRNp/i7NjO09e2iJy07BTEmDBhwoTpEUyzFpx2qW1BuU5WF5tUX2RiwoQJE6YbM111lCZPtgFEHgok15PJve7bkTFhwoQJ06OZklRzf6E4S7D3b4+2BxMmTJgwHcvUTn1zbdmGC20KnYQXbeqOCRMmTJiewbQp6c6uP/MUtCWYbVsUUmDChAkTpmOZNuloXqK9Cn1/CboKIDBhwoQJ04FM+SHdvmzWfJMn2HlA0G72P9p3MGHChAnTIUyb9LUtoW5QWrLNXeSL0TBhwoQJ07FM+cXkhiYPFK4aJw9c6jlgwoQJE6ajmJIUdJ/cfqPI2xajZw1DmDBhwoTpeUz5sV28pgwy8lAg39p2zi8qBJgwYcKE6XCm2WXhrI3mqkW2IcWwSQgTJkyYMB3LlKege75Ny057CZqXjIdvxIQJEyZMhzDNWlhmE2o3oL18zeHqsi8mTJgwYTqWaR9NzIq/SRtNPn6ysHybN8EEJkyYMGG6J1MbBCTfJL+2h3QeaszeFVXEMWHChAnTsUzfSB2vSinbi8+rysSYMGHChOk3M7UF3GSR+dG+KRbP0nhMmDBhwvR7mNpv2qBhVrTNN6l9FyZMmDBhegbT7DBu21UTxPyKNC8K5yXgt+NgwoQJE6Zjmdoya5tezpLhfEmzDZhtLSZMmDBhOorpP2Le3j+5AN5zAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEi0lEQVR42u3ay1IjMQwFUP7/p5ktVZDOleRmonCyokJj7NML6/XxEX8+v3y+fvP95+9/9WiF798nn+v1r1e+3u2BDyZMmDBhekmmZFvX201Ak7+aEOQc1+d6uFtMmDBhwrScKVkuP2R+nyZP5oe8fmG9UAYTJkyYMGFKQoHrEOH6MHkqO/ktJkyYMGHC1Dt8Ib0sBhy98AITJkyYMP1Npny5XtF2HjpUiQ+vjwkTJkyY1jJVr+R3+vmW+SZMmDBhwvQyTJ/Fz6T8Wr2Ye4XdSTL8cAVMmDBhwrSW6b5WZZKCTkKTHlM1bcaECRMmTO/BVM37JklmQpY3HaupbK/5igkTJkyYtjP12pmnWoaTSzrny4GapV5MmDBhwvSSTL0RnPybU/S9gm8+xPMkKMGECRMmTGuZJplxcq3mZdYqYrW4nCTzzfEdTJgwYcK0hGnCNynmJlufD+UkOewTekyYMGHCtJapd51XN1S9gKutx2p4ka+GCRMmTJi2M1Uv+97gSzU17ZVoqw3OJFjBhAkTJkzvxFQt8uYX6mSspxpSFA6fnwUTJkyYMK1lOluczRucebNzktYmZ2zWCTBhwoQJ08sz9dLUnHJSZr0jrU1W/uEZTJgwYcK0nOnugZvez3nynD9TbYL+6lwSJkyYMGH6daZqozF5Mr+Sk/1UR456pWdMmDBhwrSdqfoP8vbnvCDbC1yqSfUTOEyYMGHCtJZp8slTxzxo6F38B7q4cWCBCRMmTJh2Md1dMO21Pydpat5YLewcEyZMmDCtZcqv/FGRNH4+J54/k58LEyZMmDDtZToVEPT+9hR3npznlLfETZgwYcKE6T8xVUuueZo6KelWh34O1K0f7RMTJkyYMK1l6m1iUmDN0+z8NeRjOiNiTJgwYcK0nGkygtPjy0OTcrI6eElR9IQJEyZMmJYwnbpKkyerAUQeCswT+CcrY8KECROmt2bKg4aE8tQrqQYo+c6jWjgmTJgwYVrClJR6J9dz9QVUD1BNmKupOyZMmDBheg+mQkuvWD9ONlot3SYvtRcWPDkjJkyYMGFay5Rfxklw0BuOqSa9kyboKIDAhAkTJkwLmXoF3HkCnDcg5wFBtXj9ZHwHEyZMmDAtYaq2G6uNzLzFmD9TvfirhewfVsOECRMmTGuZ8qJtNQ3Oi6p3rJMnuuU9YMKECROmVUy9K/zURidF3vwinwwMYcKECROm92Pqjdf0Ut9qeDFPsPM9/1AhwIQJEyZMy5l6zcLeGM2pQ/bapeUhIUyYMGHCtJYpT0HzUZhqWtsr6fYqsZMiMiZMmDBh2sjUG2HpbShPrefDPdf7LJd9MWHChAnTWqZ5NNEr/iZjNPn6ycHy1zwJJjBhwoQJ02syVYOA5Jvkt9VLOg81ev8rqohjwoQJE6a1THekjqdSymrj81SZGBMmTJgw/WWmagE3OWR+tU+Kxb00HhMmTJgw/WWmeXqcbDq5vKt7KAQNmDBhwoRpOVP1Ms4v6Xxz1ZGavCicl4AfroMJEyZMmNYyVcus80Jt9ZrvlWsT3N5ZMGHChAnTEqZ/HS+/UCUFGa4AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
